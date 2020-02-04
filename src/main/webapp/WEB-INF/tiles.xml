@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+       
+<tiles-definitions>
+   <!--  -->
+   <!-- Main Page -->
+   <definition name="default" template="/WEB-INF/views/layout/layout.jsp">
+      <put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/layout/container.jsp" />
+      <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+   </definition>
+   
+   <!-- Main Page2 -->
+   <definition name="default2" template="/WEB-INF/views/layout/layout.jsp">
+      <put-attribute name="header" value="/WEB-INF/views/layout/header2.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/layout/container.jsp" />
+      <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+   </definition>
+   
+   <!-- admin -->
+<!--    <definition name="admin" template="/WEB-INF/views/layout/admin/layout.jsp">
+      <put-attribute name="body" value="/WEB-INF/views/layout/admin/container.jsp" />
+   </definition> -->
+   
+   <!-- main -->
+   <definition name="main" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/member/main/main.jsp" />
+   </definition>
+   
+   <!-- Member -->
+   <definition name="joinForm" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/member/join/joinForm.jsp" />
+   </definition>
+   
+   <definition name="welcome" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/member/join/welcome.jsp" />
+   </definition>
+   
+   <definition name="loginForm" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/member/login/loginForm.jsp" />
+   </definition>
+
+   <definition name="findAccount" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/member/login/findAccount.jsp" />
+   </definition>
+   
+    <definition name="findIdResult" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/member/login/findIdResult.jsp" />
+   </definition>
+   
+   <definition name="findPwResult" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/member/login/findPwResult.jsp" />
+   </definition>
+   
+   <!-- myPage -->
+   <definition name="pwCheckForm" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/member/myPage/pwCheckForm.jsp" />
+   </definition>
+   
+   <definition name="accountDetail" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/member/myPage/accountDetail.jsp" />
+   </definition> 
+   
+   <definition name="accountModifyForm" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/member/myPage/accountModifyForm.jsp" />
+   </definition>
+   
+   <definition name="pwModifyForm" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/member/myPage/pwModifyForm.jsp" />
+   </definition>
+   
+   <definition name="modifySuccess" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/member/myPage/modifySuccess.jsp" />
+   </definition>
+   
+   <definition name="deleteAccount" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/member/myPage/deleteAccount.jsp" />
+   </definition>
+   
+   <definition name="myreportList" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/community/report/reportList.jsp" />
+   </definition>
+   
+   <definition name="myreportDetail" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/community/report/reportDetail.jsp" />
+   </definition>
+   
+   <definition name="myqnaList" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/community/qna/qnaList.jsp" />
+   </definition>
+   
+   <definition name="myqnaDetail" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/community/qna/qnaDetail.jsp" />
+   </definition>
+   
+   <!-- community -->
+   <!-- notice -->
+   <definition name="noticeList" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/community/notice/noticeList.jsp" />
+   </definition>
+   
+   <definition name="noticeDetail" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/community/notice/noticeDetail.jsp" />
+   </definition>
+   
+   <definition name="noticeWriteForm" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/community/notice/noticeWriteForm.jsp" />
+   </definition>
+   
+   <definition name="noticeModifyForm" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/community/notice/noticeModifyForm.jsp" />
+   </definition>
+   
+   <!-- board -->
+   <definition name="boardList" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/community/board/boardList.jsp" />
+   </definition>
+   
+   <definition name="boardDetail" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/community/board/boardDetail.jsp" />
+   </definition>
+   
+   <definition name="boardWriteForm" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/community/board/boardWriteForm.jsp" />
+   </definition>
+   
+   <definition name="boardModifyForm" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/community/board/boardModifyForm.jsp" />
+   </definition>
+   
+   <!-- qna -->
+   <definition name="qnaList" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/community/qna/qnaList.jsp" />
+   </definition>
+   
+   <definition name="qnaDetail" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/community/qna/qnaDetail.jsp" />
+   </definition>
+   
+   <definition name="qnaWriteForm" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/community/qna/qnaWriteForm.jsp" />
+   </definition>
+   
+   <!-- report -->
+   <definition name="reportList" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/community/report/reportList.jsp" />
+   </definition>
+   
+   <definition name="reportDetail" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/community/report/reportDetail.jsp" />
+   </definition>
+   
+   <definition name="reportWriteForm" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/community/report/reportWriteForm.jsp" />
+   </definition>
+   
+   <!-- GoodsShop -->
+   <definition name="goodsList" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/shop/goods/goodsList.jsp" />
+   </definition>
+   
+   <definition name="goodsWriteForm" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/shop/goods/goodsWriteForm.jsp" />
+   </definition>
+   
+   <definition name="goodsWriteResult" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/shop/goods/goodsWriteResult.jsp" />
+   </definition>
+   
+   <definition name="goodsDetail" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/shop/goods/goodsDetail.jsp" />
+   </definition>
+   
+   <!-- order -->
+   <definition name="orderWriteForm" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/shop/order/orderWriteForm.jsp" />
+   </definition>
+   
+   <definition name="orderWriteResult" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/shop/order/orderWriteResult.jsp" />
+   </definition>
+   
+   <definition name="orderDetail" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/shop/order/orderDetail.jsp" />
+   </definition>
+   
+   <!-- myshop -->
+   <definition name="orderList" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/myshop/orderList.jsp" />
+   </definition>
+   
+   <definition name="saleList" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/myshop/saleList.jsp" />
+   </definition>
+   
+   <definition name="goodsLikeList" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/myshop/goodsLikeList.jsp" />
+   </definition>
+   
+   <definition name="recentGoodsList" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/myshop/recentGoodsList.jsp" />
+   </definition>
+   
+</tiles-definitions>
