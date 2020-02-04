@@ -9,6 +9,11 @@ import nnS.common.dao.AbstractDAO;
 @Repository("joinDAO")
 public class JoinDAO extends AbstractDAO{
 	
+	public int selectEmailCheck(Map<String, Object> map) throws Exception{
+		// TODO Auto-generated method stub
+		return (Integer)selectOne("join.selectEmailCheck",map);
+	}
+	
 	public int selectIdCheck(Map<String, Object> map) throws Exception{
 		// TODO Auto-generated method stub
 		return (Integer)selectOne("join.selectIdCheck",map);

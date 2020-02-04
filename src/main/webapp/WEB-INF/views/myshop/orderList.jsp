@@ -169,7 +169,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 								<tr>
 									<td>
 										<a href="#goodsTab1">
-											<img src="../../resources/images/payment.png" alt="" width="100" height="100" onclick="click()"/>
+											<img src="/resources/images/payment.png" alt="" width="100" height="100" onclick="click()"/>
 										</a>
 									</td>
 									<td>

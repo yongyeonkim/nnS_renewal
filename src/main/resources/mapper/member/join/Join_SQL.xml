@@ -4,6 +4,15 @@
 
 	<!-- 로그인, 회원가입 -->
 	
+	<!-- id중복확인 -->
+	<select id="selectEmailCheck" parameterType="hashMap" resultType="Int">
+	<![CDATA[
+    	SELECT  COUNT(*)
+		FROM    MEMBER
+		WHERE   MEM_EMAIL = #{userEmail}
+		AND     MEM_DEL_GB = 'N'
+	]]>
+	</select>
 	
 	<!-- id중복확인 -->
 	<select id="selectIdCheck" parameterType="hashMap" resultType="Int">
@@ -11,6 +20,7 @@
     	SELECT  COUNT(*)
 		FROM    MEMBER
 		WHERE   MEM_ID = #{MEM_ID}
+		AND     MEM_DEL_GB = 'N'
 	]]>
 	</select>
 	

@@ -5,7 +5,7 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
-<link rel="stylesheet" type="text/css"/>\
+<link rel="stylesheet" type="text/css"/>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 
@@ -16,7 +16,11 @@ $(function(){
 		url : "<c:url value='/createEmailAuth'/>",
 		data : "userEmail=" + $("#email1").val()+"@"+$("#email2").val() + "&random=" + $("#random").val(),
 		success : function(data){
+			if(data == true){
 			alert("사용가능한 이메일입니다. 인증번호를 입력해주세요.");
+			}else{
+				alert("이미 사용중인 이메일");
+			}
 		},
 		error: function(data){
 			alert("에러가 발생했습니다.");

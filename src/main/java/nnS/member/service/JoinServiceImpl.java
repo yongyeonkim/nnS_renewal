@@ -18,6 +18,12 @@ public class JoinServiceImpl implements JoinService{
 	private JoinDAO joinDAO;
 	
 	@Override
+	public int selectEmailCheck(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return joinDAO.selectEmailCheck(map);
+	}
+	
+	@Override
 	public int selectIdCheck(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		return joinDAO.selectIdCheck(map);

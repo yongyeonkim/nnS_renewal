@@ -1,17 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="/WEB-INF/include/include-header.jspf" %>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 </head>
 <body>
 <p align="center">
-ì´ë©”ì¼ ì¸ì¦ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.
+ÀÌ¸ÞÀÏ ÀÎÁõÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.
 <br/>
-<input type="button" id="goLogin" name="goLogin" value="ë¡œê·¸ì¸">
-<input type="button" id="goMain" name="goMain" value="ë©”ì¸ìœ¼ë¡œ">
+<input type="button" id="goLogin" name="goLogin" value="·Î±×ÀÎ" onclick="location.href='/nnS/loginForm'"/>
+<input type="button" id="goMain" name="goMain" value="¸ÞÀÎÀ¸·Î" onclick="location.href='/nnS/main'"/>
 </p>
 
 
