@@ -76,17 +76,22 @@ public class JoinController {
    
    @RequestMapping(value = "/createEmailAuth" ,method=RequestMethod.GET)
    @ResponseBody
-   public boolean createEmailAuth(@RequestParam String userEmail, @RequestParam int random, HttpServletRequest req) {
+   public boolean createEmailAuth(CommandMap commandMap, @RequestParam String userEmail, @RequestParam int random, HttpServletRequest req) throws Exception {
 	 //이메일 인증
-	   int ran = new Random().nextInt(900000) + 100000;
-	   HttpSession session = req.getSession(true);
-	   String authCode = String.valueOf(ran);
-	   session.setAttribute("authCode", authCode);
-	   session.setAttribute("random", random);
-	   String subject = "nnS 회원가입 인증 코드 발급 안내 입니다.";
-	   StringBuilder sb = new StringBuilder();
-	   sb.append("귀하의 인증 코드는 " + authCode + "입니다.");
-	   return mailService.send(subject, sb.toString(),"gksn9573@gmail.com", userEmail, null);
+	   String emailCheck = String.valueOf(joinService.selectEmailCheck(commandMap.getMap()));
+	   if(emailCheck.equals("0")) {
+		   int ran = new Random().nextInt(900000) + 100000;
+		   HttpSession session = req.getSession(true);
+		   String authCode = String.valueOf(ran);
+		   session.setAttribute("authCode", authCode);
+		   session.setAttribute("random", random);
+		   String subject = "nnS 회원가입 인증 코드 발급 안내 입니다.";
+		   StringBuilder sb = new StringBuilder();
+		   sb.append("귀하의 인증 코드는 " + authCode + "입니다.");
+		   return mailService.send(subject, sb.toString(),"gksn9573@gmail.com", userEmail, null);
+	   }else {
+		   return false;
+	   }
    }
    
    @RequestMapping(value="/emailConfirm", method=RequestMethod.GET)//인증번호확인

@@ -1,44 +1,45 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=euc-kr"%>
 <html>
-<head>
-<%@ include file="/WEB-INF/include/include-header.jspf" %>
+<head><title>·Î±×ÀÎ</title>
    <style>
    @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
-	
-	html {
-		height: 100%;
-	}
-	
-	body {
-	    width:100%;
-	    height:100%;
-	    margin: 0;
-  		padding-top: 80px;
-  		padding-bottom: 40px;
-  		font-family: "Nanum Gothic", arial, helvetica, sans-serif;
-  		background-repeat: no-repeat;
-  		background:linear-gradient(to bottom right, #ffffff, #ffffff);
-	}
-	
+   
+   html {
+      height: 100%;
+   }
+   
+   body {
+       width:100%;
+       height:100%;
+       margin: 0;
+        padding-top: 80px;
+        padding-bottom: 40px;
+        font-family: "Nanum Gothic", arial, helvetica, sans-serif;
+        background-repeat: no-repeat;
+        background:linear-gradient(to bottom right, #ffffff, #ffffff);
+   }
+   
     .card {
         margin: 0 auto; /* Added */
         float: none; /* Added */
         margin-bottom: 10px; /* Added */
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	}
-	
-	.form-signin .form-control {
-  		position: relative;
-  		height: auto;
-  		-webkit-box-sizing: border-box;
-     	-moz-box-sizing: border-box;
-        	 box-sizing: border-box;
-  		padding: 10px;
-  		font-size: 16px;
-	}
+   }
+   
+   .form-signin .form-control {
+        position: relative;
+        height: auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px;
+   }
 
    
    </style>
+   <%-- <script src="<c:url value='/js/common.js'/>" charset="utf-8"></script> --%>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
    <script type="text/javascript">
 
       function begin(){
@@ -46,12 +47,12 @@
        }
        function checkIt(){
          if(!document.myform.MEM_ID.value){
-           alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì§€ ì•Šìœ¼ì…¨ìŠµë‹ˆë‹¤.");
+           alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏÁö ¾ÊÀ¸¼Ì½À´Ï´Ù.");
            document.myform.id.focus();
            return false;
          }
          if(!document.myform.MEM_PW.value){
-           alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì§€ ì•Šìœ¼ì…¨ìŠµë‹ˆë‹¤.");
+           alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏÁö ¾ÊÀ¸¼Ì½À´Ï´Ù.");
            document.myform.passwd.focus();
            return false;
          }
@@ -59,119 +60,112 @@
        }
        
        function fsubmit(){
-    		var id = $("#MEM_ID")[0].value;
-    		var pw = $("#MEM_PW")[0].value;
-    		if(id==null || id==''){
-    			alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
-    			return false;
-    		}
-    		if(pw==null || pw==''){
-    			alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
-    			return false;
-    		}
-    		if($(".Checkbox__CheckboxStd-ifp1yz-1").is(":checked")){
-    			var id = $("#MEM_ID").val();
-    			document.cookie = "storedId="+id;
-    			document.cookie = "idStore=true";
-    		}else{
-    			document.cookie = "storedId=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-    			document.cookie = "idStore=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-    		}
-    		var cookie = document.cookie.match('(^|;) ?'+'storedId'+'=([^;]*)(;|$)');
-    		myform.submit();
-    	}
+          var id = $("#MEM_ID")[0].value;
+          var pw = $("#MEM_PW")[0].value;
+          if(id==null || id==''){
+             alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+             return false;
+          }
+          if(pw==null || pw==''){
+             alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+             return false;
+          }
+          myform.submit();
+       }       
        
        $(document).ready(function(){
-    	   
-    	    // ì €ì¥ëœ ì¿ í‚¤ê°’ì„ ê°€ì ¸ì™€ì„œ ID ì¹¸ì— ë„£ì–´ì¤€ë‹¤. ì—†ìœ¼ë©´ ê³µë°±ìœ¼ë¡œ ë“¤ì–´ê°.
-    	    var key = getCookie("key");
-    	    $("#userId").val(key); 
-    	     
-    	    if($("#userId").val() != ""){ // ê·¸ ì „ì— IDë¥¼ ì €ì¥í•´ì„œ ì²˜ìŒ í˜ì´ì§€ ë¡œë”© ì‹œ, ì…ë ¥ ì¹¸ì— ì €ì¥ëœ IDê°€ í‘œì‹œëœ ìƒíƒœë¼ë©´,
-    	        $("#idSaveCheck").attr("checked", true); // ID ì €ì¥í•˜ê¸°ë¥¼ ì²´í¬ ìƒíƒœë¡œ ë‘ê¸°.
-    	    }
-    	     
-    	    $("#idSaveCheck").change(function(){ // ì²´í¬ë°•ìŠ¤ì— ë³€í™”ê°€ ìˆë‹¤ë©´,
-    	        if($("#idSaveCheck").is(":checked")){ // ID ì €ì¥í•˜ê¸° ì²´í¬í–ˆì„ ë•Œ,
-    	            setCookie("key", $("#userId").val(), 7); // 7ì¼ ë™ì•ˆ ì¿ í‚¤ ë³´ê´€
-    	        }else{ // ID ì €ì¥í•˜ê¸° ì²´í¬ í•´ì œ ì‹œ,
-    	            deleteCookie("key");
-    	        }
-    	    });
-    	     
-    	    // ID ì €ì¥í•˜ê¸°ë¥¼ ì²´í¬í•œ ìƒíƒœì—ì„œ IDë¥¼ ì…ë ¥í•˜ëŠ” ê²½ìš°, ì´ëŸ´ ë•Œë„ ì¿ í‚¤ ì €ì¥.
-    	    $("#userId").keyup(function(){ // ID ì…ë ¥ ì¹¸ì— IDë¥¼ ì…ë ¥í•  ë•Œ,
-    	        if($("#idSaveCheck").is(":checked")){ // ID ì €ì¥í•˜ê¸°ë¥¼ ì²´í¬í•œ ìƒíƒœë¼ë©´,
-    	            setCookie("key", $("#userId").val(), 7); // 7ì¼ ë™ì•ˆ ì¿ í‚¤ ë³´ê´€
-    	        }
-    	    });
-    	});
+          
+          // ÀúÀåµÈ ÄíÅ°°ªÀ» °¡Á®¿Í¼­ ID Ä­¿¡ ³Ö¾îÁØ´Ù. ¾øÀ¸¸é °ø¹éÀ¸·Î µé¾î°¨.
+          var userInputId = getCookie("userInputId");
+          $("#MEM_ID").val(userInputId);  
+          
+          if($("#MEM_ID").val() != ""){ // ±× Àü¿¡ ID¸¦ ÀúÀåÇØ¼­ Ã³À½ ÆäÀÌÁö ·Îµù ½Ã, ÀÔ·Â Ä­¿¡ ÀúÀåµÈ ID°¡ Ç¥½ÃµÈ »óÅÂ¶ó¸é,
+             $("#idSaveCheck").attr("checked", true); // ID ÀúÀåÇÏ±â¸¦ Ã¼Å© »óÅÂ·Î µÎ±â.
+          }
+          
+          $("#idSaveCheck").change(function(){ // Ã¼Å©¹Ú½º¿¡ º¯È­°¡ ÀÖ´Ù¸é,
+             if($("#idSaveCheck").is(":checked")){ // ID ÀúÀåÇÏ±â Ã¼Å©ÇßÀ» ¶§,
+                var userInputId = $("#MEM_ID").val();
+                setCookie("userInputId", userInputId, 7); // 7ÀÏ µ¿¾È ÄíÅ° º¸°ü
+             }else{ // ID ÀúÀåÇÏ±â Ã¼Å© ÇØÁ¦ ½Ã,
+                deleteCookie("userInputId");
+             }
+          });
+          
+          // ID ÀúÀåÇÏ±â¸¦ Ã¼Å©ÇÑ »óÅÂ¿¡¼­ ID¸¦ ÀÔ·ÂÇÏ´Â °æ¿ì, ÀÌ·² ¶§µµ ÄíÅ° ÀúÀå.
+          $("#MEM_ID").keyup(function(){ // ID ÀÔ·Â Ä­¿¡ ID¸¦ ÀÔ·ÂÇÒ ¶§,
+             if($("#idSaveCheck").is(":checked")){ // ID ÀúÀåÇÏ±â¸¦ Ã¼Å©ÇÑ »óÅÂ¶ó¸é,
+                var userInputId = $("#MEM_ID").val();
+                setCookie("userInputId", userInputId, 7); // 7ÀÏ µ¿¾È ÄíÅ° º¸°ü
+             }
+          });
+       });
        
        
-    	 
-    	function setCookie(cookieName, value, exdays){
-    	    var exdate = new Date();
-    	    exdate.setDate(exdate.getDate() + exdays);
-    	    var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
-    	    document.cookie = cookieName + "=" + cookieValue;
-    	}
-    	 
-    	function deleteCookie(cookieName){
-    	    var expireDate = new Date();
-    	    expireDate.setDate(expireDate.getDate() - 1);
-    	    document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
-    	}
-    	 
-    	function getCookie(cookieName) {
-    	    cookieName = cookieName + '=';
-    	    var cookieData = document.cookie;
-    	    var start = cookieData.indexOf(cookieName);
-    	    var cookieValue = '';
-    	    if(start != -1){
-    	        start += cookieName.length;
-    	        var end = cookieData.indexOf(';', start);
-    	        if(end == -1)end = cookieData.length;
-    	        cookieValue = cookieData.substring(start, end);
-    	    }
-    	    return unescape(cookieValue);
-    	}
+        
+       function setCookie(cookieName, value, exdays){ //ÄíÅ° ÀúÀåÇÏ´Â ÇÔ¼ö
+           var exdate = new Date();
+           exdate.setDate(exdate.getDate() + exdays); //¼³Á¤ ÀÏ¼ö¸¸Å­ ÇöÀç½Ã°£¿¡ ¸¸·á°ªÀ¸·Î ÁöÁ¤
+           var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
+           document.cookie = cookieName + "=" + cookieValue;
+       }
+        
+       function deleteCookie(cookieName){ //ÄíÅ° »èÁ¦
+           var expireDate = new Date();
+           expireDate.setDate(expireDate.getDate() - 1);
+           document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+       }
+        
+       function getCookie(cookieName) { //ÄíÅ° °¡Á®¿À´Â ÇÔ¼ö
+           cookieName = cookieName + '=';
+           var cookieData = document.cookie;
+           var start = cookieData.indexOf(cookieName);
+           var cookieValue = '';
+           if(start != -1){
+               start += cookieName.length;
+               var end = cookieData.indexOf(';', start);
+               if(end == -1)end = cookieData.length;
+               cookieValue = cookieData.substring(start, end);
+           }
+           return unescape(cookieValue);
+       }
    </script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   
 </head>
 <body onload="begin()" cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
-	<form name="myform" action="login" method="post" class="form-signin">
-		<div class="card align-middle" style="width:20rem; border-radius:20px;">
-			<div>
-				<div class="card-title" style="margin-top:30px;">
-					<h2 class="card-title text-center" style="color:#113366;">ë¡œê·¸ì¸ í¼</h2>
-				</div>
-				
-				<div class="card-body">	
-					<INPUT type="text" name="MEM_ID" id="MEM_ID" size="15" maxlength="12" class="form-control" placeholder="Your ID"><br>  
-				</div>
+   <form name="myform" action="login" method="post" class="form-signin">
+      <div class="card align-middle" style="width:20rem; border-radius:20px;">
+         <div>
+            <div class="card-title" style="margin-top:30px;">
+               <h2 class="card-title text-center" style="color:#113366;">·Î±×ÀÎ Æû</h2>
+            </div>
+            
+            <div class="card-body">   
+               <INPUT type="text" name="MEM_ID" id="MEM_ID" size="15" maxlength="12" class="form-control" placeholder="Your ID"><br>  
+            </div>
    
-				<div class="card-body">
-					<INPUT type=password name="MEM_PW" id="MEM_PW" size="15" maxlength="12" class="form-control" placeholder="Password"> <br>
-				</div>
-			
-				<div class="card-body">
-					<input type="button" class="btn btn-lg btn-primary btn-block" value="ë¡œê·¸ì¸" onclick="fsubmit();">
-				</div>
-			
-				<div class="checkbox" align="center">
-					<label>
-						<input type="checkbox" value="remember-me" >ì•„ì´ë””ì €ì¥
-					</label>
-				</div> 
+            <div class="card-body">
+               <INPUT type=password name="MEM_PW" id="MEM_PW" size="15" maxlength="12" class="form-control" placeholder="Password"> <br>
+            </div>
+         
+            <div class="card-body">
+               <input type="button" class="btn btn-lg btn-primary btn-block" value="·Î±×ÀÎ" onclick="fsubmit();">
+            </div>
+         
+            <div align="center">
+               <label>
+                  <input type="checkbox" id ="idSaveCheck" value="idSaveCheck" >¾ÆÀÌµğÀúÀå
+               </label>
+            </div> 
 
     
-			</div>
-		</div>
-	</form>
-	
-	<div align="center">
-		<input type="button" value="íšŒì›ê°€ì…" onclick="location.href='/nnS/joinForm'"/><input type="button" value="ID/PW ì°¾ê¸°" onclick="location.href='/nnS/findId'"/>
+         </div>
+      </div>
+   </form>
+   
+   <div align="center">
+      <input type="button" value="È¸¿ø°¡ÀÔ" onclick="location.href='/nnS/joinForm'"/><input type="button" value="ID/PW Ã£±â" onclick="location.href='/nnS/findId'"/>
     </div>
 
 </body>
