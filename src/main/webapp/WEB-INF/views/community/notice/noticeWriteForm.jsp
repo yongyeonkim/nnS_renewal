@@ -172,8 +172,13 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
             	</td>
          	</tr> -->
          	<tr>
+         		<td>작성자</td>
+         		<td>관리자</td>         	
+         	</tr>
+         	<tr>
          		<td>제목</td>
          		<td colspan="3"><input type="text" id="NOTICE_TITLE" name="NOTICE_TITLE" class="wdp_90"/></td>
+         		<input type="hidden" id="MEM_NUM" name="MEM_NUM" value="${session_MEM_INFO.MEM_NUM}"/>
          	</tr>
          	
          	<tr>
