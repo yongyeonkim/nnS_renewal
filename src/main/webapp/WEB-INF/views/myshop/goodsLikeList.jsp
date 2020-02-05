@@ -74,10 +74,10 @@ h1 {font-size: 3em; margin: 20px 0; color: #FFF;}
   <div id="content">
    <div id="vertical_tab-container">
       <ul>
-         <li><a href="orderList">주문내역 조회</a></li>
-         <li><a href="saleList">판매내역 조회</a></li>
-         <li class="selected"><a href="goodsLikeList">좋아요</a></li>
-         <li><a href="recentGoodsList">최근 본 상품</a></li>
+         <li><a href="/nnS/myshop">주문내역 조회</a></li>
+         <li><a href="/nnS/myshop/saleList">판매내역 조회</a></li>
+         <li class="selected"><a href="/nnS/myshop/goodsLikeList">좋아요</a></li>
+         <li><a href="/nnS/myshop/recentGoodsList">최근 본 상품</a></li>
       </ul>
    </div>
    <div id="main-container">
@@ -88,40 +88,34 @@ h1 {font-size: 3em; margin: 20px 0; color: #FFF;}
 		<table border="0" align="center">
           <tr>
             <td>
-               <img src="https://m.sandboxstore.net/web/product/big/201812/fc5894526dadbe5e309f0eb69df14097.jpg"
-		                           width="250" height="250" alt="" />
+               <input type="text" value="이미지 넣어주세영" width="250" height="250" alt="" />
+             	<br>${like.name }
+				<br>${like.price }
+            </td>
+            <td>
+               <input type="text" value="이미지 넣어주세영" width="250" height="250" alt="" />
              	<br>걔쩌는 후드티
 				<br>65,000원
             </td>
             <td>
-               <img src="https://m.sandboxstore.net/web/product/big/201812/fc5894526dadbe5e309f0eb69df14097.jpg"
-		                           width="250" height="250" alt="" />
-             	<br>걔쩌는 후드티
-				<br>65,000원
-            </td>
-            <td>
-               <img src="https://m.sandboxstore.net/web/product/big/201812/fc5894526dadbe5e309f0eb69df14097.jpg"
-		                           width="250" height="250" alt="" />
+              <input type="text" value="이미지 넣어주세영" width="250" height="250" alt="" />
              	<br>걔쩌는 후드티
 				<br>65,000원
             </td>
           </tr>
           <tr>
             <td>
-               <img src="https://m.sandboxstore.net/web/product/big/201812/fc5894526dadbe5e309f0eb69df14097.jpg"
-		                           width="250" height="250" alt="" />
+               <input type="text" value="이미지 넣어주세영" width="250" height="250" alt="" />
              	<br>걔쩌는 후드티
 				<br>65,000원
             </td>
             <td>
-               <img src="https://m.sandboxstore.net/web/product/big/201812/fc5894526dadbe5e309f0eb69df14097.jpg"
-		                           width="250" height="250" alt="" />
+               <input type="text" value="이미지 넣어주세영" width="250" height="250" alt="" />
              	<br>걔쩌는 후드티
 				<br>65,000원
             </td>
             <td>
-               <img src="https://m.sandboxstore.net/web/product/big/201812/fc5894526dadbe5e309f0eb69df14097.jpg"
-		                           width="250" height="250" alt="" />
+               <input type="text" value="이미지 넣어주세영" width="250" height="250" alt="" />
              	<br>걔쩌는 후드티
 				<br>65,000원
             </td>

@@ -74,10 +74,10 @@ h1 {font-size: 3em; margin: 20px 0; color: #FFF;}
   <div id="content">
    <div id="vertical_tab-container">
       <ul>
-         <li><a href="orderList">주문내역 조회</a></li>
-         <li><a href="saleList">판매내역 조회</a></li>
-         <li><a href="goodsLikeList">좋아요</a></li>
-         <li class="selected"><a href="recentGoodsList">최근 본 상품</a></li>
+         <li><a href="/nnS/myshop">주문내역 조회</a></li>
+         <li><a href="/nnS/myshop/saleList">판매내역 조회</a></li>
+         <li><a href="/nnS/myshop/goodsLikeList">좋아요</a></li>
+         <li class="selected"><a href="/nnS/myshop/recentGoodsList">최근 본 상품</a></li>
       </ul>
    </div>
    <div id="main-container">
