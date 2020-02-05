@@ -171,10 +171,12 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 			<!-- 스크립트를 통해 게시글에 대한 정보가 담김 -->
 		</tbody>
 	</table>
-	<div id="PAGE_NAVI"></div>
+	<div id="PAGE_NAVI" align="center"></div>
 	<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
 	<div align="right">
-		<a href="#this" class="btn" id="write">글쓰기</a>
+	<c:if test="${session_MEM_INFO.MEM_ID != NULL }">
+		<a href=	"#this" class="btn" id="write">글쓰기</a>
+	</c:if>
 	</div>
 	</div>
 	</div>

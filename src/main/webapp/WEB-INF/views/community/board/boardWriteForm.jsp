@@ -168,10 +168,14 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 				</select>
             	</td>
          	</tr> -->
-         	
+         	 <tr>
+         		<td>작성자</td>
+         		<td>${session_MEM_INFO.MEM_ID }</td>         	
+         	</tr>
          	<tr>
          		<td>제목</td>
          		<td colspan="3"><input type="text" id="BOARD_TITLE" name="BOARD_TITLE" class="wdp_90"/></td>
+         		<input type="hidden" id="MEM_NUM" name="MEM_NUM" value="${session_MEM_INFO.MEM_NUM }"/>
          	</tr>
          	
          	<tr>

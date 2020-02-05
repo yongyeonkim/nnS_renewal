@@ -68,10 +68,12 @@ public class LoginController {
 		} else {
 			if (chk.get("MEM_PW").equals(commandMap.get("MEM_PW"))) {
 				session.setAttribute("session_MEM_ID", commandMap.get("MEM_ID"));
+				session.setAttribute("session_MEM_INFO", chk);
 			} else { // 비밀번호가 일치하지 않을 때
 				message = "비밀번호가 맞지 않습니다.";
 			}
 		}
+		System.out.println(chk);
 		mv.addObject("message",message);
 		mv.addObject("url",url);
 		 
