@@ -209,9 +209,9 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
       
       <br/><br/>
       <div align="center">
-      <a href="#this" class="btn" id="addFile">파일추가</a>
-      <a href="#this" class="btn" id="list">목록으로</a>
-      <a href="#this" class="btn" id="write">작성하기</a>
+      <a href="#this" class="btn" id="addFile">파일추가</a>&nbsp;
+      <a href="#this" class="btn" id="list">목록으로</a>&nbsp;
+      <a href="#this" class="btn" id="write">작성하기</a>&nbsp;
       </div>
    </form>
   </div>

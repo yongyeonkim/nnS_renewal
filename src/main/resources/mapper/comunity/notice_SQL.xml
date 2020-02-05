@@ -55,7 +55,7 @@
            SELECT  MEM_NUM, MEM_ID
            FROM    MEMBER
            ) M
-   WHERE   N.NOTICE_WRITER = MEM_ID(+)
+   WHERE   N.NOTICE_WRITER = MEM_NUM(+)
    AND     N.NOTICE_NUM = #{NOTICE_NUM}
    AND     NOTICE_DEL_GB = 'N'
    
@@ -95,7 +95,7 @@
    VALUES          (
                    #{NOTICE_NUM},
                    #{NOTICE_TITLE},
-                   '22',
+					#{MEM_NUM},
                    #{NOTICE_CONTENT}
                    )
    

@@ -167,7 +167,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 			</tr>
 			<tr>
 				<th scope="row">작성자</th>
-				<td>${map.MEM_ID }</td>
+				<td>관리자</td>
 				<th scope="row">작성일자</th>
 				<td>${map.NOTICE_DATE }</td>
 			</tr>
@@ -192,13 +192,13 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 			</tr>
 		</tbody>
 	</table>
-	<center>
+	<div align="center">
 		<a href="#this" class="btn" id="list">목록으로</a>
-		<!-- <:if test="${session_member_name == 'admin' }"> -->
+		<c:if test="${session_MEM_INFO.MEM_LEVEL == '2' }">
 		<a href="#this" class="btn" id="modify">수정하기</a>
 		<a href="#this" class="btn" id="delete">삭제하기</a>
-			<!-- </:if> -->
-	</center>
+		</c:if>
+	</div>
 	</div>
 	</div>
 	

@@ -95,7 +95,7 @@
 	VALUES          (
 	                #{BOARD_NUM},
 	                #{BOARD_TITLE},
-	                '22',
+	                #{MEM_NUM},
 	                #{BOARD_CONTENT}
 	                )
 	
