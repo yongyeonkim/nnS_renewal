@@ -146,12 +146,17 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
   <div id="content">
    <div id="vertical_tab-container">
       <ul>
-         <li><a href="orderList">주문내역 조회</a></li>
-         <li class="selected"><a href="saleList">판매내역 조회</a></li>
+         <li><a href="/nnS/myshop">주문내역 조회</a></li>
+         <li class="selected"><a href="/nnS/myshop/saleList">판매내역 조회</a></li>
          <li><a href="goodsLikeList">좋아요</a></li>
          <li><a href="recentGoodsList">최근 본 상품</a></li>
       </ul>
    </div>
+   
+   
+   
+   
+   
    <div id="main-container">
 		<table border="1" align="center">
 		<tbody>
@@ -160,32 +165,32 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 					<table  style="filter: alpha(opacity=60);" ffffff="" align="center">
 								<tbody>
 								<tr align="center">
-								<td>주문/결제</td>
+								<td>판매상품</td>
 								<td></td>
-								<td>배송중</td>
+								<td>판매중</td>
 								<td></td>
-								<td>배송완료</td>
+								<td>판매완료</td>
 								</tr>
 								<tr>
 									<td>
 										<a href="#goodsTab1">
-											<img src="../../resources/images/payment.png" alt="" width="100" height="100" onclick="click()"/>
+											<img src="./../resources/images/payment.png" alt="" width="100" height="100"/>
 										</a>
 									</td>
 									<td>
-										<img src="../../resources/images/dots.png" alt="" width="50" height="50"/>
+										<img src="./../resources/images/dots.png" alt="" width="50" height="50"/>
 									</td>
 									<td>
 										<a href="#goodsTab2">
-											<img src="../../resources/images/shipping.png" alt="" width="100" height="100"/>
+											<img src="./../resources/images/shipping.png" alt="" width="100" height="100"/>
 										</a>
 									</td>
 									<td>
-										<img src="../../resources/images/dots.png" alt="" width="50" height="50"/>
+										<img src="./../resources/images/dots.png" alt="" width="50" height="50"/>
 									</td>
 									<td>
 										<a href="#goodsTab3">
-											<img src="../../resources/images/product.png" alt="" width="100" height="100"/>
+											<img src="./../resources/images/product.png" alt="" width="100" height="100"/>
 										</a>
 									</td>
 								</tr>
@@ -193,196 +198,168 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 							</table>
 					<div class="container">
 					    <ul class="goodsTabs">
-					        <li><a href="#goodsTab1">주문/결제</a></li>
-					        <li><a href="#goodsTab2">배송중</a></li>
-					        <li><a href="#goodsTab3">배송완료</a></li>
+					        <li><a href="#goodsTab1">판매상품</a></li>
+					        <li><a href="#goodsTab2">판매중</a></li>
+					        <li><a href="#goodsTab3">판매완료</a></li>
 					    </ul>
 					    <div class="goodsTab_container">
 					        <div id="goodsTab1" class="goodsTab_content">
-					        	<!-- 값은 대충  넣어둠 -->
-					            <h2>주문/결제</h2>
+					            <h2>판매상품</h2>
 					      	      <table  style="filter: alpha(opacity=60);" ffffff="" align="center">
 					      	      	<tr>
 					      	      		<td width="200px" align="center">
-					      	      			상품 정보
-		                                 <hr size="0px" width="70">
+					      	      			상품 번호
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			주문 일자
-		                                 <hr size="0px" width="70">
+					      	      			상품 이름
 					      	      		</td>
 					      	      		<td width="200px" align="center">
-					      	      			송장번호
-		                                 <hr size="0px" width="70">
+					      	      			상품이미지
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			주문금액
-		                                 <hr size="0px" width="70">
+					      	      			등록 일자
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			주문 상태
-		                                 <hr size="0px" width="70">
+					      	      			상품 상태
 					      	      		</td>
 					      	      	</tr>
-					      	      	<!-- c:if 를 통해서 목록을 보여주고 페이징을 함 -->
+			<c:choose>
+				<c:when test="${fn:length(list) > 0}">
+					<c:forEach items="${list }" var="low">
+						<c:if test="${low.GOODS_STATUS eq '판매등록'}">
 					      	      	<tr>
 					      	      		<td width="200px" align="center">
-					      	      			개쩌는 후드티
+					      	      			${low.GOODS_NUM }
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			2020.01.23
+					      	      			<a href="#this" id="title" name="title">${low.GOODS_TITLE }</a>		
+					      	      			<input type="hidden" id="GOODS_NUM" name="GOODS_NUM" value="${low.GOODS_NUM }">
 					      	      		</td>
 					      	      		<td width="200px" align="center">
-					      	      			1234567890
+					      	      			이미지 넣어주세영
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			65,000원
+					      	      			${low.GOODS_DATE }
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			결제대기
+					      	      			${low.GOODS_STATUS }
 					      	      		</td>
 					      	      	</tr>
-					      	      	<tr>
-					      	      		<td width="200px" align="center">
-					      	      			개비싼 후드티
-					      	      		</td>
-					      	      		<td width="100px" align="center">
-					      	      			2020.01.23
-					      	      		</td>
-					      	      		<td width="200px" align="center">
-					      	      			1234567890
-					      	      		</td>
-					      	      		<td width="100px" align="center">
-					      	      			650,000원
-					      	      		</td>
-					      	      		<td width="100px" align="center">
-					      	      			발송대기
-					      	      		</td>
-					      	      	</tr>
+					      	      	</c:if>
+					      	      	</c:forEach>
+					      	      	</c:when>
+					      	      	<c:otherwise>
+					<tr>
+						<td colspan="4">조회된 결과가 없습니다.</td>
+					</tr>
+				</c:otherwise>
+					      	      	</c:choose>
 					      	      </table>
 					        </div>
 					        <div id="goodsTab2" class="goodsTab_content">
-					             <h2>상품문의</h2>
-					            <table  style="filter: alpha(opacity=60);" ffffff="" align="center">
+					            <h2>판매중</h2>
+					      	      <table  style="filter: alpha(opacity=60);" ffffff="" align="center">
 					      	      	<tr>
 					      	      		<td width="200px" align="center">
-					      	      			상품 정보
-		                                 <hr size="0px" width="70">
+					      	      			상품 번호
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			주문 일자
-		                                 <hr size="0px" width="70">
+					      	      			상품 이름
 					      	      		</td>
 					      	      		<td width="200px" align="center">
-					      	      			송장번호
-		                                 <hr size="0px" width="70">
+					      	      			상품이미지
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			주문금액
-		                                 <hr size="0px" width="70">
+					      	      			등록 일자
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			주문 상태
-		                                 <hr size="0px" width="70">
+					      	      			상품 상태
 					      	      		</td>
 					      	      	</tr>
-					      	      	<!-- c:if 를 통해서 목록을 보여주고 페이징을 함 -->
+			<c:choose>
+				<c:when test="${fn:length(list) > 0}">
+					<c:forEach items="${list }" var="low">
+						<c:if test="${low.GOODS_STATUS eq '판매중'}">
 					      	      	<tr>
 					      	      		<td width="200px" align="center">
-					      	      			개쩌는 후드티
+					      	      			${low.GOODS_NUM }
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			2020.01.23
+					      	      			<a href="#this" id="title" name="title">${low.GOODS_TITLE }</a>		
+					      	      			<input type="hidden" id="GOODS_NUM" name="GOODS_NUM" value="${low.GOODS_NUM }">
 					      	      		</td>
 					      	      		<td width="200px" align="center">
-					      	      			1234567890
+					      	      			이미지
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			65,000원
+					      	      			${low.GOODS_DATE }
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			결제대기
+					      	      			${low.GOODS_STATUS }
 					      	      		</td>
 					      	      	</tr>
-					      	      	<tr>
-					      	      		<td width="200px" align="center">
-					      	      			개비싼 후드티
-					      	      		</td>
-					      	      		<td width="100px" align="center">
-					      	      			2020.01.23
-					      	      		</td>
-					      	      		<td width="200px" align="center">
-					      	      			1234567890
-					      	      		</td>
-					      	      		<td width="100px" align="center">
-					      	      			650,000원
-					      	      		</td>
-					      	      		<td width="100px" align="center">
-					      	      			발송대기
-					      	      		</td>
-					      	      	</tr>
+					      	      	</c:if>
+					      	      	</c:forEach>
+					      	      	</c:when>
+					      	      	<c:otherwise>
+					<tr>
+						<td colspan="4">조회된 결과가 없습니다.</td>
+					</tr>
+				</c:otherwise>
+					      	      	</c:choose>
 					      	      </table>
 					        </div>
 					        <div id="goodsTab3" class="goodsTab_content">
-					             <h2>판매자정보</h2>
-					            <table  style="filter: alpha(opacity=60);" ffffff="" align="center">
+					             <h2>판매완료</h2>
+					      	      <table  style="filter: alpha(opacity=60);" ffffff="" align="center">
 					      	      	<tr>
 					      	      		<td width="200px" align="center">
-					      	      			상품 정보
-		                                 <hr size="0px" width="70">
+					      	      			상품 번호
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			주문 일자
-		                                 <hr size="0px" width="70">
+					      	      			상품 이름
 					      	      		</td>
 					      	      		<td width="200px" align="center">
-					      	      			송장번호
-		                                 <hr size="0px" width="70">
+					      	      			상품이미지
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			주문금액
-		                                 <hr size="0px" width="70">
+					      	      			등록 일자
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			주문 상태
-		                                 <hr size="0px" width="70">
+					      	      			상품 상태
 					      	      		</td>
 					      	      	</tr>
-					      	      	<!-- c:if 를 통해서 목록을 보여주고 페이징을 함 -->
+			<c:choose>
+				<c:when test="${fn:length(list) > 0}">
+					<c:forEach items="${list }" var="low">
+						<c:if test="${low.GOODS_STATUS eq '판매완료'}">
 					      	      	<tr>
 					      	      		<td width="200px" align="center">
-					      	      			개쩌는 후드티
+					      	      			${low.GOODS_NUM }
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			2020.01.23
+					      	      			<a href="#this" id="title" name="title">${low.GOODS_TITLE }</a>		
+					      	      			<input type="hidden" id="GOODS_NUM" name="GOODS_NUM" value="${low.GOODS_NUM }">
 					      	      		</td>
 					      	      		<td width="200px" align="center">
-					      	      			1234567890
+					      	      			이미지
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			65,000원
+					      	      			${low.GOODS_DATE }
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			배송완료
+					      	      			${low.GOODS_STATUS }
 					      	      		</td>
 					      	      	</tr>
-					      	      	<tr>
-					      	      		<td width="200px" align="center">
-					      	      			개비싼 후드티
-					      	      		</td>
-					      	      		<td width="100px" align="center">
-					      	      			2020.01.23
-					      	      		</td>
-					      	      		<td width="200px" align="center">
-					      	      			1234567890
-					      	      		</td>
-					      	      		<td width="100px" align="center">
-					      	      			650,000원
-					      	      		</td>
-					      	      		<td width="100px" align="center">
-					      	      			구매확정
-					      	      		</td>
-					      	      	</tr>
+					      	      	</c:if>
+					      	      	</c:forEach>
+					      	      	</c:when>
+					      	      	<c:otherwise>
+					<tr>
+						<td colspan="4">조회된 결과가 없습니다.</td>
+					</tr>
+				</c:otherwise>
+					      	      	</c:choose>
 					      	      </table>
 					        </div>
 					    </div>
@@ -413,8 +390,41 @@ $(document).ready(function() {
 		$(activegoodsTab).fadeIn(); //Fade in the active content
 		return false;
 	});
-
+	
+	
+	//Default Action
+	$(".goodsTab_content").hide(); //Hide all content
+	$("ul.goodsTabs li:first").addClass("active").show(); //Activate first goodsTab
+	$(".goodsTab_content:first").show(); //Show first goodsTab content
+	
+	//On Click Event
+	$("ul.goodsTabs li").click(function() {
+		$("ul.goodsTabs li").removeClass("active"); //Remove any "active" class
+		$(this).addClass("active"); //Add "active" class to selected goodsTab
+		$(".goodsTab_content").hide(); //Hide all goodsTab content
+		var activegoodsTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active goodsTab + content
+		$(activegoodsTab).fadeIn(); //Fade in the active content
+		return false;
+	});
+	
+	
+	$("a[name='title']").on("click", function(e) { //제목 
+		e.preventDefault();
+		fn_openBoardDetail($(this));
+	});
 });
+function fn_openBoardDetail(obj) {
+	var comSubmit = new ComSubmit();
+	comSubmit.setUrl("<c:url value='/shop/goodsDetail' />");
+	comSubmit.addParam("GOODS_NUM", $("#GOODS_NUM").val());
+	comSubmit.submit();
+}
+
+function fnMove(seq){
+    var offset = $("#goodsTab" + seq).offset();
+    $('html, body').animate({scrollTop : offset.top}, 400);
+}
+
 </script>
 </body>
 </html>
