@@ -169,23 +169,23 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 								<tr>
 									<td>
 										<a href="#goodsTab1">
-											<img src="/resources/images/payment.png" alt="" width="100" height="100" onclick="click()"/>
+											<img src="resources/images/payment.png" alt="" width="100" height="100" onclick="click()"/>
 										</a>
 									</td>
 									<td>
-										<img src="../../resources/images/dots.png" alt="" width="50" height="50"/>
+										<img src="resources/images/dots.png" alt="" width="50" height="50"/>
 									</td>
 									<td>
 										<a href="#goodsTab2">
-											<img src="../../resources/images/shipping.png" alt="" width="100" height="100"/>
+											<img src="resources/images/shipping.png" alt="" width="100" height="100"/>
 										</a>
 									</td>
 									<td>
-										<img src="../../resources/images/dots.png" alt="" width="50" height="50"/>
+										<img src="resources/images/dots.png" alt="" width="50" height="50"/>
 									</td>
 									<td>
 										<a href="#goodsTab3">
-											<img src="../../resources/images/product.png" alt="" width="100" height="100"/>
+											<img src="resources/images/product.png" alt="" width="100" height="100"/>
 										</a>
 									</td>
 								</tr>

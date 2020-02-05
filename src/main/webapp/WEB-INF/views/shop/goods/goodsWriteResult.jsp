@@ -22,8 +22,8 @@
       <h1 align="center"> 상품 등록이 완료되었습니다.</h1>
       <br/><br/>
       <p align="center">
-        <a href="/nnS/shop/allGoodsList" class="btn" id="goods">상품으로</a>
-		<a href="/nnS/shop/allGoodsList" class="btn" id="list">목록으로</a>
+        <a href="/nnS/shop/" class="btn" id="goods">상품으로</a>
+		<a href="/nnS/shop/" class="btn" id="list">목록으로</a>
 	</div>
 </div>
 </body>
