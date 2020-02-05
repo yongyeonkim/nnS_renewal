@@ -146,10 +146,10 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
   <div id="content">
    <div id="vertical_tab-container">
       <ul>
-         <li class="selected"><a href="orderList">주문내역 조회</a></li>
-         <li><a href="saleList">판매내역 조회</a></li>
-         <li><a href="goodsLikeList">좋아요</a></li>
-         <li><a href="recentGoodsList">최근 본 상품</a></li>
+         <li class="selected"><a href="/nnS/myshop">주문내역 조회</a></li>
+         <li><a href="/nnS/myshop/saleList">판매내역 조회</a></li>
+         <li><a href="/nnS/myshop/goodsLikeList">좋아요</a></li>
+         <li><a href="/recentGoodsList">최근 본 상품</a></li>
       </ul>
    </div>
    <div id="main-container">
@@ -167,27 +167,39 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 								<td>배송완료</td>
 								</tr>
 								<tr>
+								<ul>
+									<li>
 									<td>
 										<a href="#goodsTab1">
-											<img src="/resources/images/payment.png" alt="" width="100" height="100" onclick="click()"/>
+											<img src="./../resources/images/payment.png" alt="" width="100" height="100" onclick="click()"/>
 										</a>
 									</td>
+									</li>
+									<li>
 									<td>
-										<img src="../../resources/images/dots.png" alt="" width="50" height="50"/>
+										<img src="./../resources/images/dots.png" alt="" width="50" height="50"/>
 									</td>
+									</li>
+									<li>
 									<td>
 										<a href="#goodsTab2">
-											<img src="../../resources/images/shipping.png" alt="" width="100" height="100"/>
+											<img src="./../resources/images/shipping.png" alt="" width="100" height="100"/>
 										</a>
 									</td>
+									</li>
+									<li>
 									<td>
-										<img src="../../resources/images/dots.png" alt="" width="50" height="50"/>
+										<img src="./../resources/images/dots.png" alt="" width="50" height="50"/>
 									</td>
+									</li>
+									<li>
 									<td>
 										<a href="#goodsTab3">
-											<img src="../../resources/images/product.png" alt="" width="100" height="100"/>
+											<img src="./../resources/images/product.png" alt="" width="100" height="100"/>
 										</a>
 									</td>
+									</li>
+									</ul>
 								</tr>
 								</tbody>
 							</table>
@@ -197,6 +209,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 					        <li><a href="#goodsTab2">배송중</a></li>
 					        <li><a href="#goodsTab3">배송완료</a></li>
 					    </ul>
+
 					    <div class="goodsTab_container">
 					        <div id="goodsTab1" class="goodsTab_content">
 					            <h2>주문/결제</h2>
@@ -218,50 +231,141 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 					      	      			주문 상태
 					      	      		</td>
 					      	      	</tr>
-					      	      	<!-- c:if 를 통해서 목록을 보여주고 페이징을 함 -->
+			<c:choose>
+				<c:when test="${fn:length(list) > 0}">
+					<c:forEach items="${list }" var="row">
+						<c:if test="${row.ORDERS_STATUS eq '주문/결제'}">
 					      	      	<tr>
+					      	      		<td><a href="#this" id="title" name="title">${row.ORDERS_NUM }
+					      	      			<input type="hidden" name="title2" id="title2" value="${row.ORDERS_PRONUM }">
+					      	      		</a></td>
+					      	      		<td width="100px" align="center">
+					      	      			${row.ORDERS_DATE }
+					      	      		</td>
 					      	      		<td width="200px" align="center">
-					      	      			개쩌는 후드티
+					      	      			송장번호
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			2020.01.23
-					      	      		</td>
-					      	      		<td width="200px" align="center">
-					      	      			1234567890
+					      	      			${row.ORDERS_PRICE }
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			65,000원
-					      	      		</td>
-					      	      		<td width="100px" align="center">
-					      	      			결제대기
+					      	      			${row.ORDERS_STATUS }
 					      	      		</td>
 					      	      	</tr>
-					      	      	<tr>
-					      	      		<td width="200px" align="center">
-					      	      			개비싼 후드티
-					      	      		</td>
-					      	      		<td width="100px" align="center">
-					      	      			2020.01.23
-					      	      		</td>
-					      	      		<td width="200px" align="center">
-					      	      			1234567890
-					      	      		</td>
-					      	      		<td width="100px" align="center">
-					      	      			650,000,000원
-					      	      		</td>
-					      	      		<td width="100px" align="center">
-					      	      			발송대기
-					      	      		</td>
-					      	      	</tr>
+					      	      	</c:if>
+					      	      	</c:forEach>
+					      	      	</c:when>
+					      	      	<c:otherwise>
+					<tr>
+						<td colspan="4">조회된 결과가 없습니다.</td>
+					</tr>
+				</c:otherwise>
+					      	      	</c:choose>
 					      	      </table>
 					        </div>
 					        <div id="goodsTab2" class="goodsTab_content">
-					             <h2>상품문의</h2>
-					            <p>상품에 대한 문의가 있음</p>
+					             <h2>배송중</h2>
+					            <table  style="filter: alpha(opacity=60);" ffffff="" align="center">
+					      	      	<tr>
+					      	      		<td width="200px" align="center">
+					      	      			상품 정보
+					      	      		</td>
+					      	      		<td width="100px" align="center">
+					      	      			주문 일자
+					      	      		</td>
+					      	      		<td width="200px" align="center">
+					      	      			송장번호
+					      	      		</td>
+					      	      		<td width="100px" align="center">
+					      	      			주문금액
+					      	      		</td>
+					      	      		<td width="100px" align="center">
+					      	      			주문 상태
+					      	      		</td>
+					      	      	</tr>
+			<c:choose>
+				<c:when test="${fn:length(list) > 0}">
+					<c:forEach items="${list }" var="row">
+						<c:if test="${row.ORDERS_STATUS eq '배송중'}">
+					      	      	<tr>
+					      	      		<td><a href="#this" id="title" name="title">${row.ORDERS_NUM }
+					      	      			<input type="hidden" name="title2" id="title2" value="${row.ORDERS_PRONUM }">
+					      	      		</a></td>
+					      	      		<td width="100px" align="center">
+					      	      			${row.ORDERS_DATE }
+					      	      		</td>
+					      	      		<td width="200px" align="center">
+					      	      			송장번호
+					      	      		</td>
+					      	      		<td width="100px" align="center">
+					      	      			${row.ORDERS_PRICE }
+					      	      		</td>
+					      	      		<td width="100px" align="center">
+					      	      			${row.ORDERS_STATUS }
+					      	      		</td>
+					      	      	</tr>
+					      	      	</c:if>
+					      	      	</c:forEach>
+					      	      	</c:when>
+					      	      	<c:otherwise>
+					<tr>
+						<td colspan="4">조회된 결과가 없습니다.</td>
+					</tr>
+				</c:otherwise>
+					      	      	</c:choose>
+					      	      </table>
 					        </div>
 					        <div id="goodsTab3" class="goodsTab_content">
-					             <h2>판매자정보</h2>
-					            <p>판매자에 대한 정보가 있음</p>
+					             <h2>배송완료</h2>
+					            <table  style="filter: alpha(opacity=60);" ffffff="" align="center">
+					      	      	<tr>
+					      	      		<td width="200px" align="center">
+					      	      			상품 정보
+					      	      		</td>
+					      	      		<td width="100px" align="center">
+					      	      			주문 일자
+					      	      		</td>
+					      	      		<td width="200px" align="center">
+					      	      			송장번호
+					      	      		</td>
+					      	      		<td width="100px" align="center">
+					      	      			주문금액
+					      	      		</td>
+					      	      		<td width="100px" align="center">
+					      	      			주문 상태
+					      	      		</td>
+					      	      	</tr>
+			<c:choose>
+				<c:when test="${fn:length(list) > 0}">
+					<c:forEach items="${list }" var="row">
+						<c:if test="${row.ORDERS_STATUS eq '배송완료'}">
+					      	      	<tr>
+					      	      		<td><a href="#this" id="title" name="title">${row.ORDERS_NUM }
+					      	      			<input type="hidden" name="title2" id="title2" value="${row.ORDERS_PRONUM }">
+					      	      		</a></td>
+					      	      		<td width="100px" align="center">
+					      	      			${row.ORDERS_DATE }
+					      	      		</td>
+					      	      		<td width="200px" align="center">
+					      	      			송장번호
+					      	      		</td>
+					      	      		<td width="100px" align="center">
+					      	      			${row.ORDERS_PRICE }
+					      	      		</td>
+					      	      		<td width="100px" align="center">
+					      	      			${row.ORDERS_STATUS }
+					      	      		</td>
+					      	      	</tr>
+					      	      	</c:if>
+					      	      	</c:forEach>
+					      	      	</c:when>
+					      	      	<c:otherwise>
+					<tr>
+						<td colspan="4">조회된 결과가 없습니다.</td>
+					</tr>
+				</c:otherwise>
+					      	      	</c:choose>
+					      	      </table>
 					        </div>
 					    </div>
 					</div>
@@ -271,7 +375,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
    </div>
 </div>
 	
-
+<%@ include file="/WEB-INF/include/include-body.jspf" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
 
@@ -291,8 +395,20 @@ $(document).ready(function() {
 		$(activegoodsTab).fadeIn(); //Fade in the active content
 		return false;
 	});
+	
+	$("a[name='title']").on("click", function(e) { //제목 
+		e.preventDefault();
+		fn_openBoardDetail($(this));
+	});
 
 });
+
+function fn_openBoardDetail(obj) {
+	var comSubmit = new ComSubmit();
+	comSubmit.setUrl("<c:url value='/shop/goodsDetail' />");
+	comSubmit.addParam("GOODS_NUM", $("#title2").val());
+	comSubmit.submit();
+}
 </script>
 </body>
 </html>
