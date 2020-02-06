@@ -273,11 +273,8 @@ $(document).ready(function() {
 	});
 	function fn_orderWriteForm(obj) {
 		var comSubmit = new ComSubmit();
-		var GOODS_NUM = "${map.GOODS_NUM}";
-		var MEM_ID = "${MEM_ID}";
 		comSubmit.setUrl("<c:url value='/shop/order/orderWriteForm' />");
-		comSubmit.addParam("GOODS_NUM", GOODS_NUM);
-		comSubmit.addParam("MEM_ID", MEM_ID);
+		comSubmit.addParam("GOODS_NUM", obj.parent().find("#IDX").val());
 		comSubmit.submit();
 	}
 	
