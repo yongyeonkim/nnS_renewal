@@ -148,82 +148,93 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
          <li><a href="qnaList">Q&A게시판</a></li>
 	</ul>
 	</div>
-	<div id="main-container">
-	<table border="1" align="center" class="board_view">
-		<colgroup>
-			<col width="15%"/>
-			<col width="35%"/>
-			<col width="15%"/>
-			<col width="35%"/>
-		</colgroup>
-		<caption><h2>자유게시판</h2></caption>
-		<p/>
-		<tbody>
+		<div id="main-container">
+			<table border="1" align="center">
+				<colgroup>
+					<col width="15%" />
+					<col width="35%" />
+					<col width="15%" />
+					<col width="35%" />
+				</colgroup>
+				<tr>
+					<th scope="row">글 번호</th>
+					<td>${map.BOARD_NUM }<input type="hidden" id="BOARD_NUM"
+						name="BOARD_NUM" value="${map.BOARD_NUM }"></td>
+					<th scope="row">조회수</th>
+					<td>${map.BOARD_COUNT }</td>
+				</tr>
+				<tr>
+					<th scope="row">작성자</th>
+					<td>${map.MEM_ID }</td>
+					<th scope="row">작성일자</th>
+					<td>${map.BOARD_DATE }</td>
+				</tr>
+				<tr>
+					<th scope="row">제목</th>
+					<td colspan="3">${map.BOARD_TITLE }</td>
+				</tr>
+				<tr>
+					<td colspan="4" height="600px" style="vertical-align: top;"><pre
+							style="overflow: hidden; white-space: pre-wrap">${map.BOARD_CONTENT }</pre></td>
+				</tr>
+				<tr>
+					<th scope="row">첨부파일</th>
+					<td colspan="3"><c:forEach var="row" items="${list }">
+							<div>
+								<input type="hidden" id="FILES_NUM" value="${row.FILES_NUM }">
+								<a href="#this" name="file">${row.FILES_ORGNAME }</a>
+								(${row.FILES_SIZE}kb)
+							</div>
+						</c:forEach></td>
+				</tr>
+			</table>
+			<div align="center">
+				<br /> <a href="#this" class="btn" id="list">목록으로</a>
+				<c:if test="${session_MEM_INFO.MEM_ID == map.MEM_ID }">
+					<a href="#this" class="btn" id="modify">수정하기</a>
+				</c:if>
+				<c:if
+					test="${session_MEM_INFO.MEM_ID == map.MEM_ID || session_MEM_INFO.MEM_LEVEL == '2'}">
+					<a href="#this" class="btn" id="delete">삭제하기</a>
+				</c:if>
+			</div>
+			<br />
+			<div align="center"></div>
+			<table id="commentTable">
+				<tbody>
+
+					<!-- 스크립트를 통해 댓글에 대한 정보가 담김 -->
+
+				</tbody>
+			</table>
+			<div id="PAGE_NAVI" align="center"></div>
+			<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
+		<div align="center">
+		<br/>
+		<form id="frm" name="frm" enctype="multipart/form-data">
 			<tr>
-				<th scope="row">글 번호</th>
-				<td>${map.BOARD_NUM }
-				<input type="hidden" id="BOARD_NUM" name="BOARD_NUM" value="${map.BOARD_NUM }"></td>
-				<th scope="row">조회수</th>
-				<td>${map.BOARD_COUNT }</td>
-			</tr>
-			<tr>
-				<th scope="row">작성자</th>
-				<td>${map.MEM_ID }</td>
-				<th scope="row">작성일자</th>
-				<td>${map.BOARD_DATE }</td>
-			</tr>
-			<tr>
-				<th scope="row">제목</th>
-				<td colspan="3">${map.BOARD_TITLE }</td>
-			</tr>
-			<tr>
-				<td colspan="4" height="600px" style="vertical-align:top;"><pre style="overflow:hidden;  white-space: pre-wrap">${map.BOARD_CONTENT }</pre></td>
-			</tr>
-			<tr>
-				<th scope="row">첨부파일</th>
-				<td colspan="3">
-					<c:forEach var="row" items="${list }">
-						<div>
-							<input type="hidden" id="FILES_NUM" value="${row.FILES_NUM }">
-							<a href="#this" name="file">${row.FILES_ORGNAME }</a>
-							(${row.FILES_SIZE}kb)
-						</div>
-					</c:forEach>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<center>
-	<br/>
-	<a href="#this" class="btn" id="list">목록으로</a>
-	<a href="#this" class="btn" id="modify">수정하기</a>
-	<a href="#this" class="btn" id="delete">삭제하기</a>
-	</center>
-	<br/>
-	<div align="center">
-		<table>
-			<tr align=center>
+			<c:if test="${session_MEM_ID != NULL}">
 				<td>코멘트 작성</td>
 				<td colspan=2>
-					<textarea name=commentt rows="6" cols="40"></textarea>
-					
-					<%-- <input type=hidden name=content_num value=<%=article.getNum() %>>
-					<input type=hidden name=p_num value=<%=pageNum%>>
-					<input type=hidden name=comment_num value=<%=count+1%>> --%>
+					<textarea id="COMMENTS_CONTENT" name="COMMENTS_CONTENT" rows="6" cols="40"></textarea>
+					<input type="hidden" id="COMMENTS_TYPE" name="COMMENTS_TYPE" value="3"/>
+					<input type="hidden" id="COMMENTS_PARENT" name="COMMENTS_PARENT" value="${map.BOARD_NUM }"/>
+					<input type="hidden" id="MEM_ID" name="MEM_ID" value="${session_MEM_INFO.MEM_ID }"/>
 				</td>
 				<td align=center>
-					<a href="#this" name="comment">코멘트달기</a>
+					<a href="#this" id="cWrite" name="cWrite">코멘트달기</a>
 				</td>
+			</c:if>
 			</tr>
-		</table>
-	</div>
-					
+		</form>
+		</div>
 	</div>
 </div>
-	
+</body>
 	<%@ include file="/WEB-INF/include/include-body.jspf" %>
 	<script type="text/javascript">
 		$(document).ready(function(){
+			fn_selectCommentList(1);
 			$("#list").on("click", function(e){ //목록으로 버튼
 				e.preventDefault();
 				fn_openBoardList();
@@ -241,9 +252,13 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 				e.preventDefault();
 				fn_downloadFile($(this));
 			});
-			$("#comment").on("click", function(e){
+			$("#cWrite").on("click", function(e){
 				e.preventDefault();
 				fn_writeComment();
+			});
+			$("#cDelete").on("click", function(e){
+				e.preventDefault();
+				fn_deleteComment();
 			});
 		});
 		
@@ -274,15 +289,73 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 			comSubmit.addParam("FILES_NUM",idx);
 			comSubmit.submit();
 		}
+		
 		function fn_writeComment(){
-			var comSubmit = new Comsubmit();
+			var comSubmit = new ComSubmit("frm");
 			comSubmit.setUrl("<c:url value='/community/boardDetail/commentWrite'/>");
 			comSubmit.addParam("BOARD_NUM", $("#BOARD_NUM").val());
 			comSubmit.submit();			
 		}
-		
+
+		function fn_deleteComment(){
+			var comSubmit = new ComSubmit();
+			comSubmit.setUrl("<c:url value='/community/boardDetail/commentDelete'/>");
+			comSubmit.addParam("COMMENTS_NUM", $("#COMMENTS_NUM").val());
+			comSubmit.addParam("BOARD_NUM", $("#BOARD_NUM").val());
+			comSubmit.submit();			
+		}
+
+		function fn_selectCommentList(pageNo) {
+			var comAjax = new ComAjax();
+			comAjax.setUrl("<c:url value='/community/boardDetail/commentList' />");
+			comAjax.setCallback("fn_selectCommentListCallback");
+			comAjax.addParam("PAGE_INDEX", pageNo);
+			comAjax.addParam("PAGE_ROW", 15);
+			comAjax.addParam("COMMENTS_TYPE", 3);
+			comAjax.addParam("COMMENTS_PARENT", $("#BOARD_NUM").val());
+			comAjax.ajax();
+		}
+
+		function fn_selectCommentListCallback(data) {
+			var total = data.TOTAL;
+			var body = $('#commentTable');
+			body.empty();
+			if (total == 0) {
+				var str = "<tr align='center'>" + "<td colspan='5'>댓글이 없습니다.</td>"
+						+ "</tr>";
+				body.append(str);
+			} else {
+				var params = {
+					divId : "PAGE_NAVI",
+					pageIndex : "PAGE_INDEX",
+					totalCount : total,
+					recordCount : 15,
+					eventName : "fn_selectCommentList"
+					
+				};
+				gfn_renderPaging(params);
+
+				var str = ""
+				str += "<tr style='text-align: center'><td width='10%'>작성자</td><td width='*'>내용</td><td width='30%'>작성시간</td><td width='5%'></td></tr>";
+				
+				$.each(data.list,
+				function(key, value) {
+					str += "<tr style='text-align: center'>"
+							+ "<td>"
+							+ value.MEM_ID
+							+ "</td>"
+							+ "<td>"
+							+ value.COMMENTS_CONTENT
+							+ "</td>" + "<td>" + new Date(value.COMMENTS_DATE).toLocaleString()
+							+ "</td>" + "<td>" + "<a href='#this' id='cDelete' name='cDelete'> 삭제 </a>"
+							+ "<input type='hidden' id='NOTICE_NUM' name='NOTICE_NUM' value=" + value.COMMENTS_PARENT + ">"
+							+ "<input type='hidden' id='COMMENTS_NUM' name='COMMENTS_NUM' value="+ value.COMMENTS_NUM + ">"
+							+ "</td>" + "</tr>";
+								});
+				body.append(str);
+			}
+		}
 	</script>
-</body>
 </html>
 
 

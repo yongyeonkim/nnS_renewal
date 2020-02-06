@@ -173,6 +173,10 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
          		<td><input type="text" id="writer" name="WRITER" class="wdp_90" value="${map.WRITER }"></input></td>         	
          	</tr>
          	 -->
+         	 <tr>
+         		<td>작성자</td>
+         		<td>${session_MEM_INFO.MEM_ID }</td>         	
+         	</tr>
          	<tr>
          		<td>제목</td>
          		<td colspan="3"><input type="text" id="title" name="BOARD_TITLE" class="wdp_90" value="${map.BOARD_TITLE}"/>

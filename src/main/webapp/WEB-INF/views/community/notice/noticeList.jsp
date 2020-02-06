@@ -176,9 +176,9 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 	<div id="PAGE_NAVI" align="center"></div>
 	<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
 		<div align="right">
-	<!--  	<:if test="${session_member_name == 'admin' }"> -->
-			<a href="#write" class="btn" id="write">글쓰기</a>
-	<!-- 	</:if>  -->
+		  	<c:if test="${session_MEM_INFO.MEM_LEVEL == '2' }">
+				<a href="#write" class="btn" id="write">글쓰기</a>
+	  	 	</c:if>  
 		</div>
 	</div>
 	</div>
@@ -240,9 +240,8 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 				gfn_renderPaging(params);
 
 				var str = "";
-				$.each(
-								data.list,
-								
+				
+				$.each(data.list,
 				function(key, value) {
 					str += "<tr style=\"text-align: center\">"
 							+ "<td>"
@@ -253,7 +252,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 							+ value.NOTICE_TITLE
 							+ "</a>"
 							+ "<input type='hidden' id='NOTICE_NUM' value=" + value.NOTICE_NUM + ">"
-							+ "</td>" + "<td>" + value.MEM_ID
+							+ "</td>" + "<td>" + '관리자'
 							+ "</td>" + "<td>" + new Date(value.NOTICE_DATE).toLocaleString()
 							+ "</td>" + "<td>" + value.NOTICE_COUNT
 							+ "</td>" + "</tr>";
