@@ -44,7 +44,7 @@ public class ShopController{
 		request.setAttribute("keyword", keyword);
 		request.setAttribute("sortType", "all");
 		mv.addObject("sortType", "all");
-		String filePath_temp = request.getSession().getServletContext().getRealPath("") + "/file/";
+		String filePath_temp = request.getContextPath() + "/file/";
 		mv.addObject("path", filePath_temp);
 		request.setAttribute("path", filePath_temp);
 		
@@ -76,7 +76,7 @@ public class ShopController{
 		request.setAttribute("keyword", keyword);
 		request.setAttribute("sortType", "all");
 		mv.addObject("sortType", "all");
-		String filePath_temp = request.getSession().getServletContext().getRealPath("") + "/file/";
+		String filePath_temp = request.getContextPath() + "/file/";
 		mv.addObject("path", filePath_temp);
 		request.setAttribute("path", filePath_temp);
 		
@@ -90,7 +90,7 @@ public class ShopController{
 		request.setAttribute("keyword", keyword);
 		request.setAttribute("sortType", "like");
 		mv.addObject("sortType", "like");
-		String filePath_temp = request.getSession().getServletContext().getRealPath("") + "/file/";
+		String filePath_temp = request.getContextPath() + "/file/";
 		mv.addObject("path", filePath_temp);
 		request.setAttribute("path", filePath_temp);
 		
@@ -104,7 +104,7 @@ public class ShopController{
 		request.setAttribute("keyword", keyword);
 		request.setAttribute("sortType", "new");
 		mv.addObject("sortType", "new");
-		String filePath_temp = request.getSession().getServletContext().getRealPath("") + "/file/";
+		String filePath_temp = request.getContextPath() + "/file/";
 		mv.addObject("path", filePath_temp);
 		request.setAttribute("path", filePath_temp);
 		
@@ -166,7 +166,7 @@ public class ShopController{
 		ModelAndView mv = new ModelAndView("goodsDetail");
 		Map<String,Object> map = shopService.selectGoodsDetail(commandMap.getMap());
 		
-		String filePath_temp = request.getSession().getServletContext().getRealPath("") + "/file/";
+		String filePath_temp = request.getContextPath() + "/file/";
 		mv.addObject("path", filePath_temp);
 		
 		mv.addObject("map", map.get("map"));
