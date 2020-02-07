@@ -302,7 +302,6 @@ h1 {
 
 </head>
 <body>
-	<h2 align=center>상품목록</h2>
 <div id="content">
    <div id="vertical_tab-container">
       <ul>

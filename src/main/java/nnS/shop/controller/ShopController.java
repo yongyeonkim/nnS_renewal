@@ -172,6 +172,7 @@ public class ShopController{
 		
 		mv.addObject("map", map.get("map"));
 		mv.addObject("goodsLikeMap", map.get("goodsLikeMap"));
+		mv.addObject("memberMap", map.get("memberMap"));
 		mv.addObject("list", map.get("list"));
 		/* mv.addObject("list",map.get("list")); */
 		
