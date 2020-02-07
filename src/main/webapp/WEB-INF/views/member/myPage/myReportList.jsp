@@ -1,10 +1,11 @@
-<%@page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/include/include-header.jspf" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ include file="/WEB-INF/include/include-header.jspf" %>
-	<meta charset="UTF-8">
-	<style type="text/css">
+<meta charset="UTF-8">
+<style type="text/css">
 
 h1 {font-size: 3em; margin: 20px 0; color: #FFF;}
 .container {width: 700px; margin: 10px auto;}
@@ -141,81 +142,104 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 </head>
 <body>
 <div id="content">
-	<div id="vertical_tab-container">
-	<ul>
-		<li><a href="accountModify">회원정보 변경</a></li>
-         <li><a href="pwModify">비밀번호 변경</a></li>
-         <li><a href="deleteAccount">회원탈퇴</a></li>
-         <li class="selected"><a href="reportList">신고내역</a></li>
-         <li><a href="qnaList">Q&A</a></li>
-	</ul>
-	</div>
-	<div id="main-container">
-	<table border="1" align="center" class="report_list">
+   <div id="vertical_tab-container">
+   
+         <ul>
+         <li><a href="accountModifyForm">회원정보변경</a></li>
+         <li><a href="pwModifyForm">비밀번호 변경</a></li>
+         <li><a href="deleteAccount">회원 탈퇴</a></li>
+         <li  class="selected"><a href="myreportList">신고내역</a></li>
+         <li><a href="myqnaList">Q&A</a></li>
+         </ul>
+   
+   </div>
+   <div id="main-container">
+   
+	<h2>신고 게시판</h2>
+	<table class="board_list">
 		<colgroup>
 			<col width="10%" />
 			<col width="*" />
 			<col width="15%" />
 			<col width="20%" />
 		</colgroup>
-		<caption><h2>내신고내역</h2></caption>
 		<thead>
 			<tr>
-				<th scope="col">신고건수</th>
+				<th scope="col">글번호</th>
 				<th scope="col">제목</th>
-				<th scope="col">신고일자</th>
-				<th scope="col">상태</th>
+				<th scope="col">작성자</th>
+				<th scope="col">작성일</th>
+				<th scope="col">처리상태</th>
+				<th scope="col">조회수</th>
 			</tr>
 		</thead>
 		<tbody>
-			<%-- <c:choose>
+			<%--<c:choose>
 				<c:when test="${fn:length(list) > 0}">
 					<c:forEach items="${list }" var="row">
 						<tr>
-							<td>${row.NUM }</td>
-							<td class="title"><a href="#this" name="title">${row.TITLE }</a>
-								<input type="hidden" id="NUM" value="${row.NUM }"></td>
-							<td>${row.TITLE }</td>
-							<td>${row.DATE }</td>
-							<td>${row.STATUS }</td>
+							<td>${row.REPORT_NUM }</td>
+							<td class="title"><a href="#this" name="title">${row.REPORT_TITLE }&nbsp;&nbsp;&nbsp;&nbsp;[${row.REPORT_TYPE }]</a>
+								<input type="hidden" id="REPORT_NUM" value="${row.REPORT_NUM }"></td>
+						    <td>${row.MEM_ID }</td>
+							<td>${row.REPORT_DATE }</td>
+							<td>${row.REPORT_STATUS }</td>
+							<td>${row.REPORT_COUNT }</td>
+							
 						</tr>
 					</c:forEach>
 				</c:when>
-				<c:otherwise> --%>
-	
+				<c:otherwise>
 					<tr>
-						<td colspan="5">조회된 결과가 없습니다.</td>
+						<td colspan="4">조회된 결과가 없습니다.</td>
 					</tr>
- 			<!-- 	/c:otherwise /c:choose -->
+				</c:otherwise>
+			</c:choose>--%>
 		</tbody>
 	</table>
-	</div>
-	</div>
+	
 	<div id="PAGE_NAVI"></div>
 	<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
 
 	<br />
- 
+	<a href="#this" class="btn" id="write">글쓰기</a>
+	</div>
+	</div>
 
+	<%@ include file="/WEB-INF/include/include-body.jspf" %>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			fn_selectBoardList(1);
+			fn_selectBoardList(1); 
+			$("#write").on("click", function(e) { //글쓰기 버튼
+				e.preventDefault();
+				fn_openBoardWrite();
+			});
+
+
 			$("a[name='title']").on("click", function(e) { //제목 
 				e.preventDefault();
 				fn_openBoardDetail($(this));
 			});
 		});
 
-		function fn_openBoardDetail(obj) {
+		function fn_openBoardWrite() {
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/nnS/myPage/boardDetail' />");
-			comSubmit.addParam("NUM", obj.parent().find("#NUM").val());
+			comSubmit.setUrl("<c:url value='/community/reportWriteForm' />");
 			comSubmit.submit();
 		}
-		function fn_selectBoardList(pageNo) {
+	
+		function fn_openBoardDetail(obj) {
+			var comSubmit = new ComSubmit();
+			comSubmit.setUrl("<c:url value='/community/reportDetail' />");
+			comSubmit.addParam("REPORT_NUM", obj.parent().find("#REPORT_NUM").val());
+			comSubmit.submit();
+		}
+		 function fn_selectBoardList(pageNo) {
 			var comAjax = new ComAjax();
-			comAjax.setUrl("<c:url value='/nnS/myPage/selectBoardList' />");
+			var id="${session_MEM_ID}"
+			comAjax.setUrl("<c:url value='/myPage/reportListPaging' />");
 			comAjax.setCallback("fn_selectBoardListCallback");
+			comAjax.addParam("MEM_ID", id);
 			comAjax.addParam("PAGE_INDEX", pageNo);
 			comAjax.addParam("PAGE_ROW", 15);
 			comAjax.ajax();
@@ -244,27 +268,29 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 				$.each(
 								data.list,
 								function(key, value) {
-									str += "<tr>"
+									str     += "<tr style=\"text-align: center\">"
 											+ "<td>"
-											+ value.NUM
+											+ value.RNUM
 											+ "</td>"
 											+ "<td class='title'>"
 											+ "<a href='#this' name='title'>"
-											+ value.TITLE
+											+ value.REPORT_TITLE
 											+ "</a>"
-											+ "<input type='hidden' id='NUM' value=" + value.NUM + ">"
-											+ "</td>" + "<td>" + value.COUNT
-											+ "</td>" + "<td>" + value.DATE
+											+ "<input type='hidden' id='REPORT_NUM' value=" + value.REPORT_NUM + ">"
+											+"</td>" + "<td>" + value.MEM_ID
+											+ "</td>" + "<td>" + new Date(value.REPORT_DATE).toLocaleString()
+											+ "</td>" + "<td>" + value.REPORT_STATUS
+											+ "</td>" + "<td>" + value.REPORT_COUNT
 											+ "</td>" + "</tr>";
 								});
 				body.append(str);
 
-				$("a[name='title']").on("click", function(e) { //제목
+				/*$("a[name='title']").on("click", function(e) { //제목
 					e.preventDefault();
 					fn_openBoardDetail($(this));
-				});
+				});*/
 			}
-		}
+		} 
 	</script>
 </body>
 </html>

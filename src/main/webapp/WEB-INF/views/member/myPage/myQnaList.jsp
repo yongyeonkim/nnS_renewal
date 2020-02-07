@@ -143,14 +143,16 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 <body>
 <div id="content">
    <div id="vertical_tab-container">
-      <ul>
-      
-         
-         <li><a href="noticeList">공지사항</a></li>
-         <li><a href="boardList">자유게시판</a></li>
-         <li><a href="reportList">신고게시판</a></li>
-         <li class="selected"><a href="qnaList">Q&A게시판</a></li>
-        </ul>
+  
+   
+         <ul>
+         <li><a href="accountModifyForm">회원정보변경</a></li>
+         <li><a href="pwModifyForm">비밀번호 변경</a></li>
+         <li><a href="deleteAccount">회원 탈퇴</a></li>
+         <li><a href="reportList">신고내역</a></li>
+         <li class="selected"><a href="myqnaList">Q&A</a> <input type="hidden" id="id" value="${session_MEM_ID}"></li>
+         </ul>
+  
    </div>
    <div id="main-container">
    
@@ -234,10 +236,10 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 		}
 	    function fn_selectBoardList(pageNo) {
 			var comAjax = new ComAjax();
-			
-			comAjax.setUrl("<c:url value='/community/qnaListPaging' />");
+			 var id="${session_MEM_ID}"
+			comAjax.setUrl("<c:url value='/myPage/qnaListPaging'/>");
 			comAjax.setCallback("fn_selectBoardListCallback");
-			
+			comAjax.addParam("id", id); 
 			comAjax.addParam("PAGE_INDEX", pageNo);
 			comAjax.addParam("PAGE_ROW", 15);
 			comAjax.ajax();

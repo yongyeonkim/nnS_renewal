@@ -143,8 +143,6 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 <body>
 <div id="content">
    <div id="vertical_tab-container">
-      <c:choose>
-       <c:when test="${url eq 'community'}">
       <ul>
       
          
@@ -152,18 +150,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
          <li><a href="boardList">자유게시판</a></li>
          <li  class="selected"><a href="reportList">신고게시판</a></li>
          <li><a href="qnaList">Q&A게시판</a></li>
-        </ul>
-       </c:when>
-       <c:when test="${url eq 'myPage' }">
-         <ul>
-         <li><a href="accountModifyForm">회원정보변경</a></li>
-         <li><a href="pwModifyForm">비밀번호 변경</a></li>
-         <li><a href="deleteAccount">회원 탈퇴</a></li>
-         <li  class="selected"><a href="reportList">신고내역</a></li>
-         <li><a href="qnaList">Q&A</a></li>
-         </ul>
-      </c:when>
-     </c:choose>
+        </ul> 
    </div>
    <div id="main-container">
    
@@ -186,7 +173,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 			</tr>
 		</thead>
 		<tbody>
-			<c:choose>
+			<%--<c:choose>
 				<c:when test="${fn:length(list) > 0}">
 					<c:forEach items="${list }" var="row">
 						<tr>
@@ -206,7 +193,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 						<td colspan="4">조회된 결과가 없습니다.</td>
 					</tr>
 				</c:otherwise>
-			</c:choose>
+			</c:choose>--%>
 		</tbody>
 	</table>
 	
@@ -221,7 +208,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 	<%@ include file="/WEB-INF/include/include-body.jspf" %>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			/* fn_selectBoardList(1); */
+			fn_selectBoardList(1); 
 			$("#write").on("click", function(e) { //글쓰기 버튼
 				e.preventDefault();
 				fn_openBoardWrite();
@@ -246,10 +233,12 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 			comSubmit.addParam("REPORT_NUM", obj.parent().find("#REPORT_NUM").val());
 			comSubmit.submit();
 		}
-		/* function fn_selectBoardList(pageNo) {
+		 function fn_selectBoardList(pageNo) {
 			var comAjax = new ComAjax();
-			comAjax.setUrl("<c:url value='/community/qnaList' />");
+			
+			comAjax.setUrl("<c:url value='/community/reportListPaging' />");
 			comAjax.setCallback("fn_selectBoardListCallback");
+			
 			comAjax.addParam("PAGE_INDEX", pageNo);
 			comAjax.addParam("PAGE_ROW", 15);
 			comAjax.ajax();
@@ -278,27 +267,29 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 				$.each(
 								data.list,
 								function(key, value) {
-									str += "<tr>"
+									str     += "<tr style=\"text-align: center\">"
 											+ "<td>"
-											+ value.IDX
+											+ value.RNUM
 											+ "</td>"
 											+ "<td class='title'>"
 											+ "<a href='#this' name='title'>"
-											+ value.TITLE
+											+ value.REPORT_TITLE
 											+ "</a>"
-											+ "<input type='hidden' id='IDX' value=" + value.IDX + ">"
-											+ "</td>" + "<td>" + value.HIT_CNT
-											+ "</td>" + "<td>" + value.CREA_DTM
+											+ "<input type='hidden' id='REPORT_NUM' value=" + value.REPORT_NUM + ">"
+											+"</td>" + "<td>" + value.MEM_ID
+											+ "</td>" + "<td>" + new Date(value.REPORT_DATE).toLocaleString()
+											+ "</td>" + "<td>" + value.REPORT_STATUS
+											+ "</td>" + "<td>" + value.REPORT_COUNT
 											+ "</td>" + "</tr>";
 								});
 				body.append(str);
 
-				$("a[name='title']").on("click", function(e) { //제목
+				/*$("a[name='title']").on("click", function(e) { //제목
 					e.preventDefault();
 					fn_openBoardDetail($(this));
-				});
+				});*/
 			}
-		} */
+		} 
 	</script>
 </body>
 </html>

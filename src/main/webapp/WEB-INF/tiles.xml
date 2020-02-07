@@ -81,7 +81,7 @@
    </definition>
    
    <definition name="myreportList" extends="default2">
-      <put-attribute name="body" value="/WEB-INF/views/community/report/reportList.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/member/myPage/myreportList.jsp" />
    </definition>
    
    <definition name="myreportDetail" extends="default2">
@@ -89,7 +89,7 @@
    </definition>
    
    <definition name="myqnaList" extends="default2">
-      <put-attribute name="body" value="/WEB-INF/views/community/qna/qnaList.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/member/myPage/myQnaList.jsp" />
    </definition>
    
    <definition name="myqnaDetail" extends="default2">
