@@ -4,6 +4,9 @@
 <html lang="ko">
 <head>
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
+
+<script type="text/javascript" src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
+
 <style type="text/css">
 
 h1 {font-size: 3em; margin: 20px 0; color: #FFF;}
@@ -177,7 +180,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
          	</tr>
          	<tr>
          		<td>제목</td>
-         		<td colspan="3"><input type="text" id="NOTICE_TITLE" name="NOTICE_TITLE" class="wdp_90"/></td>
+         		<td colspan="3"><input type="text" id="NOTICE_TITLE" name="NOTICE_TITLE" class="wdp_90" size="80"/></td>
          		<input type="hidden" id="MEM_NUM" name="MEM_NUM" value="${session_MEM_INFO.MEM_NUM}"/>
          	</tr>
          	
@@ -233,6 +236,14 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
          });
       });
       
+      $(function(){
+    		CKEDITOR.replace('NOTICE_CONTENT',{
+                width:'100%',
+                height:'600px',
+    			filebrowserUploadUrl: '${pageContext.request.contextPath }/ckeditor/fileupload'
+    		});
+    	});
+      
       function fn_openNoticeList(){
          var comSubmit = new ComSubmit();
          comSubmit.setUrl("<c:url value='/community/noticeList' />");
@@ -242,6 +253,22 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
       function fn_insertNotice(){
          var comSubmit = new ComSubmit("frm");
          comSubmit.setUrl("<c:url value='/community/noticeWrite' />");
+         
+         // 게시글 제목 필요
+         if(!$("#NOTICE_TITLE").val()){
+             alert("제목를 입력해주세요.");
+             $("#NOTICE_TITLE").focus();
+             return false;
+         }
+    	  // 게시글 내용 필요
+         if(CKEDITOR.instances.NOTICE_CONTENT.getData() =='' 
+                 || CKEDITOR.instances.NOTICE_CONTENT.getData().length ==0){
+             alert("내용을 입력해주세요.");
+             $("#NOTICE_CONTENT").focus();
+             return false;
+         }
+
+         
          comSubmit.submit();
       }
       
@@ -253,6 +280,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
             fn_deleteFile($(this));
          });
       }
+      
       function fn_deleteFile(obj){
          obj.parent().remove();
       }

@@ -3,6 +3,9 @@
 <html lang="ko">
 <head>
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
+
+<script type="text/javascript" src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
+
 <style type="text/css">
 
 h1 {font-size: 3em; margin: 20px 0; color: #FFF;}
@@ -174,7 +177,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
          	</tr>
          	<tr>
          		<td>제목</td>
-         		<td colspan="3"><input type="text" id="BOARD_TITLE" name="BOARD_TITLE" class="wdp_90"/></td>
+         		<td colspan="3"><input type="text" id="BOARD_TITLE" name="BOARD_TITLE" class="wdp_90" size="80"/></td>
          		<input type="hidden" id="MEM_NUM" name="MEM_NUM" value="${session_MEM_INFO.MEM_NUM }"/>
          	</tr>
          	
@@ -231,6 +234,14 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
          });
       });
       
+      $(function(){
+	  		CKEDITOR.replace('BOARD_CONTENT',{
+	              width:'100%',
+	              height:'600px',
+	  			filebrowserUploadUrl: '${pageContext.request.contextPath }/ckeditor/fileupload'
+	  		});
+	  	});
+      
       function fn_openBoardList(){
          var comSubmit = new ComSubmit();
          comSubmit.setUrl("<c:url value='/community/boardList' />");
@@ -240,6 +251,21 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
       function fn_insertBoard(){
          var comSubmit = new ComSubmit("frm");
          comSubmit.setUrl("<c:url value='/community/boardWrite' />");
+         
+      // 게시글 제목 필요
+         if(!$("#BOARD_TITLE").val()){
+             alert("제목를 입력해주세요.");
+             $("#BOARD_TITLE").focus();
+             return false;
+         }
+    	  // 게시글 내용 필요
+         if(CKEDITOR.instances.BOARD_CONTENT.getData() =='' 
+                 || CKEDITOR.instances.BOARD_CONTENT.getData().length ==0){
+             alert("내용을 입력해주세요.");
+             $("#BOARD_CONTENT").focus();
+             return false;
+         }
+         
          comSubmit.submit();
       }
       

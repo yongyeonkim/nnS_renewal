@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@ include file="/WEB-INF/include/include-header.jspf" %>
 <html lang="ko">
 <head>
+<%@ include file="/WEB-INF/include/include-header.jspf" %>
+
+<script type="text/javascript" src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
+
 <meta charset="UTF-8">
 <style type="text/css">
 
@@ -198,7 +201,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
          	<tr>
          		<td>제목</td>
          		<input type="hidden" id="REPORT_NUM" name="REPORT_NUM">
-         		<td colspan="3"><input type="text" id="REPORT_TITLE" name="REPORT_TITLE" class="wdp_90"/></td>
+         		<td colspan="3"><input type="text" id="REPORT_TITLE" name="REPORT_TITLE" class="wdp_90" size="80"/></td>
          	</tr>
          	
          	<tr>
@@ -257,6 +260,14 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
          });
       });
       
+      $(function(){
+	  		CKEDITOR.replace('REPORT_CONTENT',{
+	              width:'100%',
+	              height:'600px',
+	  			filebrowserUploadUrl: '${pageContext.request.contextPath }/ckeditor/fileupload'
+	  		});
+	  	});
+      
       function fn_openReportList(){
          var comSubmit = new ComSubmit();
          comSubmit.setUrl("<c:url value='/community/reportList' />");
@@ -266,6 +277,21 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
       function fn_insertReport(){
          var comSubmit = new ComSubmit("frm");
          comSubmit.setUrl("<c:url value='/community/reportWrite' />");
+         
+         // 게시글 제목 필요
+         if(!$("#REPORT_TITLE").val()){
+             alert("제목를 입력해주세요.");
+             $("#REPORT_TITLE").focus();
+             return false;
+         }
+    	  // 게시글 내용 필요
+         if(CKEDITOR.instances.REPORT_CONTENT.getData() =='' 
+                 || CKEDITOR.instances.REPORT_CONTENT.getData().length ==0){
+             alert("내용을 입력해주세요.");
+             $("#REPORT_CONTENT").focus();
+             return false;
+         }
+         
          comSubmit.submit();
       }
       
