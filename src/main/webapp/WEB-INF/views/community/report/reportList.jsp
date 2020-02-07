@@ -101,42 +101,44 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 }
 #vertical_tab-container ul li
 {
-   border-top: 1px solid #666;
-   border-right: 1px solid #666;
-   border-bottom: 1px solid #666;
-   border-left: 8px solid #666;
-   background-color: #f0e199;
+   border-top: 1px solid #fff;
+   border-right: 1px solid #fff;
+   border-bottom: 1px solid #595959;
+   border-left: 4px solid #595959;   
+   background-color: #fff;  
    margin: 8px 0;
-}
+}  
 #vertical_tab-container ul li a,
 #vertical_tab-container ul li a:visited
 {
    text-decoration: none;
    color: #666;
    display: block;
-   padding: 15px 5px;
+ 	padding: 3px 3px;
 }
 #vertical_tab-container ul li:hover
 {
-   border-left: 8px solid #333;
+   border-left: 4px solid #ffd04a;
 }
 #vertical_tab-container ul li a:hover
 {
-   color: #000;
+   color: #333;
 }
 #vertical_tab-container ul li.selected
 {
    border-right: none;
    background-color: #fff;
-   border-left: 8px solid #006699;
+   border-left: 4px solid #ffd04a;
 }
 #main-container
 {
    min-height: 400px;
    margin: 0 0 0 125px;
    padding: 20px;
-   background-color: #fff;
-   border: 1px solid #888;
+   border-top: 1px solid #595959;  
+   border-right: 1px solid #fff;     
+   border-left: 1px solid #fff; 
+   border-bottom: 1px solid #595959;    
 }
 </style>
 </head>
@@ -175,12 +177,12 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 		</colgroup>
 		<thead>
 			<tr>
-				<th scope="col">글번호</th>
-				<th scope="col">제목</th>
-				<th scope="col">작성자</th>
-				<th scope="col">작성일</th>
-				<th scope="col">처리상태</th>
-				<th scope="col">조회수</th>
+				<th scope="col"><img src="./../resources/images/commu_num.png" width="70" height="25"></th>
+				<th scope="col"><img src="./../resources/images/commu_title.png" width="70" height="25"></th>
+				<th scope="col"><img src="./../resources/images/commu_writer.png" width="70" height="25"></th>
+				<th scope="col"><img src="./../resources/images/commu_date.png" width="70" height="25"></th>
+				<th scope="col"><img src="./../resources/images/commu_status.png" width="70" height="25"></th>
+				<th scope="col"><img src="./../resources/images/commu_hit.png" width="70" height="25"></th>
 			</tr>
 		</thead>
 		<tbody>
