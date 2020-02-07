@@ -39,7 +39,7 @@
 	</mvc:interceptors>
 	
 	<!--  //각각 path 설정 필요-->
-	
+	<mvc:resources location="/WEB-INF/views/ckeditor/" mapping="/ckeditor/**"/>
 	
 	<!-- @RequestMapping 어노테이션을 활용하여 컨트롤러를 사용하기 위해 빈 추가 -->
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>

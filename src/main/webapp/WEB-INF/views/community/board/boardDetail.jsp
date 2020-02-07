@@ -256,10 +256,10 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 				e.preventDefault();
 				fn_writeComment();
 			});
-			$("#cDelete").on("click", function(e){
+			/* $("a[name='cDelete']").on("click", function(e){
 				e.preventDefault();
 				fn_deleteComment();
-			});
+			}); */
 		});
 		
 		function fn_openBoardList(){
@@ -297,10 +297,10 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 			comSubmit.submit();			
 		}
 
-		function fn_deleteComment(){
+		function fn_deleteComment(num){
 			var comSubmit = new ComSubmit();
 			comSubmit.setUrl("<c:url value='/community/boardDetail/commentDelete'/>");
-			comSubmit.addParam("COMMENTS_NUM", $("#COMMENTS_NUM").val());
+			comSubmit.addParam("COMMENTS_NUM", num);
 			comSubmit.addParam("BOARD_NUM", $("#BOARD_NUM").val());
 			comSubmit.submit();			
 		}
@@ -346,27 +346,18 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 							+ "</td>"
 							+ "<td>"
 							+ value.COMMENTS_CONTENT
-							+ "</td>" + "<td>" + new Date(value.COMMENTS_DATE).toLocaleString()
-							+ "</td>" + "<td>" + "<a href='#this' id='cDelete' name='cDelete'> 삭제 </a>"
+							+ "</td>" + "<td>" + new Date(value.COMMENTS_DATE).toLocaleString() + "</td>" + "<td>";
+					if('${session_MEM_ID}' == value.MEM_ID){
+						str += "<a href='#this' name='cDelete' onClick='fn_deleteComment("+value.COMMENTS_NUM+")'> 삭제 </a>"
 							+ "<input type='hidden' id='NOTICE_NUM' name='NOTICE_NUM' value=" + value.COMMENTS_PARENT + ">"
-							+ "<input type='hidden' id='COMMENTS_NUM' name='COMMENTS_NUM' value="+ value.COMMENTS_NUM + ">"
-							+ "</td>" + "</tr>";
+							
+					}
+					str += "</td>" + "</tr>";
 								});
 				body.append(str);
 			}
 		}
 	</script>
 </html>
-
-
-
-
-
-
-
-
-
-
-
 
 

@@ -3,6 +3,9 @@
 <html lang="ko">
 <head>
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
+
+<script type="text/javascript" src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
+
 <style type="text/css">
 
 h1 {font-size: 3em; margin: 20px 0; color: #FFF;}
@@ -174,9 +177,11 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
          	 -->
          	<tr>
          		<td>제목</td>
-         		<td colspan="3"><input type="text" id="title" name="QNA_TITLE" class="wdp_90" value="${map.QNA_TITLE}"/>
+         		<td colspan="3"><input type="text" id="title" name="QNA_TITLE" class="wdp_90" value="${map.QNA_TITLE}" size="80"/>
          		<input type="hidden" id="QNA_NUM" name="QNA_NUM" value="${map.QNA_NUM }"/>
          		</td>
+         	</tr>
+         	<tr>
 	         	<th scope="row">유형</th>
 						<td><select name="QNA_TYPE" id="QNA_TYPE">
 						<option value="상품 관련 문의" ${param.QNA_TYPE eq "상품 관련 문의" ? "selected" :""}>상품 관련 문의</option>
@@ -186,7 +191,8 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 						<option value="게시판 사용 관련 문의" ${param.QNA_TYPE eq "게시판 사용 관련 문의" ? "selected" :"" }>게시판 사용 관련 문의</option>
 						<option value="기타 문의" ${param.QNA_TYPE eq "기타 문의" ? "selected" :"" }>기타 문의</option>
 						
-						</select></td>
+						</select>
+					</td>
 				</tr>
 				<tr>
          	
@@ -252,6 +258,14 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
           });
       });
       
+      $(function(){
+	  		CKEDITOR.replace('QNA_CONTENT',{
+	              width:'100%',
+	              height:'600px',
+	  			filebrowserUploadUrl: '${pageContext.request.contextPath }/ckeditor/fileupload'
+	  		});
+	  	});
+      
       function fn_openBoardList(){
          var comSubmit = new ComSubmit();
          comSubmit.setUrl("<c:url value='/community/qnaList' />");
@@ -261,6 +275,22 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
       function fn_insertBoard(){
          var comSubmit = new ComSubmit("frm");
          comSubmit.setUrl("<c:url value='/community/qnaModify' />");
+         
+         // 게시글 제목 필요
+         if(!$("#QNA_TITLE").val()){
+             alert("제목를 입력해주세요.");
+             $("#QNA_TITLE").focus();
+             return false;
+         }
+    	  // 게시글 내용 필요
+         if(CKEDITOR.instances.QNA_CONTENT.getData() =='' 
+                 || CKEDITOR.instances.QNA_CONTENT.getData().length ==0){
+             alert("내용을 입력해주세요.");
+             $("#QNA_CONTENT").focus();
+             return false;
+         }
+
+         
          comSubmit.submit();
       }
       
