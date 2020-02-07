@@ -160,10 +160,10 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 <div id="content">
 	<div id="vertical_tab-container">
 		<ul>
-			<li class="selected"><a href="goodsList">전체상품</a></li>
-			<li><a href="allgoodsList">인기상품</a></li>
-			<li><a href="newgoodsList">신규상품</a></li>
-			<li><a href="goodsList">카테고리</a></li>
+			 <li <c:if test="${sortType eq 'all'}">class="selected"</c:if>><a href=<c:url value="/shop/allGoodsList"/>>전체상품</a></li>
+	         <li <c:if test="${sortType eq 'like'}">class="selected"</c:if>><a href=<c:url value="/shop/likeGoodsList"/>>인기상품</a></li>
+	         <li <c:if test="${sortType eq 'new'}">class="selected"</c:if>><a href=<c:url value="/shop/newGoodsList"/>>신규상품</a></li>
+	         <li <c:if test="${sortType eq ''}">class="selected"</c:if>><a href=<c:url value="/shop"/>>카테고리</a></li>
 		</ul>
 	</div>
 	<div id="main-container">
@@ -173,8 +173,8 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 				<td>
 					<table border="1" align="center">
 						<colgroup>
-							<col width="15%"/>
 							<col width="35%"/>
+							<col width="15%"/>
 							<col width="15%"/>
 							<col width="35%"/>
 						</colgroup>
@@ -182,9 +182,9 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 						<tbody>
 							<tr colspan="2">
 								<td rowspan="2">
-									<img alt="" width="202" height="202" src="${path}${map.GOODS_THUMBNAIL}"/>
+									<img alt="" width="100%" height="300px" src="${path}${map.GOODS_THUMBNAIL}"/>
 								</td>
-								<td>
+								<td colspan="2">
 									브랜드 : ${map.GOODS_BRAND}<br />
 									모델명 : ${map.GOODS_TITLE} <br />	<!-- 테이블에 없음 --> 
 									성별 : ${map.GOODS_NUM} <br /><!-- 테이블에 없음 --> 
@@ -273,8 +273,11 @@ $(document).ready(function() {
 	});
 	function fn_orderWriteForm(obj) {
 		var comSubmit = new ComSubmit();
+		var GOODS_NUM = "${map.GOODS_NUM}";
+		var MEM_ID = "${session_MEM_ID}";
 		comSubmit.setUrl("<c:url value='/shop/order/orderWriteForm' />");
-		comSubmit.addParam("GOODS_NUM", obj.parent().find("#IDX").val());
+		comSubmit.addParam("GOODS_NUM", GOODS_NUM);
+		comSubmit.addParam("MEM_ID", MEM_ID);
 		comSubmit.submit();
 	}
 	
