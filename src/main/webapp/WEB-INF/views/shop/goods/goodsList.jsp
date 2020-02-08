@@ -155,7 +155,7 @@ td img
 </style>
 </head>
 <body>
-	<h2 align=center>상품목록</h2>
+	<h2 align=center><img src="./../resources/images/goods_goodslist.png" width="200" height="50"></h2>
 <div id="content">
    <div id="vertical_tab-container">
       <ul>
