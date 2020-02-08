@@ -6,7 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <style type="text/css">
-
+/* UI Object */   
+.tbl_type,.tbl_type th,.tbl_type td{border:0}
+.tbl_type{width:100%;border-bottom:1px solid #bbbbbb;font-family:Tahoma;font-size:11px;text-align:center}
+.tbl_type caption{display:none}
+.tbl_type th{padding:7px 0 4px;border-bottom:1px solid #949494;border-top:1px solid #949494;background-color:#e1e6e5;color:#666;}
+.tbl_type td{padding:6px 0 4px;border-top:1px dashed #cecece;color:#595959}
+/* //UI Object */
 h1 {font-size: 3em; margin: 20px 0; color: #FFF;}
 .container {width: 700px; margin: 10px auto;}
 ul.goodsTabs {
@@ -83,15 +89,15 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 	padding: 5px;
 }
  #content
-{
+{	 
    background-color: #ffffff;
-   padding: 20px 10px;
+   padding: 20px 10px;  
    overflow: auto;
 }
 #vertical_tab-container
 {
    float: left;
-   margin: 50px 0 0 0;
+   margin: 70px 0 0 0;
    width: 126px;
 }
 #vertical_tab-container ul
@@ -101,77 +107,106 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 }
 #vertical_tab-container ul li
 {
-   border-top: 1px solid #666;
-   border-right: 1px solid #666;
-   border-bottom: 1px solid #666;
-   border-left: 8px solid #666;
-   background-color: #ddd;
+   border-top: 1px solid #fff;
+   border-right: 1px solid #fff;
+   border-bottom: 1px solid #595959;
+   border-left: 4px solid #595959;   
+   background-color: #fff;  
    margin: 8px 0;
-}
+}  
 #vertical_tab-container ul li a,
 #vertical_tab-container ul li a:visited
 {
    text-decoration: none;
    color: #666;
    display: block;
-   padding: 15px 5px;
+ 	padding: 3px 3px;
 }
 #vertical_tab-container ul li:hover
 {
-   border-left: 8px solid #333;
+   border-left: 4px solid #ffd04a;
 }
 #vertical_tab-container ul li a:hover
 {
-   color: #000;
+   color: #333;
 }
 #vertical_tab-container ul li.selected
 {
    border-right: none;
    background-color: #fff;
-   border-left: 8px solid #006699;
+   border-left: 4px solid #ffd04a;
 }
 #main-container
 {
    min-height: 400px;
    margin: 0 0 0 125px;
    padding: 20px;
-   background-color: #fff;
-   border: 1px solid #888;
+   border-top: 1px solid #fff;  
+   border-right: 1px solid #fff;     
+   border-left: 1px solid #fff; 
+   border-bottom: 1px solid #fff;    
 }
+   @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
+   
+   html {
+      height: 100%;
+   }
+   
+   body {
+        background:linear-gradient(to bottom right, #f0e199, #f0e199);
+   }
+   body,table,input,select,textarea,button,h1,h2,h3,h4,h5,h6,a{font-family:'맑은 고딕',Malgun Gothic,sans-serif;font-size:12px;color:#666;font-weight:400;}
+   
+    .card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   }
+   
+   .form-signin .form-control {
+        position: relative;
+        height: auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px;
+   }
 </style>
 </head>
 <body>
 <div id="content">
    <div id="vertical_tab-container">
-  
    
          <ul>
-         <li><a href="accountModifyForm">회원정보변경</a></li>
-         <li><a href="pwModifyForm">비밀번호 변경</a></li>
-         <li><a href="deleteAccount">회원 탈퇴</a></li>
-         <li><a href="reportList">신고내역</a></li>
-         <li class="selected"><a href="myqnaList">Q&A</a> <input type="hidden" id="id" value="${session_MEM_ID}"></li>
+	         <li><a href="accountDetail"><img src="./../resources/images/mypage_tab1.png" width="100" height="30"></a></li>
+	         <li><a href="pwModifyForm"><img src="./../resources/images/mypage_tab2.png" width="100" height="30"></a></li>
+	         <li><a href="deleteAccount"><img src="./../resources/images/mypage_tab3.png" width="100" height="30"></a></li>
+	         <li><a href="reportList"><img src="./../resources/images/mypage_tab4.png" width="100" height="30"></a></li>
+	         <li class="selected"><a href="qnaList"><img src="./../resources/images/mypage_tab5.png" width="100" height="30"></a></li>
          </ul>
-  
+   
    </div>
    <div id="main-container">
-   
-	<h2>Q&A 목록</h2>
-	<table class="board_list">
+		<img src="./../resources/images/commu_qtitle.png" width="200" height="70"> 
+	<table border="1" align="center" class="tbl_type">
 		<colgroup>
 			<col width="10%" />
 			<col width="*" />
 			<col width="15%" />
-			<col width="20%" />
-		</colgroup>
+			<col width="25%" />  
+			<col width="10%" />
+		</colgroup>  
+		<caption><h2>문의게시판</h2></caption>
 		<thead>
 			<tr>
-				<th scope="col">글번호</th>
-				<th scope="col">제목</th>
-				<th scope="col">작성자</th>	
-				<th scope="col">작성일</th>
-				<th scope="col">답글여부</th>
-				<th scope="col">조회수</th>
+				<th scope="col"><img src="./../resources/images/commu_num.png" height="25"></th>
+				<th scope="col"><img src="./../resources/images/commu_title.png" height="25"></th>
+				<th scope="col"><img src="./../resources/images/commu_writer.png" height="25"></th>
+				<th scope="col"><img src="./../resources/images/commu_date.png" height="25"></th>
+				<th scope="col"><img src="./../resources/images/commu_re.png" height="25"></th>
+				<th scope="col"><img src="./../resources/images/commu_hit.png" height="25"></th>
 			</tr>
 		</thead>
 		<tbody>

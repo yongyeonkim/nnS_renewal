@@ -79,7 +79,6 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 .goodsTab_content img {
 	float: left;
 	margin: 0 20px 20px 0;
-	border: 1px solid #ddd;
 	padding: 5px;
 }
  #content
@@ -150,7 +149,6 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
          <li class="selected"><a href="/nnS/myshop"><img src="/nnS/resources/images/myshop_tab1.png" width="100" height="30"></a></li>
          <li><a href="/nnS/myshop/saleList"><img src="/nnS/resources/images/myshop_tab2.png" width="100" height="30"></a></li>
          <li><a href="/nnS/myshop/goodsLikeList"><img src="/nnS/resources/images/myshop_tab3.png" width="100" height="30"></a></li>
-         <li><a href="/recentGoodsList"><img src="/nnS/resources/images/myshop_tab4.png" width="100" height="30"></a></li>
       </ul>
    </div>
    <div id="main-container">
@@ -217,19 +215,19 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 					      	      <table  style="filter: alpha(opacity=60);" ffffff="" align="center">
 					      	      	<tr>
 					      	      		<td width="200px" align="center">
-					      	      			상품 정보
+					      	      			<img src=<c:url value="/resources/images/myorder_list1.png"/>>
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			주문 일자
+					      	      			<img src=<c:url value="/resources/images/myorder_list2.png"/>>
 					      	      		</td>
 					      	      		<td width="200px" align="center">
-					      	      			송장번호
+					      	      			<img src=<c:url value="/resources/images/myorder_list3.png"/>>
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			주문금액
+					      	      			<img src=<c:url value="/resources/images/myorder_list4.png"/>>
 					      	      		</td>
 					      	      		<td width="100px" align="center">
-					      	      			주문 상태
+					      	      			<img src=<c:url value="/resources/images/myorder_list5.png"/>>
 					      	      		</td>
 					      	      	</tr>
 			<c:choose>

@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ include file="/WEB-INF/include/include-header.jspf" %>
 <html lang="ko">
 <head>
-	<%@ include file="/WEB-INF/include/include-header.jspf" %>
-	
-	<meta charset="UTF-8">
+   <meta charset="UTF-8">
 <style type="text/css">
 
 h1 {font-size: 3em; margin: 20px 0; color: #FFF;}
@@ -144,118 +143,106 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 </head>
 <body>
 <div id="content">
-	<div id="vertical_tab-container">
-	<ul>
-		<li><a href="accountModify"><img src="./../resources/images/mypage_tab1.png" width="100" height="30"></a></li>
-         <li><a href="pwModify"><img src="./../resources/images/mypage_tab2.png" width="100" height="30"></a></li>
-         <li><a href="deleteAccount"><img src="./../resources/images/mypage_tab3.png" width="100" height="30"></a></li>
-         <li class="selected"><a href="reportList"><img src="./../resources/images/mypage_tab4.png" width="100" height="30"></a></li>
-         <li><a href="qnaList"><img src="./../resources/images/mypage_tab5.png" width="100" height="30"></a></li>
-	</ul>
-	</div>
-	<div id="main-container">
-	<table border="1" align="center" class="board_view">
-		<colgroup>
-			<col width="15%"/>
-			<col width="35%"/>
-			<col width="15%"/>
-			<col width="35%"/>
-		</colgroup>
-		<caption><h2>내 신고내역</h2></caption>
-		<p/>
-		<tbody>
-			<tr>
-				<th scope="row">신고유형</th>
-				<td>${map.STATUS }
-				<input type="hidden" id="NUM" name="NUM" value="${map.NUM }"></td>
-			</tr>
-			<tr>
-				<th scope="row">제목</th>
-				<td colspan="3">${map.TITLE }</td>
-			</tr>
-			<tr>
-				<th scope="row">내용</th>
-				<td colspan="4"><pre>${map.CONTENT }</pre></td>
-			</tr>
-			<tr>
-				<th scope="row">첨부파일</th>
-				<td colspan="3">
-					<c:forEach var="row" items="${list }">
-						<input type="hidden" id="NUM" value="${row.NUM }">
-						<a href="#this" id="${row.NUM }" name="file">${row.ORG}</a>
-						(${file.SIZE }kb)
-					</c:forEach>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<center>
-	<br/>
-	<a href="#this" class="btn" id="list">목록으로</a>
-	<a href="#this" class="btn" id="delete">신고취소</a>
-	</center>
-	<br/>
-	<center>
-		<table>
-					<tr align=center>
-						<td>코멘트 작성</td>
-						<td colspan=2>
-							<textarea name=commentt rows="6" cols="40"></textarea>
-							
-							<%-- <input type=hidden name=content_num value=<%=article.getNum() %>>
-							<input type=hidden name=p_num value=<%=pageNum%>>
-							<input type=hidden name=comment_num value=<%=count+1%>> --%>
-						</td>
-						<td align=center>
-							작성자<br/>
-							<input type=text name=commenter size=10><br/>
-							<input type=submit value=코멘트달기>
-						</td>
-					</tr>
-					</table>
-					</center>
-					
-	</div>
+   <div id="vertical_tab-container">
+   <ul>
+      <li><a href="accountDetail"><img src="./../resources/images/mypage_tab1.png" width="100" height="30"></a></li>
+      <li><a href="pwModifyForm"><img src="./../resources/images/mypage_tab2.png" width="100" height="30"></a></li>
+      <li><a href="deleteAccount"><img src="./../resources/images/mypage_tab3.png" width="100" height="30"></a></li>
+      <li class="selected"><a href="reportList"><img src="./../resources/images/mypage_tab4.png" width="100" height="30"></a></li>
+      <li><a href="qnaList"><img src="./../resources/images/mypage_tab5.png" width="100" height="30"></a></li>
+   </ul>
+   </div>
+   <div id="main-container">
+   <table border="1" align="center" class="board_view">
+      <colgroup>
+         <col width="15%"/>
+         <col width="35%"/>
+         <col width="15%"/>
+         <col width="35%"/>
+      </colgroup>
+      <caption><h2>신고게시판</h2></caption>
+      <p/>
+      <tbody>
+         <tr>
+            <th scope="row">글 번호</th>
+            <td>${map.REPORT_NUM }
+            <input type="hidden" id="REPORT_NUM" name="REPORT_NUM" value="${map.REPORT_NUM }"></td>
+            <th scope="row">조회수</th>
+            <td>${map.REPORT_COUNT }</td>
+         </tr>
+         <tr>
+            <th scope="row">작성자</th>
+            <td>${map.MEM_ID }</td>
+            <th scope="row">작성일자</th>
+            <td>${map.REPORT_DATE }</td>
+         </tr>
+         <tr>
+            <th scope="row">제목</th>
+            <td colspan="3">${map.REPORT_TITLE }</td>
+         </tr>
+         <tr>
+            <td colspan="4"><pre>${map.REPORT_CONTENT }</pre></td>
+         </tr>
+         <tr>
+			<th scope="row">첨부파일</th>
+			<td colspan="3">
+				<c:forEach var="row" items="${list }">
+					<div>
+						<input type="hidden" id="FILES_NUM" value="${row.FILES_NUM }">
+						<a href="#this" name="file">${row.FILES_ORGNAME }</a>
+						(${row.FILES_SIZE}kb)
+					</div>
+				</c:forEach>
+			</td>
+		</tr>
+      </tbody>
+   </table>
+   <a href="#this" class="btn" id="list">목록으로</a>
+   <a href="#this" class="btn" id="delete">삭제하기</a>
+   </div>
 </div>
-	
-
-	<script type="text/javascript">
-	$(document).ready(function(){
-		$("#list").on("click", function(e){ //목록으로 버튼
-			e.preventDefault();
-			fn_openReportList();
-		});
-
-		$("#delete").on("click", function(e){ //삭제하기 버튼
-			e.preventDefault();
-			fn_deleteReport();
-		});
-		$("a[name='file']").on("click", function(e){
-			e.preventDefault();
-			fn_downloadFile($(this).attr('id'));
-		});
-	});
-	
-	function fn_openReportList(){
-		var comSubmit = new ComSubmit();
-		comSubmit.setUrl("<c:url value='/nnS/member/myPage/reportList' />");
-		comSubmit.submit();
+   
+   
+    <%@ include file="/WEB-INF/include/include-body.jspf" %>
+    <script type="text/javascript">
+      $(document).ready(function(){
+         $("#list").on("click", function(e){ //목록으로 버튼
+            e.preventDefault();
+            fn_openBoardList();
+         });
+         
+         $("#delete").on("click", function(e){ //삭제하기 버튼
+            e.preventDefault();
+            fn_deleteBoard();
+         });
+         $("a[name='file']").on("click", function(e){
+            e.preventDefault();
+            fn_downloadFile($(this));
+         });
+      });
+      
+      function fn_openBoardList(){
+         var comSubmit = new ComSubmit();
+         comSubmit.setUrl("<c:url value='/community/reportList' />");
+         comSubmit.submit();
+      }
+      
+   
+      function fn_deleteBoard(){
+    	 var idx="${map.REPORT_NUM}";
+         var comSubmit = new ComSubmit();
+         comSubmit.setUrl("<c:url value='/community/reportDelete' />");
+         comSubmit.addParam("REPORT_NUM",idx);
+         comSubmit.submit();
+         
+      }
+      function fn_downloadFile(obj){
+			var idx=obj.parent().find("#FILES_NUM").val();
+			var comSubmit = new ComSubmit();
+			comSubmit.setUrl("<c:url value='/common/downloadFile'/>");
+			comSubmit.addParam("FILES_NUM",idx);
+			comSubmit.submit();
 	}
-
-	function fn_deleteReport(){
-		var comSubmit = new ComSubmit();
-		comSubmit.setUrl("<c:url value='/nnS/member/myPage/Report' />");
-		comSubmit.addParam("NUM", $("#NUM").val());
-		comSubmit.submit();
-		
-	}
-	function fn_downloadFile(obj){
-		var idx=obj;
-		var comSubmit = new ComSubmit();
-		comSubmit.setUrl("<c:url value='/nnS/common/downloadFile'/>");
-		comSubmit.addParam("NUM",num);
-		comSubmit.submit();
-	}
-	</script>
+   </script>
 </body>
 </html>

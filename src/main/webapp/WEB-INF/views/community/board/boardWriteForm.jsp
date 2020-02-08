@@ -7,6 +7,13 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
 
 <style type="text/css">
+/* UI Object */   
+.tbl_type,.tbl_type th,.tbl_type td{border:0}
+.tbl_type{width:100%;border-bottom:1px solid #bbbbbb;font-family:Tahoma;font-size:11px;text-align:center}
+.tbl_type caption{display:none}
+.tbl_type th{padding:7px 0 4px;border-bottom:1px solid #949494;border-top:1px solid #949494;background-color:#e1e6e5;color:#666;}
+.tbl_type tr{padding:7px 0 4px;border-bottom:1px solid #949494;border-top:1px solid #949494;background-color:#e1e6e5;color:#666;}
+.tbl_type td{padding:6px 0 4px;border-top:1px dashed #cecece;color:#595959}
 
 h1 {font-size: 3em; margin: 20px 0; color: #FFF;}
 .container {width: 700px; margin: 10px auto;}
@@ -153,52 +160,27 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
       </ul>
    </div>
    <div id="main-container">
-
+	<img src="./../resources/images/board_writeForm.png" width="100" height="30">
    <form id="frm" name="frm" enctype="multipart/form-data">
-      <table class="board_view">
+      <table class="tbl_type">
          <colgroup>
-            <col width="15%">
+            <col width="10%">
             <col width="*"/>
+            <col width="10%">
+            <col width="15%">
          </colgroup>
-         <center><h2>자유게시판 작성</h2></center>
          <tbody>
-<!--          	<tr>
-         		<td scope="row">분류</td>
-         		<td>
-            		<select name="keyField">
-					<option value="choice">선택</option>
-					<option value="board">자유게시판</option>
-					<option value="report">신고게시판</option>
-					<option value="qna">Q&A게시판</option>
-				</select>
-            	</td>
-         	</tr> -->
-         	 <tr>
-         		<td>작성자</td>
-         		<td>${session_MEM_INFO.MEM_ID }</td>         	
-         	</tr>
          	<tr>
          		<td>제목</td>
-         		<td colspan="3"><input type="text" id="BOARD_TITLE" name="BOARD_TITLE" class="wdp_90" size="80"/></td>
-         		<input type="hidden" id="MEM_NUM" name="MEM_NUM" value="${session_MEM_INFO.MEM_NUM }"/>
+         		<td style="background-color:#fff;"><input type="text" id="BOARD_TITLE" name="BOARD_TITLE" style="width:95%"/></td>
+         		<td>작성자</td>
+         		<td style="background-color:#fff;">${session_MEM_INFO.MEM_ID }<input type="hidden" id="MEM_NUM" name="MEM_NUM" value="${session_MEM_INFO.MEM_NUM }"/></td>
          	</tr>
-         	
          	<tr>
-         		<td>내용</td>
-         		<td colspan="3" class="view_text">
+         		
+         		<td colspan="4" class="view_text"  style="background-color:#fff;">
                   <textarea rows="20" cols="100" title="내용" id="BOARD_CONTENT" name="BOARD_CONTENT"></textarea>
                </td>
-         	</tr>
-         	<tr>
-         		<td></td>
-         		<td colspan="3" >
-         		<div id="fileDiv">
-        		 	<p>
-            		<input type="file" name="file_0" id="file">
-            		<a href="#this" class="btn" id="addFile">파일 추가</a>
-         			</p>
-     			 </div>
-     			 </td>
          	</tr>
          </tbody>
       </table>

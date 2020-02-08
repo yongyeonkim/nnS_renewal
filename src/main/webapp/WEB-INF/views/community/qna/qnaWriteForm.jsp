@@ -6,6 +6,13 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
 <meta charset="UTF-8">
 <style type="text/css">
+/* UI Object */   
+.tbl_type,.tbl_type th,.tbl_type td{border:0}
+.tbl_type{width:100%;border-bottom:1px solid #bbbbbb;font-family:Tahoma;font-size:11px;text-align:center}
+.tbl_type caption{display:none}
+.tbl_type th{padding:7px 0 4px;border-bottom:1px solid #949494;border-top:1px solid #949494;background-color:#e1e6e5;color:#666;}
+.tbl_type tr{padding:7px 0 4px;border-bottom:1px solid #949494;border-top:1px solid #949494;background-color:#e1e6e5;color:#666;}
+.tbl_type td{padding:6px 0 4px;border-top:1px dashed #cecece;color:#595959}
 
 h1 {font-size: 3em; margin: 20px 0; color: #FFF;}
 .container {width: 700px; margin: 10px auto;}
@@ -154,19 +161,19 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
    <div id="main-container">
 
 	<form id="frm" name="frm" enctype="multipart/form-data">
-		<table class="board_view">
+		<table class="tbl_type">
 			<colgroup>
-				<col width="15%">
-				<col width="*"/>
+	            <col width="10%">
+	            <col width="*"/>
+	            <col width="15%">
+	            <col width="20%">
 			</colgroup>
 			<tbody>
 				<tr>
-					<th scope="row">제목</th>
-					<td><input type="text" id="QNA_TITLE" name="QNA_TITLE" class="wdp_90" size="80"></input></td>
-				</tr>
-				<tr>
+	         		<th>제목</th>
+	         		<td style="background-color:#fff;"><input type="text" id="QNA_TITLE" name="QNA_TITLE" style="width:95%"/></td>
 					<th scope="row">유형</th>
-					<td><select name="QNA_TYPE" id="QNA_TYPE">
+					<td style="background-color:#fff;"><select name="QNA_TYPE" id="QNA_TYPE">
 					<option value="상품 관련 문의">상품 관련 문의</option>
 					
 					<option value="회원 관리 문의">회원 관리 문의</option>
@@ -177,21 +184,13 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 					</select></td>
 				</tr>
 				<tr>
-					<td colspan="2" class="view_text">
+					<td colspan="4" class="view_text"  style="background-color:#fff;">
 						<textarea rows="20" cols="100" title="내용" id="QNA_CONTENT" name="QNA_CONTENT"></textarea>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<div id="fileDiv">
-			<p>
-				<input type="file" name="file_0" id="file"  accept="image/gif,image/jpeg,image/png">
-				<a href="#this" class="btn" id="delete" name="delete">삭제</a>
-			</p>
-		</div>
-		
 		<br/><br/>
-		<a href="#this" class="btn" id="addFile">파일 추가</a>
 		<a href="#this" class="btn" id="write">작성하기</a>
 		<a href="#this" class="btn" id="list">목록으로</a>
 	</form>

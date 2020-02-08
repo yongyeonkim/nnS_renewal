@@ -36,7 +36,7 @@
    <!-- main -->
    <definition name="main" extends="default3">
    	  <put-attribute name="body" value="/WEB-INF/views/member/main/main.jsp" />
-      <put-attribute name="body2" value="/WEB-INF/views/shop/goods/goodsList.jsp" />
+      <put-attribute name="body2" value="/WEB-INF/views/shop/goods/goodsList2.jsp" />
    </definition>
    
    <!-- Member -->

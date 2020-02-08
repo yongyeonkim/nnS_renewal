@@ -150,7 +150,6 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
       	<li><a href="/nnS/myshop"><img src="/nnS/resources/images/myshop_tab1.png" width="100" height="30"></a></li>
          <li><a href="/nnS/myshop/saleList"><img src="/nnS/resources/images/myshop_tab2.png" width="100" height="30"></a></li>
          <li class="selected"><a href="/nnS/myshop/goodsLikeList"><img src="/nnS/resources/images/myshop_tab3.png" width="100" height="30">></a></li>
-         <li><a href="/nnS/myshop/recentGoodsList"><img src="/nnS/resources/images/myshop_tab4.png" width="100" height="30"></a></li>
       </ul>
    </div>
    <div id="main-container">

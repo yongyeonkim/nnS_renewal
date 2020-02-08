@@ -155,70 +155,36 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
    <div id="main-container">
 
    <form id="frm" name="frm" enctype="multipart/form-data">
-      <table class="board_view">
+      <table class="tbl_type">
          <colgroup>
             <col width="15%">
             <col width="*"/>
          </colgroup>
-         <center><h2>공지사항 수정</h2></center>
+         <center><h2>공지사항 작성</h2></center>
          <tbody>
-<!--          	<tr>
-         		<td scope="row">분류</td>
-         		<td>
-            		<select name="keyField">
-					<option value="choice">선택</option>
-					<option value="notice">공지사항</option>
-					<option value="board">자유게시판</option>
-					<option value="report">신고게시판</option>
-					<option value="qna">Q&A게시판</option>
-				</select>
-            	</td>
-         	</tr> -->
-         	<tr>
-         		<td>작성자</td>
-         		<td>관리자</td>         	
-         	</tr>
-         	
          	<tr>
          		<td>제목</td>
-         		<td colspan="3">
-       				<input type="text" id="NOTICE_TITLE" name="NOTICE_TITLE" class="wdp_90" value="${map.NOTICE_TITLE}"/>
-	         		<input type="hidden" id="NOTICE_NUM" name="NOTICE_NUM" value="${map.NOTICE_NUM }"/>
-         		</td>
+         		<td style="background-color:#fff;"><input type="text" id="NOTICE_TITLE" name="NOTICE_TITLE" style="width:95%" value="${map.NOTICE_TITLE}"/></td>
+         		<td>작성자</td>
+         		<td style="background-color:#fff;">${session_MEM_INFO.MEM_ID }<input type="hidden" id="MEM_NUM" name="MEM_NUM" value="${session_MEM_INFO.MEM_NUM }"/></td>
          	</tr>
-         	
          	<tr>
-         		<td>내용</td>
-         		<td colspan="3" class="view_text">
+         		
+         		<td colspan="4" class="view_text"  style="background-color:#fff;">
                   <textarea rows="20" cols="100" title="내용" id="NOTICE_CONTENT" name="NOTICE_CONTENT">${map.NOTICE_CONTENT}</textarea>
                </td>
          	</tr>
-         	<tr>
-         		<th scope="row">첨부파일</th>
-         		<td colspan="3" >
-         		<div id="fileDiv">
-         			<c:forEach var="row" items="${list }" varStatus="var">
-	        			<p>
-	        				<input type="hidden" id="IDX" name="IDX_${var.index }" value="${row.FILES_NUM }">
-	        				<a href="#this" id="name_${var.index }" name="name_${var.index }">${row.FILES_ORGNAME }</a>
-	        				<input type="file" id="file_${var.index }" name="file_${var.index }">(${row.FILES_SIZE }kb)
-	        				<a href="#this" class="btn" id="delete_${var.index}" name="delete_${var.index }">삭제</a>
-	        			</p>
-         			</c:forEach>
-     			 </div>
-     			 </td>
-         	</tr>
-            
          </tbody>
       </table>
-      
       <br/><br/>
-      <div align="center">
-      <a href="#this" class="btn" id="addFile">파일추가</a>&nbsp;
-      <a href="#this" class="btn" id="list">목록으로</a>&nbsp;
-      <a href="#this" class="btn" id="write">작성하기</a>&nbsp;
-      </div>
+      <center>
+	      <a href="#write" class="btn" id="write">작성하기</a>
+	      <a href="#list" class="btn" id="list">목록으로</a>
+      </center>
    </form>
+   
+   
+   
   </div>
 </div>
 

@@ -304,14 +304,6 @@ h1 {
 </head>
 <body>
 <div id="content">
-   <div id="vertical_tab-container">
-      <ul>
-         <li <c:if test="${sortType eq 'all'}">class="selected"</c:if>><a href=<c:url value="/shop/allGoodsList"/>><img src=<c:url value="./../resources/images/goods_tab1.png"/>></a></li>
-         <li <c:if test="${sortType eq 'like'}">class="selected"</c:if>><a href=<c:url value="/shop/likeGoodsList"/>><img src=<c:url value="./../resources/images/goods_tab2.png"/>></a></li>
-         <li <c:if test="${sortType eq 'view'}">class="selected"</c:if>><a href=<c:url value="/shop/viewGoodsList"/>><img src=<c:url value="./../resources/images/goods_tab3.png"/>></a></li>
-      </ul>
-   </div>
-   <div id="main-container">
    		<table class="board_list">
 		<colgroup>
 			<col width="100%" />
@@ -351,7 +343,6 @@ h1 {
 		<a href="#this" class="btn" id="write">글쓰기</a>
 	</c:if>
 
-   </div>
 </div>
     
     <%@ include file="/WEB-INF/include/include-body.jspf" %>

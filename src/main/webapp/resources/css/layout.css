@@ -5,7 +5,7 @@ wrapper {
     min-height:100%;
 }
 /* 헤더 설정 */
-#header .header_area{width:1000px;height:200px;margin:auto;position:relative;top:0;left:0;}
+#header .header_area{width:1300px;height:200px;margin:auto;position:relative;top:0;left:0;}
 #header .header_area h1 a{display:block;}
 #header .header_area .main_image{position:relative; left:50%; width:110px; height:auto;}
 

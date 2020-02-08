@@ -8,6 +8,14 @@
 
 <style type="text/css">
 
+/* UI Object */   
+.tbl_type,.tbl_type th,.tbl_type td{border:0}
+.tbl_type{width:100%;border-bottom:1px solid #bbbbbb;font-family:Tahoma;font-size:11px;text-align:center}
+.tbl_type caption{display:none}
+.tbl_type th{padding:7px 0 4px;border-bottom:1px solid #949494;border-top:1px solid #949494;background-color:#e1e6e5;color:#666;}
+.tbl_type tr{padding:7px 0 4px;border-bottom:1px solid #949494;border-top:1px solid #949494;background-color:#e1e6e5;color:#666;}
+.tbl_type td{padding:6px 0 4px;border-top:1px dashed #cecece;color:#595959}
+
 h1 {font-size: 3em; margin: 20px 0; color: #FFF;}
 .container {width: 700px; margin: 10px auto;}
 ul.goodsTabs {
@@ -153,79 +161,42 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
       </ul>
    </div>
    <div id="main-container">
-
+	<img src="./../resources/images/board_writeForm.png" width="100" height="30">
    <form id="frm" name="frm" enctype="multipart/form-data">
-      <table class="board_view">
+      <table class="tbl_type">
          <colgroup>
-            <col width="15%">
+            <col width="10%">
             <col width="*"/>
+            <col width="10%">
+            <col width="15%">
          </colgroup>
-         <center><h2>자유게시판 수정</h2></center>
          <tbody>
-         	<!-- <tr>
-         		<td scope="row">분류</td>
-         		<td>
-            		<select name="keyField">
-					<option value="choice">선택</option>
-					<option value="board">자유게시판</option>
-					<option value="report">신고게시판</option>
-					<option value="qna">Q&A게시판</option>
-				</select>
-            	</td>
-         	</tr> -->
-<!--          	<tr>
-         		<td>작성자</td>
-         		<td><input type="text" id="writer" name="WRITER" class="wdp_90" value="${map.WRITER }"></input></td>         	
-         	</tr>
-         	 -->
-         	 <tr>
-         		<td>작성자</td>
-         		<td>${session_MEM_INFO.MEM_ID }</td>         	
-         	</tr>
          	<tr>
          		<td>제목</td>
-         		<td colspan="3"><input type="text" id="BOARD_TITLE" name="BOARD_TITLE" class="wdp_90" value="${map.BOARD_TITLE}" size="80"/>
+         		<td style="background-color:#fff;"><input type="text" id="BOARD_TITLE" name="BOARD_TITLE" style="width:95%" value="${map.BOARD_TITLE}"/>
          		<input type="hidden" id="BOARD_NUM" name="BOARD_NUM" value="${map.BOARD_NUM }"/>
-         		</td>
+         		<td>작성자</td>
+         		<td style="background-color:#fff;">${session_MEM_INFO.MEM_ID }</td>
          	</tr>
-         	
          	<tr>
-         		<td>내용</td>
-         		<td colspan="3" class="view_text">
+         		
+         		<td colspan="4" class="view_text"  style="background-color:#fff;">
                   <textarea rows="20" cols="100" title="내용" id="BOARD_CONTENT" name="BOARD_CONTENT">${map.BOARD_CONTENT }</textarea>
                </td>
          	</tr>
-         	<tr>
-         		<th scope="row">첨부파일</th>
-         		<td colspan="3" >
-         		<div id="fileDiv">
-         			<c:forEach var="row" items="${list }" varStatus="var">
-	        			<p>
-	        				<input type="hidden" id="IDX" name="IDX_${var.index }" value="${row.FILES_NUM }">
-	        				<a href="#this" id="name_${var.index }" name="name_${var.index }">${row.FILES_ORGNAME }</a>
-	        				<input type="file" id="file_${var.index }" name="file_${var.index }">(${row.FILES_SIZE }kb)
-	        				<a href="#this" class="btn" id="delete_${var.index}" name="delete_${var.index }">삭제</a>
-	        			</p>
-         			</c:forEach>
-     			 </div>
-     			 </td>
-         	</tr>
-            
+         	
          </tbody>
       </table>
       
       <br/><br/>
-      <div align="center">
-      <a href="#this" class="btn" id="addFile">파일추가</a>
+      <center>
       <a href="#this" class="btn" id="write">작성하기</a>
       <a href="#this" class="btn" id="list">목록으로</a>
-      </div>
+      </center>
    </form>
-   
-   
-   
   </div>
 </div>
+
 <script type="text/javascript">
 		var gfv_count = '${fn:length(list)+1}';
 		

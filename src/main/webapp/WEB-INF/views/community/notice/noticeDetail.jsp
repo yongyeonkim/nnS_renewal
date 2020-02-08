@@ -4,6 +4,12 @@
 <head>
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 <style type="text/css">
+/* UI Object */   
+.tbl_type,.tbl_type th,.tbl_type td{border:0}
+.tbl_type{width:100%;border-bottom:1px solid #bbbbbb;font-family:Tahoma;font-size:11px;text-align:center}
+.tbl_type caption{display:none}
+.tbl_type th{padding:7px 0 4px;border-bottom:1px solid #949494;border-top:1px solid #949494;background-color:#e1e6e5;color:#666;}
+.tbl_type td{padding:6px 0 4px;border-top:1px dashed #cecece;color:#595959}
 
 h1 {font-size: 3em; margin: 20px 0; color: #FFF;}
 .container {width: 700px; margin: 10px auto;}
@@ -151,7 +157,8 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 	</ul>
 	</div>
 	<div id="main-container">
-	<table border="1" align="center" class="notice_view">
+	<img src="./../resources/images/board_writeForm.png" width="100" height="30">
+	<table border="1" align="center" class="tbl_type">
 		<colgroup>
 			<col width="15%"/>
 			<col width="35%"/>
@@ -161,20 +168,20 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 		<caption><h2>공지사항</h2></caption>
 		<tbody>
 			<tr>
-				<th scope="row">글 번호</th>
+				<th scope="row"><img src="./../resources/images/commu_num.png" height="25"></th>
 				<td>${map.NOTICE_NUM }
 				<input type="hidden" id="NOTICE_NUM" name="NOTICE_NUM" value="${map.NOTICE_NUM }"></td>
-				<th scope="row">조회수</th>
+				<th scope="row"><img src="./../resources/images/commu_hit.png" height="25"></th>
 				<td>${map.NOTICE_COUNT }</td>
 			</tr>
 			<tr>
-				<th scope="row">작성자</th>
+				<th scope="row"><img src="./../resources/images/commu_writer.png" height="25"></th>
 				<td>관리자</td>
-				<th scope="row">작성일자</th>
+				<th scope="row"><img src="./../resources/images/commu_date.png" height="25"></th>
 				<td>${map.NOTICE_DATE }</td>
 			</tr>
 			<tr>
-				<th scope="row">제목</th>
+				<th scope="row"><img src="./../resources/images/commu_title.png" height="25"></th>
 				<td colspan="3">${map.NOTICE_TITLE }</td>
 			</tr>
 			<tr>
