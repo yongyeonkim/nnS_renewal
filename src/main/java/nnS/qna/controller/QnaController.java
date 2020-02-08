@@ -22,10 +22,14 @@ public class QnaController {
 	@Resource(name="qnaService")
 	private QnaServiceImpl qnaService;
 	
-	@RequestMapping(value = "/community/qnaListPaging")
-	public ModelAndView qnaList(CommandMap commandMap) throws Exception {
+	@RequestMapping(value = {"/community/qnaListPaging","/myPage/qnaListPaging"})
+	public ModelAndView qnaListPaging(CommandMap commandMap,HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("jsonView");
 		
+		if(request.getServletPath().equals("/myPage/qnaListPaging")){
+			HttpSession session = request.getSession();
+			commandMap.put("session_MEM_ID", session.getAttribute("session_MEM_ID"));
+			}
 		List<Map<String,Object>> list = qnaService.selectQnaList(commandMap.getMap());
 		mv.addObject("list", list);
 		
@@ -38,26 +42,7 @@ public class QnaController {
 		
 		return mv;
 	}
-	
-	@RequestMapping(value = "/myPage/qnaListPaging")
-	public ModelAndView qnaMyList(CommandMap commandMap,HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("jsonView");
-		HttpSession session = request.getSession();
-		commandMap.put("session_MEM_ID", session.getAttribute("session_MEM_ID"));
 
-		List<Map<String,Object>> list = qnaService.selectQnaList(commandMap.getMap());
-		mv.addObject("list", list);
-		
-		if(list.size() > 0){
-    		mv.addObject("TOTAL", list.get(0).get("TOTAL_COUNT"));
-    	}
-    	else{
-    		mv.addObject("TOTAL", 0);
-    	}
-		
-		return mv;
-	}
-	
 	
 	@RequestMapping(value =  "/myPage/qnaList")
 	public ModelAndView qnaList() throws Exception {

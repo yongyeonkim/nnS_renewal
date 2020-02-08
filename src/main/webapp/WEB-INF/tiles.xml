@@ -81,7 +81,7 @@
    </definition>
    
    <definition name="myreportList" extends="default2">
-      <put-attribute name="body" value="/WEB-INF/views/member/myPage/myreportList.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/member/myPage/myReportList.jsp" />
    </definition>
    
    <definition name="myreportDetail" extends="default2">

@@ -41,26 +41,14 @@ public class ReportController {
 		
 		return mv;		
 	}
-	@RequestMapping(value = "/community/reportListPaging")
-	public ModelAndView reportList(CommandMap commandMap) throws Exception {
+
+	@RequestMapping(value = {"/myPage/reportListPaging","/community/reportListPaging"})
+	public ModelAndView reportListPaging(CommandMap commandMap,HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("jsonView");
-		
-		List<Map<String,Object>> list = reportService.selectReportList(commandMap.getMap());
-		mv.addObject("list", list);
-		
-		if(list.size() > 0){
-    		mv.addObject("TOTAL", list.get(0).get("TOTAL_COUNT"));
-    	}
-    	else{
-    		mv.addObject("TOTAL", 0);
-    	}
-		return mv;
-	}
-	@RequestMapping(value = "/myPage/reportListPaging")
-	public ModelAndView reportMyList(CommandMap commandMap,HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("jsonView");
-		 HttpSession session = request.getSession();
-	 commandMap.put("session_MEM_ID", session.getAttribute("session_MEM_ID"));
+		if(request.getServletPath().equals("/myPage/reportListPaging")) {
+			HttpSession session = request.getSession();
+			commandMap.put("session_MEM_ID", session.getAttribute("session_MEM_ID"));
+		}
 		List<Map<String,Object>> list = reportService.selectReportList(commandMap.getMap());
 		mv.addObject("list", list);
 		
