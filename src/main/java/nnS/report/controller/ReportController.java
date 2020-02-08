@@ -44,7 +44,7 @@ public class ReportController {
 	
 	@RequestMapping(value = "/myPage/reportList")
 	public ModelAndView myQnaList(CommandMap commandMap, HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("reportList");
+		ModelAndView mv = new ModelAndView("myreportList");
 		
 		String url = "";
 		HttpSession session = request.getSession();

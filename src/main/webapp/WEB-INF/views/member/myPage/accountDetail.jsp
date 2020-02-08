@@ -85,6 +85,8 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 }
  #content
 {
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   border-radius: 20px;
    background-color: #ffffff;
    padding: 20px 10px;
    overflow: auto;
@@ -139,71 +141,76 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
    background-color: #fff;
    border: 1px solid #888;
 }
+   @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
+   
+   html {
+      height: 100%;
+   }
+   
+   body {
+        background:linear-gradient(to bottom right, #f0e199, #f0e199);
+   }
+   body,table,input,select,textarea,button,h1,h2,h3,h4,h5,h6,a{font-family:'맑은 고딕',Malgun Gothic,sans-serif;font-size:12px;color:#666;font-weight:400;}
+   
+    .card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   }
+   
+   .form-signin .form-control {
+        position: relative;
+        height: auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px;
+   }
+
 </style>
 </head>
-<body>
 
-  <div id="content">
-   <div id="vertical_tab-container">
-      <ul>
-         <li class="selected"><a href="accountDetail">회원 정보 변경</a></li>
-         <li><a href="pwModifyForm">비밀번호 변경</a></li>
-         <li><a href="deleteAccount">회원 탈퇴</a></li>
-         <li><a href="reportList">신고 내역</a></li>
-         <li><a href="qnaList">Q&A</a></li>
-      </ul>
-   </div>
-   <div id="main-container">
-					<form id="accountModify" method="post">
-					<h2>회원 정보 변경</h2>
-
-				<div>
-					아이디 ${map.MEM_ID } 
-				</div>
-				
-				<div>
-					이름 ${map.MEM_NAME }
-				</div>
-				
-				<div>
-					생년월일 ${map.MEM_BIRTH } 
-				</div>
-				
-				<div>			
-					성별 ${map.MEM_GEN }		
-				</div>
-				
-				<div>
-				
-               이메일 ${map.MEM_EMAIL }
-  
-				</div>
-				
-				<div>
-					휴대전화 ${map.MEM_PHONE }
-				</div>
-							
-				<div>
-					우편번호 ${map.MEM_ZIP }		
-				</div>
-				
-				<div>
-					집 주소 ${map.MEM_ADD1 }
-				</div>
-				
-				<div>
-					상세 주소 ${map.MEM_ADD2 }
-				</div>									
-				<p/>
-			<button type="button" onclick="ch_info();">수정하기</button>
-			<button onclick="back();" type="button">취소하기</button>
-									
-				
-		</tbody>
-   </div>
-</div>
-	
-
+<body onload="begin()" cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
+      <div class="card align-middle" style="border-radius:20px; background-color:#fff; margin-top:50px;">
+      <div id="content">
+         <div id="vertical_tab-container">
+	         <ul>
+	         <li class="selected"><a href="accountDetail">회원 정보 확인</a></li>
+	         <li><a href="pwModifyForm">비밀번호 변경</a></li>
+	         <li><a href="deleteAccount">회원 탈퇴</a></li>
+	         <li><a href="reportList">신고 내역</a></li>
+	         <li><a href="qnaList">Q&A</a></li>
+	      </ul>
+	   </div>
+	   <div id="main-container">
+            <div class="card-title" style="margin-top:30px;">
+               <h2 class="card-title text-center" style="color:#113366;">회원 정보 확인</h2>
+            </div>
+            <div class="card-body">
+               아이디 <div class="form-control">${map.MEM_ID } </div><br>
+               이름 <div class="form-control">${map.MEM_NAME } </div><br>
+			   생년월일<div class="form-control">생년월일 ${map.MEM_BIRTH }</div><br>
+			   성별<div class="form-control">${map.MEM_GEN }</div><br>
+			   이메일<div class="form-control">${map.MEM_EMAIL }</div><br>
+		       휴대전화<div class="form-control">${map.MEM_PHONE }</div><br>
+			   우편번호<div class="form-control">${map.MEM_ZIP }</div><br>
+			   주소<div class="form-control">${map.MEM_ADD1 }</div><br>
+			   상세주소<div class="form-control">${map.MEM_ADD2 }</div><br>	
+            </div>
+         
+            <div class="card-body">
+            	<input type="button" class="btn btn-lg btn-primary btn-block" value="수정 하러 가기" onclick="ch_info();" style="background-color:#26a69a;">
+            	<input type="button" class="btn btn-lg btn-primary btn-block" value="취소" onclick="back();" style="background-color:#26a69a;">
+				<span id="pwc"></span>
+				<br>
+            </div>
+         </div>
+         </div>
+      </div>
+      
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
 

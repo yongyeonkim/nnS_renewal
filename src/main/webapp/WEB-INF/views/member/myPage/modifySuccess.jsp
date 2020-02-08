@@ -84,6 +84,8 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 }
  #content
 {
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   border-radius: 20px;
    background-color: #ffffff;
    padding: 20px 10px;
    overflow: auto;
@@ -138,35 +140,63 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
    background-color: #fff;
    border: 1px solid #888;
 }
+   @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
+   
+   html {
+      height: 100%;
+   }
+   
+   body {
+        background:linear-gradient(to bottom right, #f0e199, #f0e199);
+   }
+   body,table,input,select,textarea,button,h1,h2,h3,h4,h5,h6,a{font-family:'맑은 고딕',Malgun Gothic,sans-serif;font-size:12px;color:#666;font-weight:400;}
+   
+    .card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   }
+   
+   .form-signin .form-control {
+        position: relative;
+        height: auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px;
+   }
 </style>
 </head>
-<body>
-
-  <div id="content">
-   
-   <div id="main-container">
-      <table border="1" align="center">
-      <tbody>
-         <tr>
-            <td>
-               <div class="container">
-                  
-                 <center>
-                  <h2>변경완료</h2>
-                   <p/>
-                            정보변경이 완료되었습니다.
-                 </center>
-                       
-               </div>
-               <center>
-                  <input type="button" id="gomain" value="메인으로" onclick="document.location.href='/nnS/main'"/>
-               </center>
-         </td>
-      </tr>
-   </tbody>
-   </table>
-   </div>
-</div>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<body onload="begin()" cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
+      <div class="card align-middle" style="border-radius:20px; background-color:#fff; margin-top:50px;">
+      <div id="content">
+         <div id="vertical_tab-container">
+	         <ul>
+	         <li><a href="accountDetail">회원 정보 확인</a></li>
+	         <li class="selected"><a href="pwModifyForm">비밀번호 변경</a></li>
+	         <li><a href="deleteAccount">회원 탈퇴</a></li>
+	         <li><a href="reportList">신고 내역</a></li>
+	         <li><a href="qnaList">Q&A</a></li>
+	      </ul>
+	   </div>
+	   <div id="main-container">
+            <div class="card-title" style="margin-top:30px;">
+               <h2 class="card-title text-center" style="color:#113366;">회원 정보 변경 완료</h2>
+            </div>
+            <div class="card-body">
+               정보 변경이 완료되었습니다.
+			   <span id="pw"></span>
+            </div>
+         
+            <div class="card-body">
+            	<input type="button" class="btn btn-lg btn-primary btn-block" value="메인으로" id="gomain" onclick="document.location.href='/nnS/main'" style="background-color:#26a69a;">
+				<br>
+            </div>
+         </div>
+         </div>
+      </div>
 </body>
 </html>
