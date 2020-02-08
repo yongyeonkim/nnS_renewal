@@ -6,6 +6,8 @@
 
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 
+<script type="text/javascript" src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
+
 <meta charset="UTF-8">
 <style type="text/css">
 #main-container
@@ -47,7 +49,7 @@
 	      	</li>
 	      	<li>
 	      		중고상태 <br/>
-				<select name="GOODS_STATUS">
+				<select name="GOODS_STATUS" id="GOODS_STATUS">
 					<option value="" selected disabled hidden>==선택하세요==</option>
 				    <option value="1">A</option>
 				    <option value="2">B</option>
@@ -165,6 +167,14 @@
 		
 	});
 	
+    $(function(){
+		CKEDITOR.replace('GOODS_CONTENT',{
+            width:'100%',
+            height:'600px',
+			filebrowserUploadUrl: '${pageContext.request.contextPath }/ckeditor/fileupload'
+		});
+	});
+	
 	function fn_openGoodsList(){
 		var comSubmit = new ComSubmit();
 		comSubmit.setUrl("<c:url value='/shop/allGoodsList' />");
@@ -174,6 +184,66 @@
 	function fn_insertGoods(){
 		var comSubmit = new ComSubmit("frm");
 		comSubmit.setUrl("<c:url value='/shop/goodsWrite' />");
+		
+     	// 게시글 카테고리 필요
+        if(!$("#GOODS_CATEGORY").val()){
+            alert("카테고리를 입력해주세요.");
+            $("#GOODS_CATEGORY").focus();
+            return false;
+        }
+     	// 게시글 중고상태 필요
+        if(!$("#GOODS_STATUS").val()){
+            alert("중고상태를 입력해주세요.");
+            $("#GOODS_STATUS").focus();
+            return false;
+        }
+        // 게시글 제목 필요
+        if(!$("#GOODS_TITLE").val()){
+            alert("제목를 입력해주세요.");
+            $("#GOODS_TITLE").focus();
+            return false;
+        }
+   	 	// 게시글 내용 필요
+        if(CKEDITOR.instances.GOODS_CONTENT.getData() =='' 
+                || CKEDITOR.instances.GOODS_CONTENT.getData().length ==0){
+            alert("내용을 입력해주세요.");
+            $("#GOODS_CONTENT").focus();
+            return false;
+        }
+   	 	
+     	// 게시글 가격입력 필요
+        if(!$("#GOODS_PRICE").val()){
+            alert("가격을 입력해주세요.");
+            $("#GOODS_PRICE").focus();
+            return false;
+        }
+     	// 게시글 배송비 필요
+        if(!$("#GOODS_DCOST").val()){
+            alert("배송비를 입력해주세요.");
+            $("#GOODS_DCOST").focus();
+            return false;
+        }
+     	// 게시글 브랜드 필요
+        if(!$("#GOODS_BRAND").val()){
+            alert("브랜드를 입력해주세요.");
+            $("#GOODS_BRAND").focus();
+            return false;
+        }
+     	// 게시글 해시태그 필요
+        if(!$("#GOODS_HASH").val()){
+            alert("해시태그를 입력해주세요.");
+            $("#GOODS_HASH").focus();
+            return false;
+        }
+     	// 게시글 판매지역 필요
+        if(!$("#GOODS_REGION").val()){
+            alert("판매지역을 입력해주세요.");
+            $("#GOODS_REGION").focus();
+            return false;
+        }
+     	
+     	
+		
 		comSubmit.submit();
 	} 
 

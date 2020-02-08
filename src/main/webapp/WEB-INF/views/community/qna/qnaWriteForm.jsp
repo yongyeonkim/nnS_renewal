@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@ include file="/WEB-INF/include/include-header.jspf" %>
 <html lang="ko">
 <head>
+<%@ include file="/WEB-INF/include/include-header.jspf" %>
+<script type="text/javascript" src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
 <meta charset="UTF-8">
 <style type="text/css">
 
@@ -158,9 +159,10 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 			</colgroup>
 			<tbody>
 				<tr>
-				    
 					<th scope="row">제목</th>
-					<td><input type="text" id="QNA_TITLE" name="QNA_TITLE" class="wdp_90"></input></td>
+					<td><input type="text" id="QNA_TITLE" name="QNA_TITLE" class="wdp_90" size="80"></input></td>
+				</tr>
+				<tr>
 					<th scope="row">유형</th>
 					<td><select name="QNA_TYPE" id="QNA_TYPE">
 					<option value="상품 관련 문의">상품 관련 문의</option>
@@ -218,6 +220,14 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 			});
 		});
 		
+	      $(function(){
+	    		CKEDITOR.replace('QNA_CONTENT',{
+	                width:'100%',
+	                height:'600px',
+	    			filebrowserUploadUrl: '${pageContext.request.contextPath }/ckeditor/fileupload'
+	    		});
+	    	});
+		
 		function fn_openBoardList(){
 			var comSubmit = new ComSubmit();
 			comSubmit.setUrl("<c:url value='/community/qnaList' />");
@@ -227,6 +237,21 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 		function fn_insertBoard(){
 			var comSubmit = new ComSubmit("frm");
 			comSubmit.setUrl("<c:url value='/community/qnaWrite' />");
+			
+			 // 게시글 제목 필요
+	         if(!$("#QNA_TITLE").val()){
+	             alert("제목를 입력해주세요.");
+	             $("#QNA_TITLE").focus();
+	             return false;
+	         }
+	    	  // 게시글 내용 필요
+	         if(CKEDITOR.instances.QNA_CONTENT.getData() =='' 
+	                 || CKEDITOR.instances.QNA_CONTENT.getData().length ==0){
+	             alert("내용을 입력해주세요.");
+	             $("#QNA_CONTENT").focus();
+	             return false;
+	         }
+			
 			comSubmit.submit();
 		}
 		
