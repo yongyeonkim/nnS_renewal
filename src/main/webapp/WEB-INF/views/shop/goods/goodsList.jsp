@@ -169,7 +169,7 @@ html, body, div, span, applet, object, iframes, h1, h2, h3, h4, h5, h6,
    margin: 0;
    padding: 0;
    border: 0;
-   font-size: 100%;
+   
    do: inherit;
    vertical-align: baseline;
 }
@@ -305,10 +305,9 @@ h1 {
 <div id="content">
    <div id="vertical_tab-container">
       <ul>
-         <li <c:if test="${sortType eq 'all'}">class="selected"</c:if>><a href=<c:url value="/shop/allGoodsList"/>>전체상품</a></li>
-         <li <c:if test="${sortType eq 'like'}">class="selected"</c:if>><a href=<c:url value="/shop/likeGoodsList"/>>인기상품</a></li>
-         <li <c:if test="${sortType eq 'new'}">class="selected"</c:if>><a href=<c:url value="/shop/newGoodsList"/>>신규상품</a></li>
-         <li <c:if test="${sortType eq ''}">class="selected"</c:if>><a href=<c:url value="/shop"/>>카테고리</a></li>
+         <li <c:if test="${sortType eq 'all'}">class="selected"</c:if>><a href=<c:url value="/shop/allGoodsList"/>>전체 상품</a></li>
+         <li <c:if test="${sortType eq 'like'}">class="selected"</c:if>><a href=<c:url value="/shop/likeGoodsList"/>>많이 찜한 상품</a></li>
+         <li <c:if test="${sortType eq 'view'}">class="selected"</c:if>><a href=<c:url value="/shop/viewGoodsList"/>>많이 본 상품</a></li>
       </ul>
    </div>
    <div id="main-container">
