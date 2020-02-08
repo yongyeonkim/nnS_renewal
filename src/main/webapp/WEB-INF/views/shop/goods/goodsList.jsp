@@ -75,7 +75,6 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 	border-bottom: 1px dashed #ddd;
 	font-size: 1.8em;
 }
-
 .goodsTab_content h3 a{
 	color: #254588;
 }
@@ -86,15 +85,15 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 	padding: 5px;
 }
  #content
-{
+{	 
    background-color: #ffffff;
-   padding: 20px 10px;
+   padding: 20px 10px;  
    overflow: auto;
 }
 #vertical_tab-container
 {
    float: left;
-   margin: 50px 0 0 0;
+   margin: 70px 0 0 0;
    width: 126px;
 }
 #vertical_tab-container ul
@@ -104,42 +103,44 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 }
 #vertical_tab-container ul li
 {
-   border-top: 1px solid #666;
-   border-right: 1px solid #666;
-   border-bottom: 1px solid #666;
-   border-left: 8px solid #666;
-   background-color: #ddd;
+   border-top: 1px solid #fff;
+   border-right: 1px solid #fff;
+   border-bottom: 1px solid #595959;
+   border-left: 4px solid #595959;   
+   background-color: #fff;  
    margin: 8px 0;
-}
+}  
 #vertical_tab-container ul li a,
 #vertical_tab-container ul li a:visited
 {
    text-decoration: none;
    color: #666;
    display: block;
-   padding: 15px 5px;
+ 	padding: 3px 3px;
 }
 #vertical_tab-container ul li:hover
 {
-   border-left: 8px solid #333;
+   border-left: 4px solid #ffd04a;
 }
 #vertical_tab-container ul li a:hover
 {
-   color: #000;
+   color: #333;
 }
 #vertical_tab-container ul li.selected
 {
    border-right: none;
    background-color: #fff;
-   border-left: 8px solid #006699;
+   border-left: 4px solid #ffd04a;
 }
 #main-container
 {
    min-height: 400px;
    margin: 0 0 0 125px;
    padding: 20px;
-   background-color: #fff;
-   border: 1px solid #888;
+   border-top: 1px solid #fff;  
+   border-right: 1px solid #fff;     
+   border-left: 1px solid #fff; 
+   border-bottom: 1px solid #fff;    
 }
 td{
 	margin:0 0 0 10px
@@ -305,10 +306,10 @@ h1 {
 <div id="content">
    <div id="vertical_tab-container">
       <ul>
-         <li <c:if test="${sortType eq 'all'}">class="selected"</c:if>><a href=<c:url value="/shop/allGoodsList"/>>전체상품</a></li>
-         <li <c:if test="${sortType eq 'like'}">class="selected"</c:if>><a href=<c:url value="/shop/likeGoodsList"/>>인기상품</a></li>
-         <li <c:if test="${sortType eq 'new'}">class="selected"</c:if>><a href=<c:url value="/shop/newGoodsList"/>>신규상품</a></li>
-         <li <c:if test="${sortType eq ''}">class="selected"</c:if>><a href=<c:url value="/shop"/>>카테고리</a></li>
+         <li <c:if test="${sortType eq 'all'}">class="selected"</c:if>><a href=<c:url value="/shop/allGoodsList"/>><img src="./../resources/images/goods_tab1.png" width="100" height="30"></a></li>
+         <li <c:if test="${sortType eq 'like'}">class="selected"</c:if>><a href=<c:url value="/shop/likeGoodsList"/>><img src="./../resources/images/goods_tab2.png" width="100" height="30"></a></li>
+         <li <c:if test="${sortType eq 'new'}">class="selected"</c:if>><a href=<c:url value="/shop/newGoodsList"/>><img src="./../resources/images/goods_tab3.png" width="100" height="30"></a></li>
+         <li <c:if test="${sortType eq ''}">class="selected"</c:if>><a href=<c:url value="/shop"/>><img src="./../resources/images/goods_tab4.png" width="100" height="30"></a></li>
       </ul>
    </div>
    <div id="main-container">
@@ -346,10 +347,11 @@ h1 {
 		<div id="PAGE_NAVI" align="center"></div>
 		<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
    
-	
+	<div align="right">
 	<c:if test="${session_MEM_ID ne null }">
-		<a href="#this" class="btn" id="write">글쓰기</a>
+		<a href="#this"  class="btn" id="write"><img src="./../resources/images/commu_wbtn.png"></a>
 	</c:if>
+	</div>
 
    </div>
 </div>

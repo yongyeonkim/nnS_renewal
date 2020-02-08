@@ -6,12 +6,13 @@
 <script type="text/javascript">
    var onSearch = function(){   
       submit();  
-   };   
+   };
+
 </script>
 
 <!--  Header 영역 -->
 <div class="header_area">
-   <h1><a href="/nnS/main" title="nnS#"><img class="main_image" src="<c:url value="/resources/images/mainlogo.png"/>" alt="nnS#"/></a></h1>   
+   <h1><a href="/nnS/main" title="nnS#"><img class="main_image" src="<c:url value="/resources/images/SkinImg/mainlogo.png"/>" alt="nnS#"/></a></h1>   
    <div class="search_main">
       <div class="search_inner">
          <form action="/nnS/shop" method="post">
@@ -56,7 +57,6 @@
    <div class="tab_cate">    
       <div class="tabs_area">  
          <ul class="tabs">
-
             <li><a href="/nnS/shop/allGoodsList" class="tab_a1"><span>쇼핑몰</span></a></li>
             <li><a href="/nnS/community/noticeList" class="tab_a2"><span>커뮤니티</span></a></li>
          </ul>
