@@ -101,69 +101,56 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 }
 #vertical_tab-container ul li
 {
-   border-top: 1px solid #fff;
-   border-right: 1px solid #fff;
-   border-bottom: 1px solid #595959;
-   border-left: 4px solid #595959;   
-   background-color: #fff;  
+   border-top: 1px solid #666;
+   border-right: 1px solid #666;
+   border-bottom: 1px solid #666;
+   border-left: 8px solid #666;
+   background-color: #ddd;
    margin: 8px 0;
-}  
+}
 #vertical_tab-container ul li a,
 #vertical_tab-container ul li a:visited
 {
    text-decoration: none;
    color: #666;
    display: block;
- 	padding: 3px 3px;
+   padding: 15px 5px;
 }
 #vertical_tab-container ul li:hover
 {
-   border-left: 4px solid #ffd04a;
+   border-left: 8px solid #333;
 }
 #vertical_tab-container ul li a:hover
 {
-   color: #333;
+   color: #000;
 }
 #vertical_tab-container ul li.selected
 {
    border-right: none;
    background-color: #fff;
-   border-left: 4px solid #ffd04a;
+   border-left: 8px solid #006699;
 }
 #main-container
 {
    min-height: 400px;
    margin: 0 0 0 125px;
    padding: 20px;
-   border-top: 1px solid #595959;  
-   border-right: 1px solid #fff;     
-   border-left: 1px solid #fff; 
-   border-bottom: 1px solid #595959;    
+   background-color: #fff;
+   border: 1px solid #888;
 }
 </style>
 </head>
 <body>
 <div id="content">
    <div id="vertical_tab-container">
-      <c:choose>
-       <c:when test="${url eq 'community'}">
       <ul>
-    	<li><a href="noticeList"><img src="./../resources/images/tab_notice.png" width="100" height="30"></a></li>
-         <li><a href="boardList"><img src="./../resources/images/tab_board.png" width="100" height="30"></a></li>
-         <li><a href="reportList"><img src="./../resources/images/tab_report.png" width="100" height="30"></a></li>
-         <li class="selected"><a href="qnaList"><img src="./../resources/images/tab_qna.png" width="100" height="30"></a></li>
+      
+         
+         <li><a href="noticeList">공지사항</a></li>
+         <li><a href="boardList">자유게시판</a></li>
+         <li><a href="reportList">신고게시판</a></li>
+         <li class="selected"><a href="qnaList">Q&A게시판</a></li>
         </ul>
-       </c:when>
-       <c:when test="${url eq 'myPage' }">
-         <ul>
-         <li><a href="accountModifyForm">회원정보변경</a></li>
-         <li><a href="pwModifyForm">비밀번호 변경</a></li>
-         <li><a href="deleteAccount">회원 탈퇴</a></li>
-         <li><a href="reportList">신고내역</a></li>
-         <li class="selected"><a href="qnaList">Q&A</a></li>
-         </ul>
-      </c:when>
-     </c:choose>
    </div>
    <div id="main-container">
    
@@ -177,16 +164,16 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 		</colgroup>
 		<thead>
 			<tr>
-				<th scope="col"><img src="./../resources/images/commu_num.png" width="70" height="25"></th>
-				<th scope="col"><img src="./../resources/images/commu_title.png" width="70" height="25"></th>
-				<th scope="col"><img src="./../resources/images/commu_writer.png" width="70" height="25"></th>
-				<th scope="col"><img src="./../resources/images/commu_hit.png" width="70" height="25"></th>
-				<th scope="col"><img src="./../resources/images/commu_date.png" width="70" height="25"></th>
-				<th scope="col"><img src="./../resources/images/commu_re.png" width="70" height="25"></th>
+				<th scope="col">글번호</th>
+				<th scope="col">제목</th>
+				<th scope="col">작성자</th>	
+				<th scope="col">작성일</th>
+				<th scope="col">답글여부</th>
+				<th scope="col">조회수</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:choose>
+			<%-- <c:choose>
 				<c:when test="${fn:length(list) > 0}">
 					<c:forEach items="${list }" var="row" varStatus="var">
 						<tr>
@@ -194,8 +181,8 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 							<td class="title"><a href="#this" name="title">${row.QNA_TITLE }&nbsp;&nbsp;&nbsp;&nbsp;[${row.QNA_TYPE }]</a>
 								<input type="hidden" id="QNA_NUM" value="${row.QNA_NUM }"></td>
 						    <td>${row.MEM_ID }</td>
-							<td>${row.QNA_COUNT }</td>
 							<td>${row.QNA_DATE }</td>
+							<td>${row.QNA_COUNT }</td>
 							<td>${row.QNA_YORN }</td>
 						</tr>
 					</c:forEach>
@@ -205,22 +192,22 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 						<td colspan="4">조회된 결과가 없습니다.</td>
 					</tr>
 				</c:otherwise>
-			</c:choose>
+			</c:choose> --%>
 		</tbody>
 	</table>
 	
-	<div id="PAGE_NAVI"></div>
+	<div id="PAGE_NAVI" align="center"></div>
 	<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
 
 	<br />
 	<a href="#this" class="btn" id="write">글쓰기</a>
 	</div>
 	</div>
-
+    <br/>
 	<%@ include file="/WEB-INF/include/include-body.jspf" %>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			/* fn_selectBoardList(1); */
+			 fn_selectBoardList(1);
 			$("#write").on("click", function(e) { //글쓰기 버튼
 				e.preventDefault();
 				fn_openBoardWrite();
@@ -247,8 +234,10 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 		}
 	    function fn_selectBoardList(pageNo) {
 			var comAjax = new ComAjax();
-			comAjax.setUrl("<c:url value='/community/qnaList' />");
+			
+			comAjax.setUrl("<c:url value='/community/qnaListPaging' />");
 			comAjax.setCallback("fn_selectBoardListCallback");
+			
 			comAjax.addParam("PAGE_INDEX", pageNo);
 			comAjax.addParam("PAGE_ROW", 15);
 			comAjax.ajax();
@@ -259,7 +248,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 			var body = $("table>tbody");
 			body.empty();
 			if (total == 0) {
-				var str = "<tr>" + "<td colspan='4'>조회된 결과가 없습니다.</td>"
+				var str = "<tr align=\"center\">" + "<td colspan='5'>조회된 결과가 없습니다.</td>"
 						+ "</tr>";
 				body.append(str);
 			} else {
@@ -277,25 +266,27 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 				$.each(
 								data.list,
 								function(key, value) {
-									str += "<tr>"
+									str     += "<tr style=\"text-align: center\">"
 											+ "<td>"
-											+ value.IDX
+											+ value.RNUM
 											+ "</td>"
 											+ "<td class='title'>"
 											+ "<a href='#this' name='title'>"
-											+ value.TITLE
+											+ value.QNA_TITLE
 											+ "</a>"
-											+ "<input type='hidden' id='IDX' value=" + value.IDX + ">"
-											+ "</td>" + "<td>" + value.HIT_CNT
-											+ "</td>" + "<td>" + value.CREA_DTM
+											+ "<input type='hidden' id='QNA_NUM' value=" + value.QNA_NUM + ">"
+											+ "</td>" + "<td>" + value.MEM_ID
+											+ "</td>" + "<td>" + new Date(value.QNA_DATE).toLocaleString()
+											+ "</td>" + "<td>" + value.QNA_YORN
+											+ "</td>" + "<td>" + value.QNA_COUNT
 											+ "</td>" + "</tr>";
 								});
 				body.append(str);
 
-				$("a[name='title']").on("click", function(e) { //제목
+				/* $("a[name='title']").on("click", function(e) { //제목
 					e.preventDefault();
 					fn_openBoardDetail($(this));
-				});
+				}); */
 			}
 		} 
 	</script>

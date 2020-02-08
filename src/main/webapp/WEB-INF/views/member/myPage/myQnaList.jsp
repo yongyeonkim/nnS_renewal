@@ -138,51 +138,25 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
    background-color: #fff;
    border: 1px solid #888;
 }
-   @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
-   
-   html {
-      height: 100%;
-   }
-   
-   body {
-        background:linear-gradient(to bottom right, #f0e199, #f0e199);
-   }
-   body,table,input,select,textarea,button,h1,h2,h3,h4,h5,h6,a{font-family:'맑은 고딕',Malgun Gothic,sans-serif;font-size:12px;color:#666;font-weight:400;}
-   
-    .card {
-        margin: 0 auto; /* Added */
-        float: none; /* Added */
-        margin-bottom: 10px; /* Added */
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-   }
-   
-   .form-signin .form-control {
-        position: relative;
-        height: auto;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        padding: 10px;
-        font-size: 16px;
-   }
 </style>
 </head>
 <body>
 <div id="content">
    <div id="vertical_tab-container">
+  
    
          <ul>
          <li><a href="accountModifyForm">회원정보변경</a></li>
          <li><a href="pwModifyForm">비밀번호 변경</a></li>
          <li><a href="deleteAccount">회원 탈퇴</a></li>
-         <li  class="selected"><a href="myreportList">신고내역</a></li>
-         <li><a href="myqnaList">Q&A</a></li>
+         <li><a href="reportList">신고내역</a></li>
+         <li class="selected"><a href="myqnaList">Q&A</a> <input type="hidden" id="id" value="${session_MEM_ID}"></li>
          </ul>
-   
+  
    </div>
    <div id="main-container">
    
-	<h2>신고 게시판</h2>
+	<h2>Q&A 목록</h2>
 	<table class="board_list">
 		<colgroup>
 			<col width="10%" />
@@ -194,25 +168,24 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 			<tr>
 				<th scope="col">글번호</th>
 				<th scope="col">제목</th>
-				<th scope="col">작성자</th>
+				<th scope="col">작성자</th>	
 				<th scope="col">작성일</th>
-				<th scope="col">처리상태</th>
+				<th scope="col">답글여부</th>
 				<th scope="col">조회수</th>
 			</tr>
 		</thead>
 		<tbody>
-			<%--<c:choose>
+			<%-- <c:choose>
 				<c:when test="${fn:length(list) > 0}">
-					<c:forEach items="${list }" var="row">
+					<c:forEach items="${list }" var="row" varStatus="var">
 						<tr>
-							<td>${row.REPORT_NUM }</td>
-							<td class="title"><a href="#this" name="title">${row.REPORT_TITLE }&nbsp;&nbsp;&nbsp;&nbsp;[${row.REPORT_TYPE }]</a>
-								<input type="hidden" id="REPORT_NUM" value="${row.REPORT_NUM }"></td>
+							<td>${var.index + 1}</td>
+							<td class="title"><a href="#this" name="title">${row.QNA_TITLE }&nbsp;&nbsp;&nbsp;&nbsp;[${row.QNA_TYPE }]</a>
+								<input type="hidden" id="QNA_NUM" value="${row.QNA_NUM }"></td>
 						    <td>${row.MEM_ID }</td>
-							<td>${row.REPORT_DATE }</td>
-							<td>${row.REPORT_STATUS }</td>
-							<td>${row.REPORT_COUNT }</td>
-							
+							<td>${row.QNA_DATE }</td>
+							<td>${row.QNA_COUNT }</td>
+							<td>${row.QNA_YORN }</td>
 						</tr>
 					</c:forEach>
 				</c:when>
@@ -221,22 +194,22 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 						<td colspan="4">조회된 결과가 없습니다.</td>
 					</tr>
 				</c:otherwise>
-			</c:choose>--%>
+			</c:choose> --%>
 		</tbody>
 	</table>
 	
-	<div id="PAGE_NAVI"></div>
+	<div id="PAGE_NAVI" align="center"></div>
 	<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
 
 	<br />
 	<a href="#this" class="btn" id="write">글쓰기</a>
 	</div>
 	</div>
-
+    <br/>
 	<%@ include file="/WEB-INF/include/include-body.jspf" %>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			fn_selectBoardList(1); 
+			 fn_selectBoardList(1);
 			$("#write").on("click", function(e) { //글쓰기 버튼
 				e.preventDefault();
 				fn_openBoardWrite();
@@ -251,22 +224,22 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 
 		function fn_openBoardWrite() {
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/community/reportWriteForm' />");
+			comSubmit.setUrl("<c:url value='/community/qnaWriteForm' />");
 			comSubmit.submit();
 		}
 	
 		function fn_openBoardDetail(obj) {
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/community/reportDetail' />");
-			comSubmit.addParam("REPORT_NUM", obj.parent().find("#REPORT_NUM").val());
+			comSubmit.setUrl("<c:url value='/community/qnaDetail' />");
+			comSubmit.addParam("QNA_NUM", obj.parent().find("#QNA_NUM").val());
 			comSubmit.submit();
 		}
-		 function fn_selectBoardList(pageNo) {
+	    function fn_selectBoardList(pageNo) {
 			var comAjax = new ComAjax();
-			var id="${session_MEM_ID}"
-			comAjax.setUrl("<c:url value='/myPage/reportListPaging' />");
+			 var id="${session_MEM_ID}"
+			comAjax.setUrl("<c:url value='/myPage/qnaListPaging'/>");
 			comAjax.setCallback("fn_selectBoardListCallback");
-			comAjax.addParam("MEM_ID", id);
+			comAjax.addParam("id", id); 
 			comAjax.addParam("PAGE_INDEX", pageNo);
 			comAjax.addParam("PAGE_ROW", 15);
 			comAjax.ajax();
@@ -277,7 +250,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 			var body = $("table>tbody");
 			body.empty();
 			if (total == 0) {
-				var str = "<tr>" + "<td colspan='4'>조회된 결과가 없습니다.</td>"
+				var str = "<tr align=\"center\">" + "<td colspan='5'>조회된 결과가 없습니다.</td>"
 						+ "</tr>";
 				body.append(str);
 			} else {
@@ -301,21 +274,21 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 											+ "</td>"
 											+ "<td class='title'>"
 											+ "<a href='#this' name='title'>"
-											+ value.REPORT_TITLE
+											+ value.QNA_TITLE
 											+ "</a>"
-											+ "<input type='hidden' id='REPORT_NUM' value=" + value.REPORT_NUM + ">"
-											+"</td>" + "<td>" + value.MEM_ID
-											+ "</td>" + "<td>" + new Date(value.REPORT_DATE).toLocaleString()
-											+ "</td>" + "<td>" + value.REPORT_STATUS
-											+ "</td>" + "<td>" + value.REPORT_COUNT
+											+ "<input type='hidden' id='QNA_NUM' value=" + value.QNA_NUM + ">"
+											+ "</td>" + "<td>" + value.MEM_ID
+											+ "</td>" + "<td>" + new Date(value.QNA_DATE).toLocaleString()
+											+ "</td>" + "<td>" + value.QNA_YORN
+											+ "</td>" + "<td>" + value.QNA_COUNT
 											+ "</td>" + "</tr>";
 								});
 				body.append(str);
 
-				/*$("a[name='title']").on("click", function(e) { //제목
+				/* $("a[name='title']").on("click", function(e) { //제목
 					e.preventDefault();
 					fn_openBoardDetail($(this));
-				});*/
+				}); */
 			}
 		} 
 	</script>
