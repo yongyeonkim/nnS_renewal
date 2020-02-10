@@ -219,14 +219,14 @@ $(document).ready(function() { //변경 버튼 클릭시
 	   </div>
 	   <div id="main-container">
             <div class="card-title" style="margin-top:30px;">
-               <h2 class="card-title text-center" style="color:#113366;">회원 탈퇴</h2>
+               <h2 class="card-title text-center" style="color:#113366;"><img src="/nnS/resources/images/mypage_delete.png"></h2>
             </div>
             <form id="deleteAccountForm" method="post">
             <div class="card-body">
             <p>
             	한 번 탈퇴하시면 회원님의 정보를 복구할 수 없습니다.<br/>신중히 선택해 주시길 바랍니다.
 			</p>
-               *비밀번호 <input class="form-control" type="password" id="MEM_PW" name="MEM_PW"><br>
+               <img src="/nnS/resources/images/mypage_pw.png"><input class="form-control" type="password" id="MEM_PW" name="MEM_PW"><br>
             </div>
          
             <div class="card-body">

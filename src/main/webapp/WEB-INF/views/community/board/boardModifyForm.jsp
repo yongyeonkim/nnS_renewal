@@ -161,7 +161,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
       </ul>
    </div>
    <div id="main-container">
-	<img src="./../resources/images/board_writeForm.png" width="100" height="30">
+		<img src="./../resources/images/form_t.png" width="100" height="30">
    <form id="frm" name="frm" enctype="multipart/form-data">
       <table class="tbl_type">
          <colgroup>
@@ -171,11 +171,12 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
             <col width="15%">
          </colgroup>
          <tbody>
+         	<br/>
          	<tr>
-         		<td>제목</td>
+         		<td><img src="./../resources/images/commu_title.png" height="25"></td>
          		<td style="background-color:#fff;"><input type="text" id="BOARD_TITLE" name="BOARD_TITLE" style="width:95%" value="${map.BOARD_TITLE}"/>
          		<input type="hidden" id="BOARD_NUM" name="BOARD_NUM" value="${map.BOARD_NUM }"/>
-         		<td>작성자</td>
+         		<td><img src="./../resources/images/commu_writer.png" height="25"></td>
          		<td style="background-color:#fff;">${session_MEM_INFO.MEM_ID }</td>
          	</tr>
          	<tr>

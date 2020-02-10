@@ -163,7 +163,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 
    </div>
    <div id="main-container">
-	<img src="./../resources/images/board_writeForm.png" width="100" height="30">
+		<img src="./../resources/images/form_t.png" width="100" height="30">
     <form id="frm" name="frm">
 	<table class="tbl_type" align="center">
 		<colgroup>

@@ -185,21 +185,21 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 	   </div>
 	   <div id="main-container">
             <div class="card-title" style="margin-top:30px;">
-               <h2 class="card-title text-center" style="color:#113366;">회원 정보 변경</h2>
+               <h2 class="card-title text-center" style="color:#113366;"><img src="/nnS/resources/images/mypage_infochange.png"></h2>
             </div>
             <form id="accountModifyForm" method="post">
             <div class="card-body">
             	
-               아이디 <div class="form-control">${map.MEM_ID } </div><br>
-               이름 <div class="form-control">${map.MEM_NAME } </div><br>
-			   생년월일<div class="form-control">생년월일 ${map.MEM_BIRTH }</div><br>
-			   성별<div class="form-control">${map.MEM_GEN }</div><br>
-			   이메일<input type="text" id="MEM_EMAIL" name="MEM_EMAIL" class="form-control" placeholder="${map.MEM_EMAIL }"><br>
-		       휴대전화<input type="text" id="MEM_PHONE" name="MEM_PHONE" class="form-control" placeholder="${map.MEM_PHONE }"><br>
-			   우편번호<input type="text" id="MEM_ZIP" name="MEM_ZIP" class="form-control" placeholder="${map.MEM_ZIP }"><br>
+              <img src="/nnS/resources/images/mypage_id.png"> <div class="form-control">${map.MEM_ID } </div><br>
+               <img src="/nnS/resources/images/mypage_name.png"> <div class="form-control">${map.MEM_NAME } </div><br>
+			   <img src="/nnS/resources/images/mypage_birth.png"><div class="form-control">생년월일 ${map.MEM_BIRTH }</div><br>
+			  <img src="/nnS/resources/images/mypage_gen.png"><div class="form-control">${map.MEM_GEN }</div><br>
+			   <img src="/nnS/resources/images/mypage_email.png"><input type="text" id="MEM_EMAIL" name="MEM_EMAIL" class="form-control" placeholder="${map.MEM_EMAIL }"><br>
+		       <img src="/nnS/resources/images/mypage_phone.png"><input type="text" id="MEM_PHONE" name="MEM_PHONE" class="form-control" placeholder="${map.MEM_PHONE }"><br>
+			   <img src="/nnS/resources/images/mypage_zip.png"><input type="text" id="MEM_ZIP" name="MEM_ZIP" class="form-control" placeholder="${map.MEM_ZIP }"><br>
 			   		 <input type="button" onclick="zipcode()" value="우편번호 찾기"><br>
-			   주소<input type="text" id="MEM_ADD1" name="MEM_ADD1" class="form-control" placeholder="${map.MEM_ADD1 }"><br>
-			   상세주소<input type="text" id="MEM_ADD2" name="MEM_ADD2" class="form-control" placeholder="${map.MEM_ADD2 }"><br>	
+			   <img src="/nnS/resources/images/mypage_add.png"><input type="text" id="MEM_ADD1" name="MEM_ADD1" class="form-control" placeholder="${map.MEM_ADD1 }"><br>
+			   <img src="/nnS/resources/images/mypage_add2.png"><input type="text" id="MEM_ADD2" name="MEM_ADD2" class="form-control" placeholder="${map.MEM_ADD2 }"><br>	
             </div>
          
             <div class="card-body">

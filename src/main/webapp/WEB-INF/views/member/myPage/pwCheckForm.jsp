@@ -43,10 +43,10 @@
       <div class="card align-middle" style="width:20rem; border-radius:20px; background-color:#fff; margin-top:50px;">
          <div>
             <div class="card-title" style="margin-top:30px;">
-               <h2 class="card-title text-center" style="color:#113366;">비밀번호 확인</h2>
+               <h2 class="card-title text-center" style="color:#113366;"><img src="./resources/images/mypage_pwcheck.png"></h2>
             </div>
             <div class="card-body">
-               *비밀번호 <input type="password" id="MEM_PW" name="MEM_PW" class="form-control" placeholder="Password">
+               <img src="/nnS/resources/images/mypage_pw.png"> <input type="password" id="MEM_PW" name="MEM_PW" class="form-control" placeholder="Password">
             </div>
          
             <div class="card-body">

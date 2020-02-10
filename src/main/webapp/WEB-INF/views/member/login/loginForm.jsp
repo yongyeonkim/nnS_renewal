@@ -134,7 +134,7 @@
       <div class="card align-middle" style="width:20rem; border-radius:20px;">
          <div>
             <div class="card-title" style="margin-top:30px;">
-               <h2 class="card-title text-center" style="color:#113366;">로그인 폼</h2>
+               <h2 class="card-title text-center" style="color:#113366;"><img src="/nnS/resources/images/login.png"></h2>
             </div>
             
             <div class="card-body">   

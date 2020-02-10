@@ -242,13 +242,13 @@ $("#pwchangeform").on("submit",function(e){
 	   </div>
 	   <div id="main-container">
             <div class="card-title" style="margin-top:30px;">
-               <h2 class="card-title text-center" style="color:#113366;">비밀번호 변경</h2>
+               <h2 class="card-title text-center" style="color:#113366;"><img src="/nnS/resources/images/mypage_pwchange.png"></h2>
             </div>
             <form id="pwchangeform" method="post">
             <div class="card-body">
-               기존 비밀번호 <input class="form-control" type="password" id="MEM_PW" name="MEM_PW"><br>
-               새 비밀번호 <input class="form-control" type="password" id="MEM_TEMP_PW" name="MEM_TEMP_PW"><br>
-			   새 비밀번호 확인 <input class="form-control" type="password" id="MEM_TEMP_PW2" name="MEM_TEMP_PW2"><br>
+               <img src="/nnS/resources/images/mypage_opw.png"> <input class="form-control" type="password" id="MEM_PW" name="MEM_PW"><br>
+               <img src="/nnS/resources/images/mypage_npw.png"> <input class="form-control" type="password" id="MEM_TEMP_PW" name="MEM_TEMP_PW"><br>
+			   <img src="/nnS/resources/images/mypage_npwc.png"> <input class="form-control" type="password" id="MEM_TEMP_PW2" name="MEM_TEMP_PW2"><br>
 			   <span id="pw"></span>
             </div>
          

@@ -157,7 +157,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 	</ul>
 	</div>
 	<div id="main-container">
-	<img src="./../resources/images/board_writeForm.png" width="100" height="30">
+		<img src="./../resources/images/form_t.png" width="100" height="30">
 	<table border="1" align="center" class="tbl_type">
 		<colgroup>
 			<col width="15%"/>

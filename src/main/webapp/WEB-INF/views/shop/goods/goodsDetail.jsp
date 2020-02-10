@@ -192,13 +192,13 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 					</td>
 					<td colspan="3" style="padding:0 0 0 20px; font-size:15px;">
 						<br>
-						브랜드 : ${map.GOODS_BRAND}<br />
-						모델명 : ${map.GOODS_TITLE} <br />	<!-- 테이블에 없음 --> 
-						중고상태 : ${map.GOODS_STATUS}<br/>
+						<img src="/nnS/resources/images/goods_brand.png"> : ${map.GOODS_BRAND}<br />
+						<img src="/nnS/resources/images/goods_model.png"> : ${map.GOODS_TITLE} <br />	<!-- 테이블에 없음 --> 
+						<img src="/nnS/resources/images/goods_pstatus.png"> : ${map.GOODS_STATUS}<br/>
 						<input type="hidden" id="IDX" name="IDX" value="${map.GOODS_NUM}">
-						판매가 : ${map.GOODS_PRICE}<br /> 
-						배송비: ${map.GOODS_DCOST} <br /><!-- 테이블에 없음 --> 
-						합계 : <c:out value="${map.GOODS_PRICE+map.GOODS_DCOST}"/><br/>
+						<img src="/nnS/resources/images/goods_price.png"> : ${map.GOODS_PRICE}<br /> 
+						<img src="/nnS/resources/images/goods_dprice.png">: ${map.GOODS_DCOST} <br /><!-- 테이블에 없음 --> 
+						<img src="/nnS/resources/images/goods_total.png"> : <c:out value="${map.GOODS_PRICE+map.GOODS_DCOST}"/><br/>
 						<br>
 					</td>
 				</tr>
@@ -219,7 +219,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 					    	<a href='javascript: unlike_func();'><img src=<c:url value="/resources/images/like_btn.png"/> id='like_img' style="width:30px; height:30px"></a>
 					  	</c:otherwise>
 					</c:choose>
-					찜하기
+				
 				</td>	
 				</tr>
 			</tbody>

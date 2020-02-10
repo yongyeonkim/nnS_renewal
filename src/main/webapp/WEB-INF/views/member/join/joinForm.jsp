@@ -304,7 +304,7 @@ function zipcode() {//우편번호 검색창
     <form id="joinForm" method="post">
       <div class="row">
         <div class="input-field col s12 center">
-          <h4>회원가입</h4>
+          <h4><img src="/nnS/resources/images/join.png"></h4>
           <p class="center">Join to our community now !</p>
         </div>
       </div>

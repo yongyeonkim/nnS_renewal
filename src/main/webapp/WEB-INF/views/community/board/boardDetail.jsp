@@ -157,7 +157,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 	</ul>
 	</div>
 		<div id="main-container">
-		<img src="./../resources/images/board_writeForm.png" width="100" height="30">
+		<img src="./../resources/images/form_t.png" width="100" height="30">
 			<table border="1" align="center" class="tbl_type">
 				<colgroup>
 					<col width="15%" />
@@ -187,7 +187,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 							style="overflow: hidden; white-space: pre-wrap">${map.BOARD_CONTENT }</pre></td>
 				</tr>
 				<tr>
-					<th scope="row">첨부파일</th>
+					<th scope="row"><img src="./../resources/images/commu_file.png" height="25"></th>
 					<td colspan="3"><c:forEach var="row" items="${list }">
 							<div>
 								<input type="hidden" id="FILES_NUM" value="${row.FILES_NUM }">
@@ -200,6 +200,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 			
 			<br />
 			<div align="center"></div>
+			<img src="./../resources/images/form_co.png">
 			<div align="center">
 			<br/>
 			<form id="frm" name="frm" enctype="multipart/form-data">
@@ -219,7 +220,6 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 			</div>
 			<table id="commentTable" class="tbl_type">
 				<tbody>
-
 					<!-- 스크립트를 통해 댓글에 대한 정보가 담김 -->
 
 				</tbody>
@@ -345,7 +345,7 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
 				gfn_renderPaging(params);
 				
 				var str = ""
-				str += "<tr style='text-align: center'><td width='10%'><img src='./../resources/images/commu_writer.png' height='25'></td><td width='*'><img src='./../resources/images/commu_hit.png' height='25'></td><td width='30%'><img src='./../resources/images/commu_date.png' height='25'></td><td width='5%'></td></tr>";
+				str += "<tr style='text-align: center'><td width='10%'><img src='./../resources/images/commu_writer.png' height='25'></td><td width='*'><img src='./../resources/images/commu_content.png' height='25'></td><td width='30%'><img src='./../resources/images/commu_date.png' height='25'></td><td width='5%'></td></tr>";
 				
 				$.each(data.list,
 				function(key, value) {

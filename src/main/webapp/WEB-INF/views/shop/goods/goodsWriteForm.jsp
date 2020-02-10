@@ -33,12 +33,12 @@
 	<div id="main-container">
 		<form  method="post" id="frm" name="frm" enctype="multipart/form-data" onsubmit="return formCheck();">
 		<table style="width:100%; height:100%;">
-		<h1 align="center"> 상품 등록</h1>
+		<center><img src="./../resources/images/form_tgoods.png"></center>
 	      <br/><br/>
 	
 	      <ul>
 	      	<li>
-	      		카테고리 <br/>
+	      		<img src="./../resources/images/form_category.png"><br/>
 				<select name="GOODS_CATEGORY" id="GOODS_CATEGORY">
 					<option value="" selected disabled hidden>==선택하세요==</option>
 				    <option value="1">의류</option>
@@ -48,7 +48,7 @@
 				</select>
 	      	</li>
 	      	<li>
-	      		중고상태 <br/>
+	      		<img src="./../resources/images/form_pstatus.png"> <br/>
 				<select name="GOODS_STATUS" id="GOODS_STATUS">
 					<option value="" selected disabled hidden>==선택하세요==</option>
 				    <option value="1">A</option>
@@ -58,39 +58,39 @@
 				</select>
 	      	</li>
 	      	<li>
-	      		제목 <br/>
+	      		<img src="./../resources/images/form_title.png"><br/>
 	      		<input type="text" id="GOODS_TITLE" name="GOODS_TITLE" value=<c:if test="${request_type eq 'modify'}">"${map.GOODS_TITLE}"</c:if>>
 	      	</li>
       		<li>
 	      		<input type="hidden" id="MEM_ID" name="MEM_ID" value="${session_MEM_ID}">
 	      	</li>
 	      	<li>
-	      		상품정보 <br/>
+	      		<img src="./../resources/images/form_pinfo.png"> <br/>
 	      		<textarea name="GOODS_CONTENT" id="GOODS_CONTENT" rows="30" cols="100"><c:if test="${request_type eq 'modify'}">${map.GOODS_CONTENT}</c:if></textarea>
       		</li>
       		
 	      	<li>
-	      		가격 <br/>
+	      		<img src="./../resources/images/form_price.png"><br/>
 	      		<input type="text" id="GOODS_PRICE" name="GOODS_PRICE" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" value=<c:if test="${request_type eq 'modify'}">"${map.GOODS_PRICE}"</c:if>>
 	      	</li>
 	      	<li>
-	      		배송비 <br/>
+	      		<img src="./../resources/images/form_dprice.png"><br/>
 	      		<input type="text" id="GOODS_DCOST" name="GOODS_DCOST" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" value=<c:if test="${request_type eq 'modify'}">"${map.GOODS_DCOST}"</c:if>>
 	      	</li>
 	      	<li>
-	      		브랜드 <br/>
+	      		<img src="./../resources/images/form_brand.png"><br/>
 	      		<input type="text" id="GOODS_BRAND" name="GOODS_BRAND" value=<c:if test="${request_type eq 'modify'}">"${map.GOODS_BRAND}"</c:if>>
       		</li>
       		<li>
-	      		해시태그 <br/>
+	      		<img src="./../resources/images/form_hash.png"><br/>
 	      		<input type="text" id="GOODS_HASH" name="GOODS_HASH" value=<c:if test="${request_type eq 'modify'}">"${map.GOODS_HASH}"</c:if>>
 	      	</li>
 	      	<li>
-	      		판매지역 <br/>
+	      		<img src="./../resources/images/form_area.png"><br/>
 	      		<input type="text" id="GOODS_REGION" name="GOODS_REGION" value=<c:if test="${request_type eq 'modify'}">"${map.GOODS_REGION}"</c:if>>
 	      	</li>
 	      	<li>
-	      		첨부파일 <br/>
+	      		<img src="./../resources/images/form_file.png"><br/>
 	      	</li>
       	<div id="fileDiv" style="border: 1px solid #888;">
       	<c:if test="${request_type eq 'modify'}">

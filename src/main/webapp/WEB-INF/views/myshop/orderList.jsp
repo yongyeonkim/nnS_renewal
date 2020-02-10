@@ -152,49 +152,34 @@ html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
       </ul>
    </div>
    <div id="main-container">
-		<table border="1" align="center">
+		<table border="0" align="center">
 		<tbody>
 			<tr>
 				<td>
 					<table  style="filter: alpha(opacity=60);" ffffff="" align="center">
-								<tbody>
-								<tr align="center">
-								<td>주문/결제</td>
-								<td></td>
-								<td>배송중</td>
-								<td></td>
-								<td>배송완료</td>
-								</tr>
+								<tbody align="center">
 								<tr>
 								<ul>
 									<li>
 									<td>
 										<a href="#goodsTab1">
-											<img src="./../resources/images/payment.png" alt="" width="100" height="100" onclick="click()"/>
+											<img src="./resources/images/d_money.png" alt="" width="100" height="100"/>
 										</a>
 									</td>
-									</li>
-									<li>
 									<td>
-										<img src="./../resources/images/dots.png" alt="" width="50" height="50"/>
+										<img src="./resources/images/d_dot.png" alt="" width="50" height="50"/>
 									</td>
-									</li>
-									<li>
 									<td>
 										<a href="#goodsTab2">
-											<img src="./../resources/images/shipping.png" alt="" width="100" height="100"/>
+											<img src="./resources/images/d_truck.png" alt="" width="100" height="100"/>
 										</a>
 									</td>
-									</li>
-									<li>
 									<td>
-										<img src="./../resources/images/dots.png" alt="" width="50" height="50"/>
+										<img src="./resources/images/d_dot.png" alt="" width="50" height="50"/>
 									</td>
-									</li>
-									<li>
 									<td>
 										<a href="#goodsTab3">
-											<img src="./../resources/images/product.png" alt="" width="100" height="100"/>
+											<img src="./resources/images/d_hand.png" alt="" width="100" height="100"/>
 										</a>
 									</td>
 									</li>
