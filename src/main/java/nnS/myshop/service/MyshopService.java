@@ -12,5 +12,4 @@ public interface MyshopService {
 	public List<Map<String, Object>> selectLikeList(Map<String, Object> map) throws Exception;
 	
 	public List<Map<String, Object>> selectRecentGoodsList(Map<String, Object> map) throws Exception;
-
 }

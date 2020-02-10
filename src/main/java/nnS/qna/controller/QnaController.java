@@ -72,6 +72,23 @@ public class QnaController {
 		  
 		  return mv; 
 	  }
+	  
+	  @RequestMapping(value = "/myPage/qnaDetail") 
+	  public ModelAndView qnaMyDetail(CommandMap commandMap, HttpServletRequest request) throws Exception { 
+		  ModelAndView mv = new ModelAndView("myqnaDetail");
+		  
+		  HttpSession session = request.getSession();
+		  commandMap.put("session_MEM_ID", session.getAttribute("session_MEM_ID"));
+		  
+		  Map<String,Object> map = qnaService.selectQnaDetail(commandMap.getMap());
+		  List<Map<String,Object>>list=qnaService.selectQnaAnswer(commandMap.getMap());
+		  
+		  mv.addObject("asList",list);//qnaAnswer
+		  mv.addObject("map", map.get("map"));//qna글
+		  mv.addObject("list",map.get("list"));//파일
+		  
+		  return mv; 
+	  }
 	 
 	
 	@RequestMapping(value = "/community/qnaWriteForm")

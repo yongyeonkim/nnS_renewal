@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <style type="text/css">
 
-h1 {font-size: 3em; margin: 20px 0; color: #FFF;}
+h1 {font-size: 3em; margin: 0px 0; color: #FFF;}
 .container {width: 700px; margin: 10px auto;}
 ul.goodsTabs {
 	margin: 0;

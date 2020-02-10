@@ -75,8 +75,19 @@ public class ReportController {
 	}
 
 	@RequestMapping(value = "/community/reportDetail")
-	public ModelAndView qnaDetail(CommandMap commandMap) throws Exception {
+	public ModelAndView reportDetail(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("reportDetail");
+		
+		Map<String,Object> map = reportService.selectReportDetail(commandMap.getMap());
+		mv.addObject("map", map.get("map"));
+		mv.addObject("list",map.get("list"));
+		
+		return mv;		
+	}
+	
+	@RequestMapping(value = "/myPage/reportDetail")
+	public ModelAndView reportMyDetail(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("myreportDetail");
 		
 		Map<String,Object> map = reportService.selectReportDetail(commandMap.getMap());
 		mv.addObject("map", map.get("map"));

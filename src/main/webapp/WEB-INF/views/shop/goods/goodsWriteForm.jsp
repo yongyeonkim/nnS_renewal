@@ -13,7 +13,7 @@
 #main-container
 {
    min-height: 200px;
-   margin: 0 30% 0 30%;
+   margin: auto;
    padding: 20px;
    background-color: #fff;
    border: 1px solid #888;
@@ -89,33 +89,8 @@
 	      		판매지역 <br/>
 	      		<input type="text" id="GOODS_REGION" name="GOODS_REGION" value=<c:if test="${request_type eq 'modify'}">"${map.GOODS_REGION}"</c:if>>
 	      	</li>
-	      	<li>
-	      		첨부파일 <br/>
-	      	</li>
-      	<div id="fileDiv" style="border: 1px solid #888;">
-      	<c:if test="${request_type eq 'modify'}">
-			<c:forEach var="row" items="${list}" varStatus="var"> 
-				<p> 
-					<input type="hidden" id="IDX" name="IDX_${var.index}" value="${row.GOODS_IMAGE_NUM}"> 
-					<a href="#this" id="name_${var.index}" name="name_${var.index}">
-						${row.GOODS_IMAGE_ORG}
-					</a>
-					<input type="file" id="file_${var.index}" name="file_${var.index}"> 
-					<a href="#this" class="btn" id="delete_${var.index}" name="delete_${var.index}">
-					삭제
-					</a> 
-				</p> 
-			</c:forEach> 
-		</c:if>
-		<p>
-			<input type="file" name="file" accept="image/gif,image/jpeg,image/png">>
-			<a href="#this" class="btn" id="delete" name="delete">삭제</a>
-		</p>
-		</div>
-		<br/><br/>
 		
       	<p align="left">
-      		<a href="#this" class="btn" id="addFile">파일추가</a>
       		<c:if test="${request_type eq 'modify'}"><a href="#this" class="btn" id="updateBtn">수정하기</a></c:if>
 			<c:if test="${request_type eq 'write'}"><a href="#this" class="btn" id="addBtn">작성하기</a></c:if>
 			<a href="#this" class="btn" id="list">목록으로</a>
@@ -149,22 +124,6 @@
 				fn_updateGoods();	
 			}
 		});
-		
-		$("#addFile").on("click", function(e){ //파일추가 버튼
-			e.preventDefault();
-			fn_addFile();
-		});
-		$("#delete").on("click", function(e){ //삭제하기 버튼
-			e.preventDefault();
-			fn_deleteFile($(this));
-		});
-		
-		$("a[name^='delete']").on("click", function(e){ //파일 삭제 버튼 
-			e.preventDefault(); 
-			fn_deleteFile($(this)); 
-		});
-		
-		
 	});
 	
     $(function(){
@@ -246,25 +205,12 @@
 		
 		comSubmit.submit();
 	} 
-
-	function fn_addFile(){ 
-		var str = "<p>" + "<input type='file' id='file_"+(gfv_count)+"' name='file_"+(gfv_count)+"' accept='image/gif,image/jpeg,image/png'>"+ "<a href='#this' class='btn' id='delete_"+(gfv_count)+"' name='delete_"+(gfv_count)+"'>삭제</a>" + "</p>";
-		$("#fileDiv").append(str); 
-		$("#delete_"+(gfv_count++)).on("click", function(e){ //삭제 버튼 
-			e.preventDefault(); 
-			fn_deleteFile($(this)); 
-		}); 
-	} 
 	
 	function fn_updateGoods(){
 		var comSubmit = new ComSubmit("frm");
 		comSubmit.setUrl("<c:url value='/shop/goodsModify' />");
 		comSubmit.submit();
 	} 
-	
-	function fn_deleteFile(obj){ 
-		obj.parent().remove(); 
-	}
 	
 	function fn_formCheck() {
 		// submit을 제외한 모든 input태그의 갯수를 가져옴

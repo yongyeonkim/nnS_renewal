@@ -34,4 +34,5 @@ public class MyshopDAO extends AbstractDAO {
 		return (List<Map<String, Object>>)selectList("myshop.selectRecentGoodsList", map);
 	}
 	
+	
 }

@@ -3,222 +3,335 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="/WEB-INF/include/include-header.jspf" %>
-<meta charset="UTF-8">
-<style type="text/css">
 
-h1 {font-size: 3em; margin: 20px 0; color: #FFF;}
-.container {width: 700px; margin: 10px auto;}
-ul.goodsTabs {
-	margin: 0;
-	padding: 0;
-	float: left;
-	list-style: none;
-	height: 32px;
-	border-bottom: 1px solid #999;
-	border-left: 1px solid #999;
-	width: 100%;
+<%@ include file="/WEB-INF/include/include-header.jspf" %>
+
+<meta charset="UTF-8">
+<link href="<c:url value="/resources/css/board.css"/>" rel="stylesheet">
+<style type="text/css">
+td{
+	margin:0 0 0 10px
 }
-ul.goodsTabs li {
-	
-	float: left;
-	margin: 0;
-	padding: 0;
-	height: 31px;
-	line-height: 31px;
-	border: 1px solid #999;
-	border-left: none;
-	margin-bottom: -1px;
-	background: #F0F0F0;
-	overflow: hidden;
-	position: relative;
-}
-ul.goodsTabs li a {
-	text-decoration: none;
-	color: #000;
-	display: block;
-	font-size: 1.2em;
-	padding: 0 20px;
-	border: 1px solid #fff;
-	outline: none;
-}
-ul.goodsTabs li a:hover {
-	background: #ccc;
-}	
-html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
-	background: #fff;
-	border-bottom: 1px solid #fff;
-}
-.goodsTab_container {
-	border: 1px solid #999;
-	border-top: none;
-	clear: both;
-	float: left; 
-	width: 100%;
-	background: #fff;
-	-moz-border-radius-bottomright: 5px;
-	-khtml-border-radius-bottomright: 5px;
-	-webkit-border-bottom-right-radius: 5px;
-	-moz-border-radius-bottomleft: 5px;
-	-khtml-border-radius-bottomleft: 5px;
-	-webkit-border-bottom-left-radius: 5px;
-}
-.goodsTab_content {
-	padding: 20px;
-	font-size: 1.2em;
-}
-.goodsTab_content h2 {
-	font-weight: normal;
-	padding-bottom: 10px;
-	border-bottom: 1px dashed #ddd;
-	font-size: 1.8em;
-}
-.goodsTab_content h3 a{
-	color: #254588;
-}
-.goodsTab_content img {
-	float: left;
-	margin: 0 20px 20px 0;
-	border: 1px solid #ddd;
-	padding: 5px;
-}
- #content
-{	 
-   background-color: #ffffff;
-   padding: 20px 10px;  
-   overflow: auto;
-}
-#vertical_tab-container
+td img
 {
-   float: left;
-   margin: 70px 0 0 0;
-   width: 126px;
+	width:250px; 
+	height:250px;
+	margin:10px 10px 10px 0px; 
+	border:3px solid #000; 
+
 }
-#vertical_tab-container ul
-{
-   list-style: none;
-   text-align: center;
+
+   @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
+   
+   html {
+      height: 100%;
+   }
+   
+   body {
+        background:linear-gradient(to bottom right, #f0e199, #f0e199);
+   }
+   body,table,input,select,textarea,button,h1,h2,h3,h4,h5,h6,a{font-family:'맑은 고딕',Malgun Gothic,sans-serif;font-size:12px;color:#666;font-weight:400;}
+   
+   }
+</style>
+
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+<style>
+html, body, div, span, applet, object, iframes, h1, h2, h3, h4, h5, h6,
+   p, blockquote, pre, a, abbr, acronym, address, big, quotes, code, del,
+   dfn, em, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, u,
+   i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table,
+   caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+   details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
+   output, ruby, section, summary, time, mark, audio, video {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   
+   do: inherit;
+   vertical-align: baseline;
 }
-#vertical_tab-container ul li
-{
-   border-top: 1px solid #fff;
-   border-right: 1px solid #fff;
-   border-bottom: 1px solid #595959;
-   border-left: 4px solid #595959;   
-   background-color: #fff;  
-   margin: 8px 0;
-}  
-#vertical_tab-container ul li a,
-#vertical_tab-container ul li a:visited
-{
-   text-decoration: none;
-   color: #666;
+article, aside, details, figcaption, figure, footer, header, hgroup,
+   menu, nav, section {
    display: block;
- 	padding: 3px 3px;
 }
-#vertical_tab-container ul li:hover
-{
-   border-left: 4px solid #ffd04a;
+blockquote, q {
+   quotes: none;
 }
-#vertical_tab-container ul li a:hover
-{
-   color: #333;
+blockquote : before, blockquote : after, q : before, q : after {
+   content: '';
+   content: none;
 }
-#vertical_tab-container ul li.selected
-{
-   border-right: none;
-   background-color: #fff;
-   border-left: 4px solid #ffd04a;
+table {
+   border-collapse: collapse;
+   border-spacing: 0;
 }
-#main-container
-{
-   min-height: 400px;
-   margin: 0 0 0 125px;
-   padding: 20px;
-   border-top: 1px solid #fff;  
-   border-right: 1px solid #fff;     
-   border-left: 1px solid #fff; 
-   border-bottom: 1px solid #fff;    
+/*css 초기화*/
+.card {
+   float:left;
+   height: 400px;
+   width: 25%;
+   border-radius: 15px;
+   display: inline-block;
+   margin-top: 30px;
+   margin-left: 50px;
+   margin-bottom: 30px;
+   position: relative;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   overflow: hidden;
+}
+.card-header {
+   -webkit-transition: 0.5s; /*사파리 & 크롬*/
+    -moz-transition: 0.5s;  /*파이어폭스*/
+    -ms-transition: 0.5s;   /*인터넷 익스플로러*/
+    -o-transition: 0.5s;  /*오페라*/
+    transition: 0.5s;
+   width: 100%;
+   height: 270px;
+   border-radius: 15px 15px 0 0;
+   background-image: url("resources/images/no_image.png");
+   background-size: 100% 280px;
+   background-repeat: no-repeat;   
+}
+.card:hover .card-header  {
+   opacity: 0.8;
+   height: 100px;
+}
+.card-header-is_closed{
+    background-color: #EF5A31 ;
+    color: #FFF ;
+    font-weight: bold ;
+    text-align: center ;
+    float: right;
+    margin: 15px 15px 0 0;
+    border-radius: 50%;
+    font-weight: bold;
+    padding: 10px 10px;
+    line-height: 20px;
+}
+h1 {
+    font-size: 22px;
+    font-weight: bold;
+}
+.card-body {
+}
+.card-body-header{
+   line-height: 25px;
+   margin: 10px 20px 0px 20px;
+}
+.card-body-description  {
+    opacity: 0;
+    color: #757B82;
+    line-height: 25px;
+    -webkit-transition: .2s ease-in-out; /*사파리&크롬*/
+    -moz-transition: .2s ease-in-out; /*파이어폭스*/
+    -ms-transition: .2s ease-in-out; /*익스플로러*/
+    -o-transition: .2s ease-in-out; /*오페라*/
+    transition : .2s ease-in-out;
+    overflow: hidden;
+   height: 180px;
+   margin: 5px 20px;
+}
+.card:hover .card-body-description {
+    opacity: 1;
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -ms-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition : .5s ease-in-out;
+    overflow: scroll;
+}
+.card-body-hashtag {
+   color: #2478FF;
+   font-style: italic;
+}
+.card-body-footer {
+     position: absolute; 
+     margin-top: 15px;
+     margin-bottom: 6px;
+    bottom: 0; 
+    width: 314px;
+    font-size: 10px;
+    color: #9FA5A8;
+    padding: 0 10px;
+}
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 2px;
+}
+.icon-view_count {
+    width: 25px;
+    height: 17px;
+   background: url("images/eye.jpg") no-repeat;
+}
+.icon-comments_count {
+   margin-left: 5px;
+   width: 25px;
+    height: 17px;
+   background: url("images/comment.jpg") no-repeat;   
+}
+.reg_date {
+	margin-left: 15px;
+   float: ;
 }
 </style>
+
+
 </head>
 <body>
-
-	<div id="content">
+<div class="card align-middle" style="border-radius:20px; background-color:#fff; margin:50px 0 80px 0; width:100%; height:100%;">
+<div id="content">
    <div id="vertical_tab-container">
       <ul>
-      	<li><a href="/nnS/myshop"><img src="/nnS/resources/images/myshop_tab1.png" width="100" height="30"></a></li>
+         <li><a href="/nnS/myshop"><img src="/nnS/resources/images/myshop_tab1.png" width="100" height="30"></a></li>
          <li><a href="/nnS/myshop/saleList"><img src="/nnS/resources/images/myshop_tab2.png" width="100" height="30"></a></li>
-         <li class="selected"><a href="/nnS/myshop/goodsLikeList"><img src="/nnS/resources/images/myshop_tab3.png" width="100" height="30">></a></li>
+         <li class="selected"><a href="/nnS/myshop/goodsLikeList"><img src="/nnS/resources/images/myshop_tab3.png" width="100" height="30"></a></li>
       </ul>
    </div>
    <div id="main-container">
-		<table border="1" align="center">
-			<li>
-				좋아요
-			</li>
-			<tbody>
-				<c:choose>
-					<c:when test="${fn:length(list) > 0 }">
-						<c:forEach items="${list}" var="row" varStatus="rowS">
-							<c:if test="${(rowS.index+1) % 3 eq 1}">
-							<tr>
-							</c:if>
-								<td align="center">
-								
-					      	      	<input type="hidden" name="title2" id="title2" value="${row.GOODS_NUM}">
-									<a href="#this" id="title" name="title"><img alt='' width='140' height='140' src="/nnS/file/${row.GOODS_THUMBNAIL}"></a><br/>
-									${row.GOODS_TITLE}<br/>
-									${row.GOODS_PRICE}<br/><br/>
-								</td>
-								
-							<c:if test="${(rowS.index+1) % 3 eq 0}">
-							</tr>
-							</c:if>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<tr>
-							<td colspan="4">조회된 결과가 없습니다.</td>
-						</tr>
-					</c:otherwise>
-				</c:choose>
-			</tbody>
-			</table>
+   		<table class="board_list">
+		<colgroup>
+			<col width="100%" />
+		</colgroup>
+		<thead>
+			<tr>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+		</table>
+		<div id="PAGE_NAVI" align="center"></div>
+		<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
    </div>
 </div>
+</div>
+    
+    <%@ include file="/WEB-INF/include/include-body.jspf" %>
+	
+
+
 <script type="text/javascript">
+		$(document).ready(function() {
+			
+			fn_selectGoodsList(1);
 
-$(document).ready(function() {
-
-	//Default Action
-	$(".goodsTab_content").hide(); //Hide all content
-	$("ul.goodsTabs li:first").addClass("active").show(); //Activate first goodsTab
-	$(".goodsTab_content:first").show(); //Show first goodsTab content
+			$("a[name='title']").on("click", function(e) { //제목 
+				e.preventDefault();
+				fn_goodsDetail($(this));
+			});
+			
+		});
 	
-	//On Click Event
-	$("ul.goodsTabs li").click(function() {
-		$("ul.goodsTabs li").removeClass("active"); //Remove any "active" class
-		$(this).addClass("active"); //Add "active" class to selected goodsTab
-		$(".goodsTab_content").hide(); //Hide all goodsTab content
-		var activegoodsTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active goodsTab + content
-		$(activegoodsTab).fadeIn(); //Fade in the active content
-		return false;
-	});
-	
-	$("a[name='title']").on("click", function(e) { //제목 
-		e.preventDefault();
-		fn_openBoardDetail($(this));
-	});
+		function fn_goodsDetail(obj) {
+			var comSubmit = new ComSubmit();
+			comSubmit.setUrl("<c:url value='/shop/goodsDetail' />");
+			comSubmit.addParam("GOODS_NUM", obj.parent().find("#IDX1").val());
+			comSubmit.addParam("LIKE_MEM_ID", "${session_MEM_ID}");
+			comSubmit.submit();
+		}
+		
+		function fn_selectGoodsList(pageNo) {
+			var comAjax = new ComAjax();
+			comAjax.setUrl("<c:url value='/myshop/selectGoodsList' />");
+			comAjax.setCallback("fn_selectGoodsListCallback");
+			comAjax.addParam("PAGE_INDEX", pageNo);
+			comAjax.addParam("PAGE_ROW", 15);
+			comAjax.addParam("keyword", $('#keyword').val());
+			comAjax.addParam("searchType", $('#searchType').val());
+			comAjax.addParam("sortType", $('#sortType').val());
+			comAjax.addParam("path", $('#path').val());
+			comAjax.ajax();
+		}
 
-});
+		function fn_selectGoodsListCallback(data) {
+			var total = data.TOTAL;
+			var body = $("table>tbody");
+			body.empty();
+			if (total == 0) {
+				var str = "<tr>" + "<td colspan='4'>조회된 결과가 없습니다.</td>"
+						+ "</tr>";
+				body.append(str);
+			} else {
+				var params = {
+					divId : "PAGE_NAVI",
+					pageIndex : "PAGE_INDEX",
+					totalCount : total,
+					recordCount : 15,
+					eventName : "fn_selectGoodsList"
+				};
+				gfn_renderPaging(params);
 
-function fn_openBoardDetail(obj) {
-	var comSubmit = new ComSubmit();
-	comSubmit.setUrl("<c:url value='/shop/goodsDetail' />");
-	comSubmit.addParam("GOODS_NUM", $("#title2").val());
-	comSubmit.submit();
-}
-</script>
+				var str = "";
+				$.each(
+								data.list,
+								function(key, value) {
+									var imgpath = "";
+									
+									if(value.GOODS_THUMBNAIL == null){
+										imgpath = 	"<div class='card-header'>"
+									}else{
+										imgpath = "<div class='card-header' style='background-image:url(\"" + $('#path').val() + value.GOODS_THUMBNAIL + "\");'>"
+										//alert(imgpath);
+									}
+									
+									str +=  "<div class='card'>"
+										+		"<a href='#this' name='title'>"
+										+	      imgpath
+										+	         "<div class = 'card-header-is_closed' >" 
+										+	                "<div class = 'card-header-text' >"
+										+ 					"(거래중)"
+										+ 					"</div >"
+										+	                "<div class = 'card-header-number' >"
+										+					value.GOODS_TSTATUS
+										+					"</div >" 
+										+	            "</div >"
+										+	      "</div>"
+										+	      "<div class='card-body'>"
+										+	         "<div class='card-body-header'>"
+										+	            "<h1>"
+										+				value.GOODS_TITLE
+										+				"</h1>"
+										+	            "<p class='card-body-hashtag'>"
+										+				value.GOODS_HASH
+										+				"</p>"
+										+	            "<p class = 'card-body-nickname'>"
+										+	                                 "작성자: "
+										+									value.MEM_ID
+										+	                          "</p>"
+										+	         "</div>"
+										+	         "<p class='card-body-description'>"
+										+	            value.GOODS_CONTENT
+										+	         "</p>"
+										+	         "<div class='card-body-footer'>"
+										+	            "<hr style='margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31'>"
+										+	            "<i class='icon icon-view_count'></i>조회수 "
+										+				value.GOODS_COUNT
+										+				"회"
+										+	            "<i class='icon icon-comments_count'></i>좋아요 "
+										+				value.TOTAL_COUNT2
+										+				"개"
+										+	            "<i class='reg_date'>"
+										+				new Date(value.GOODS_DATE).toLocaleString()
+										+				"</i>"
+										+	         "</div>"
+										+	      "</div>"
+										+ 	   "<input type='hidden' id='IDX1' value=" + value.GOODS_NUM + ">"
+										+	   "</a>"
+										+	   "</div>";
+										
+								});
+				body.append(str);
+
+				$("a[name='title']").on("click", function(e) { //제목
+					e.preventDefault();
+					fn_goodsDetail($(this));
+				});
+			}
+		}
+	</script>
 </body>
 </html>

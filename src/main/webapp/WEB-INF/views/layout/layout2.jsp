@@ -20,7 +20,7 @@
 	<div id="header">
 		<tiles:insertAttribute name="header"/><!-- // header -->
 	</div>
-	<div style="width:90%; height:300px; margin:auto;">
+	<div style="width:100%; height:300px; margin:auto;">
 		<tiles:insertAttribute name="body"/><!-- // container -->
 	</div> 	
 	<!-- container --> 

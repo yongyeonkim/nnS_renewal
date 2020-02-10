@@ -39,5 +39,4 @@ public class MyshopServiceImpl implements MyshopService{
 		// TODO Auto-generated method stub
 		return myshopDAO.selectRecentGoodsList(map);
 	}
-
 }

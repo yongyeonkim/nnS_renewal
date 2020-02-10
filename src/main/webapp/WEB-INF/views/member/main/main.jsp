@@ -19,7 +19,7 @@
 <meta charset="UTF-8">
 </head>
 <body>
-<ul class="bxslider"> 
+<ul class="bxslider" style="width:80%; margin:auto;"> 
 	 <li>
 	 	<img alt="" style="width:100%; height:250px;" src=<c:url value="/resources/images/main_banner1.png"/>/>
 	 </li>

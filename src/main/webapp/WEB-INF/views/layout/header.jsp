@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
-
+<style>
+a {color:#666;}
+</style>
 <script type="text/javascript">
    var onSearch = function(){   
       submit();  
@@ -39,7 +41,7 @@
          
          </c:if>
          <c:if test="${session_MEM_ID != null }">
-         <li>${session_MEM_ID}&nbsp;님</li>   
+         <li><p style="font-color:#666; font-size:12px;">${session_MEM_ID}&nbsp;님</p></li>   
             <c:if test="${session_MEM_ID == 'admin' }">
                <li><a href="/nnS/main">관리자페이지</a></li>    
             </c:if>

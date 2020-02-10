@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/join.css'/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/join2.css'/>" />
 <link rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/resources/css/btn.css"/>" rel="stylesheet">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
@@ -304,7 +305,7 @@ function zipcode() {//우편번호 검색창
     <form id="joinForm" method="post">
       <div class="row">
         <div class="input-field col s12 center">
-          <h4>회원가입</h4>
+          <h4><img src="/nnS/resources/images/join.png"></h4>
           <p class="center">Join to our community now !</p>
         </div>
       </div>
