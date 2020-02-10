@@ -18,7 +18,7 @@
       </ul>
    </div>
    <div id="main-container">
-
+	<img src="./../resources/images/form_t.png" width="100" height="30">
 	<form id="frm" name="frm" enctype="multipart/form-data">
 		<table class="tbl_type">
 			<colgroup>
@@ -28,10 +28,11 @@
 	            <col width="20%">
 			</colgroup>
 			<tbody>
+				<br/>
 				<tr>
-	         		<th>제목</th>
+	         		<th><img src="./../resources/images/form_title.png"></th>
 	         		<td style="background-color:#fff;"><input type="text" id="QNA_TITLE" name="QNA_TITLE" value="${map.QNA_TITLE}" style="width:95%"/><input type="hidden" id="QNA_NUM" name="QNA_NUM" value="${map.QNA_NUM }"/></td>
-					<th scope="row">유형</th>
+					<th scope="row"><img src="./../resources/images/form_type.png"></th>
 						<td style="background-color:#fff;"><select name="QNA_TYPE" id="QNA_TYPE">
 						<option value="상품 관련 문의" ${param.QNA_TYPE eq "상품 관련 문의" ? "selected" :""}>상품 관련 문의</option>
 						

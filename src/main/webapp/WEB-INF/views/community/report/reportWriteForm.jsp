@@ -20,7 +20,7 @@
       </ul>
    </div>
    <div id="main-container">
-
+ 	<img src="./../resources/images/form_t.png" width="100" height="30">
    <form id="frm" name="frm" enctype="multipart/form-data">
       <table class="tbl_type">
          <colgroup>
@@ -29,14 +29,14 @@
             <col width="10%">
             <col width="15%">
          </colgroup>
-         <center><h2>신고게시판 작성</h2></center>
          <tbody>
+         	<br/>
          	<tr>
-         		<td>신고 게시글</td>
+         		<td><img src="./../resources/images/form_preport.png"></td>
          		<td style="background-color:#fff;">${GOODS_NUM}
             	<input type="hidden" id="REPORT_PRONUM" name="REPORT_PRONUM" value="${GOODS_NUM}"></td>
          		</td>
-         		<td>사유</td>
+         		<td><img src="./../resources/images/form_reason.png"></td>
          		<td style="background-color:#fff;">
             		<select id="REPORT_TYPE" name="REPORT_TYPE">
 					
@@ -54,7 +54,7 @@
          	</tr>
          	
          	<tr>
-         		<td>제목</td>
+         		<td><img src="./../resources/images/form_title.png"></td>
          		<td style="background-color:#fff;"><input type="text" id="REPORT_TITLE" name="REPORT_TITLE" style="width:95%"/>
          			<input type="hidden" id="REPORT_NUM" name="REPORT_NUM">
          		</td>

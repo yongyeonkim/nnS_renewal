@@ -20,19 +20,19 @@
       </ul>
    </div>
    <div id="main-container">
-
+	<img src="./../resources/images/form_t.png" width="100" height="30">
    <form id="frm" name="frm" enctype="multipart/form-data">
       <table class="tbl_type">
-         <colgroup>
+         <colgroup>  
             <col width="15%">
             <col width="*"/>
-         </colgroup>
-         <center><h2>공지사항 작성</h2></center>
+         </colgroup> 
          <tbody>
+         	<br/>
          	<tr>
-         		<td>제목</td>
+         		<td><img src="./../resources/images/form_title.png"></td>
          		<td style="background-color:#fff;"><input type="text" id="NOTICE_TITLE" name="NOTICE_TITLE" style="width:95%"/></td>
-         		<td>작성자</td>
+         		<td><img src="./../resources/images/form_writer.png"></td>
          		<td style="background-color:#fff;">${session_MEM_INFO.MEM_ID }<input type="hidden" id="MEM_NUM" name="MEM_NUM" value="${session_MEM_INFO.MEM_NUM }"/></td>
          	</tr>
          	<tr>

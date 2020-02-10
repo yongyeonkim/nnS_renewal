@@ -4,7 +4,7 @@
 
 <!-- header_area -->
 <div class="header_area" align="center">
-	<h1><a href="/nnS/main" title="nnS"><img src="/nnS/resources/images/SkinImg/mainlogo.png" alt="nnS" style="width:200px;" align="center"/></a></h1>		
+	<h1><a href="/nnS/main" title="nnS"><img src="/nnS/resources/images/SkinImg/mainlogo2.png" alt="nnS" style="width:200px;" align="center"/></a></h1>		
 
 	<div class="top_menu">
 		<ul>
