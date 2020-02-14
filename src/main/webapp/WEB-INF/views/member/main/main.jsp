@@ -21,10 +21,10 @@
 <body>
 <ul class="bxslider" style="width:80%; margin:auto;"> 
 	 <li>
-	 	<img alt="" style="width:100%; height:250px;" src=<c:url value="/resources/images/main_banner1.png"/>/>
+	 	<img alt="" style="width:100%; height:250px;" src="${pageContext.request.contextPath}/resources/images/CU.png"/>
 	 </li>
 	 <li>
-	 	<img alt="" style="width:100%; height:250px;" src=<c:url value="/resources/images/main_banner2.png"/>/>
+	 	<img alt="" style="width:100%; height:250px;" src="${pageContext.request.contextPath}/resources/images/fill.png"/>/>
 	 </li>
 </ul>
 </body>
