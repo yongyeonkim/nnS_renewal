@@ -301,6 +301,14 @@
 			var comSubmit = new ComSubmit("frm");
 			comSubmit.setUrl("<c:url value='/shop/goodsDetail/commentWrite'/>");
 			comSubmit.addParam("GOODS_NUM", $("#GOODS_NUM").val());
+			
+			// 댓글 내용 필요
+	         if(!$("#COMMENTS_CONTENT").val()){
+	             alert("내용를 입력해주세요.");
+	             $("#COMMENTS_CONTENT").focus();
+	             return false;
+	         }
+			
 			comSubmit.submit();
 		} 
 		

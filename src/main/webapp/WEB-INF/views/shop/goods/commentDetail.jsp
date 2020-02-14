@@ -56,6 +56,7 @@
 						<a href="#this" id="rcDelete" name="rcDelete">답글삭제
 						<input type="hidden" id="REPLY_NUM" name="REPLY_NUM" value="${rMap.COMMENTS_NUM }">
 						<input type="hidden" id="COMMENTS_RNUM" name="COMMENTS_RNUM" value="${cMap.COMMENTS_NUM }">
+						<input type="hidden" id="G_MEM_ID" name="G_MEM_ID" value="${G_MEM_ID }">
 						</a>
 					</c:if>
 					</td>
@@ -106,6 +107,14 @@
 			comSubmit.setUrl("<c:url value='/shop/goodsDetail/commentReplyWrite'/>");
 			comSubmit.addParam("COMMENTS_NUM", $("#COMMENTS_NUM").val());
 			comSubmit.addParam("G_MEM_ID", "${G_MEM_ID}");
+			
+			// 댓글 내용 필요
+	         if(!$("#COMMENTS_CONTENT").val()){
+	             alert("내용를 입력해주세요.");
+	             $("#COMMENTS_CONTENT").focus();
+	             return false;
+	         }
+			
 			comSubmit.submit();
 		}
 		
