@@ -40,7 +40,7 @@
 	
 	function fn_openGoodsList(){
 		var comSubmit = new ComSubmit();
-		comSubmit.setUrl("<c:url value='/shop' />");
+		comSubmit.setUrl("<c:url value='/shop/allGoodsList' />");
 		comSubmit.submit();
 	}
 	

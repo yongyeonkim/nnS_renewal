@@ -82,7 +82,7 @@ a {color:#666;}
 			<c:if test="${session_MEM_ID != null }">
 			<li><p style="font-color:#666; font-size:12px;">${session_MEM_ID}&nbsp;님</p></li>	
 				<c:if test="${session_MEM_ID == 'admin' }">
-					<li><a style="color:#666;" href="/nnS/main">관리자페이지</a></li> 	
+					<li><a style="color:#666;" href="/nnS/admin">관리자페이지</a></li> 	
 				</c:if>
 			<li><a style="color:#666;" href="${contextPath}/nnS/logout" class="log">로그아웃</a></li> 
 			<li><a style="color:#666;" href="${contextPath}/nnS/myPage">마이페이지</a></li>

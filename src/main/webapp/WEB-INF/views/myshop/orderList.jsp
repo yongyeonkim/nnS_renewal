@@ -95,9 +95,9 @@ html, body, div, span, applet, object, iframes, h1, h2, h3, h4, h5, h6,
    		</table>
    		<div class='container' style="width:100%;">
 			<ul class='goodsTabs'>
-				<li class='selected'><a href='#goodsTab1'>주문/결제</a></li>
-				<li><a href='#goodsTab2'>배송중</a></li>
-				<li><a href='#goodsTab3'>배송완료</a></li>
+				<li class='selected'><a href='#goodsTab1'><img src="./resources/images/myshop_tab_1.png" alt="" width="90" height="30"/></a></li>
+				<li><a href='#goodsTab2'><img src="./resources/images/myshop_tab_2.png" alt="" width="90" height="30"/></a></li>
+				<li><a href='#goodsTab3'><img src="./resources/images/myshop_tab_3.png" alt="" width="90" height="30"/></a></li>
 			</ul>
 			<div class='goodsTab_container'>
 				<div id="goodsTab1" class="goodsTab_content">
@@ -225,7 +225,7 @@ function fn_selectOrderListCallback1(data) {
 				+		"<th width='200px' align='center'><img src=<c:url value='/resources/images/myorder_list3.png'/>></th>"
 				+		"<th width='100px' align='center'><img src=<c:url value='/resources/images/myorder_list4.png'/>></th>"
 				+		"<th width='100px' align='center'><img src=<c:url value='/resources/images/myorder_list5.png'/>></th>"
-				+		"<th width='100px' align='center'>주문상태변경</td>"
+				+		"<th width='100px' align='center'><img src=<c:url value='/resources/images/myshop_ostatus.png'/>></th>"
 				+	"</tr>";
 	if (total == 0) {
 		str1 += "<tr align='center'>" 

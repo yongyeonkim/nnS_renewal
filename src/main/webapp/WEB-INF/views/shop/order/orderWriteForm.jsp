@@ -79,7 +79,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="text" id="MEM_ID" name="MEM_ID" value="${session_MEM_ID}">
+						<input type="hidden" id="MEM_ID" name="MEM_ID" value="${session_MEM_ID}">
 						<input type="hidden" id="GOODS_NUM" name="GOODS_NUM" value="${orderG.GOODS_NUM}"/>
 						<input type="hidden" id="GOODS_PRICE" name="GOODS_PRICE" value="${orderG.GOODS_PRICE}"/>
 						<input type="hidden" id="GOODS_DCOST" name="GOODS_DCOST" value="${orderG.GOODS_DCOST}"/>
