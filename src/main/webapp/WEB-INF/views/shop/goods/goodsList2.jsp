@@ -207,7 +207,7 @@ h1 {
    
 	
 	<c:if test="${session_MEM_ID ne null }">
-		<a href="#this" class="btn" id="write">글쓰기</a>
+		<a href="#this"  class="btn" id="write"><button class="bttn-bordered bttn-xs bttn-primary"><img src="./resources/images/commu_wbtn.png"></button></a>
 	</c:if>
 
 </div>

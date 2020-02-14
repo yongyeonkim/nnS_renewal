@@ -119,9 +119,10 @@
 	  </table>
 	  
       	<p align="left">
-      		<c:if test="${request_type eq 'modify'}"><a href="#this" class="btn" id="updateBtn">수정하기</a></c:if>
-			<c:if test="${request_type eq 'write'}"><a href="#this" class="btn" id="addBtn">작성하기</a></c:if>
-			<a href="#this" class="btn" id="list">목록으로</a>
+      		<c:if test="${request_type eq 'modify'}"><a href="#this" class="btn" id="updateBtn"><button class="bttn-bordered bttn-xs bttn-primary">수정하기</button></a></c:if>
+			<c:if test="${request_type eq 'write'}"><a href="#this" class="btn" id="addBtn"><button class="bttn-bordered bttn-xs bttn-primary">작성하기</button></a></c:if>
+			<a href="#this" class="btn" id="list"><button class="bttn-bordered bttn-xs bttn-primary">목록으로</button></a>
+			
       	</p>
 	  
 	  <c:if test="${request_type eq 'modify'}"><input type="hidden" id="GOODS_NUM" name="GOODS_NUM" value="${map.GOODS_NUM}"></c:if>
