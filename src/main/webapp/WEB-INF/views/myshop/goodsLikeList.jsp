@@ -238,7 +238,7 @@ h1 {
 		
 		function fn_selectGoodsList(pageNo) {
 			var comAjax = new ComAjax();
-			comAjax.setUrl("<c:url value='/shop/selectGoodsList' />");
+			comAjax.setUrl("<c:url value='/myshop/selectGoodsList' />");
 			comAjax.setCallback("fn_selectGoodsListCallback");
 			comAjax.addParam("PAGE_INDEX", pageNo);
 			comAjax.addParam("PAGE_ROW", 15);
