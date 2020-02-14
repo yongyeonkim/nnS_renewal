@@ -60,6 +60,7 @@
 						<img src="/nnS/resources/images/goods_model.png"> : ${map.GOODS_TITLE} <br />	<!-- 테이블에 없음 --> 
 						<img src="/nnS/resources/images/goods_pstatus.png"> : ${map.GOODS_STATUS}<br/>
 						<input type="hidden" id="IDX" name="IDX" value="${map.GOODS_NUM}">
+						<input type="hidden" id="GOODS_NUM" name="GOODS_NUM" value="${map.GOODS_NUM}">
 						<img src="/nnS/resources/images/goods_price.png"> : ${map.GOODS_PRICE}<br /> 
 						<img src="/nnS/resources/images/goods_dprice.png">: ${map.GOODS_DCOST} <br /><!-- 테이블에 없음 --> 
 						<img src="/nnS/resources/images/goods_total.png"> : <c:out value="${map.GOODS_PRICE+map.GOODS_DCOST}"/><br/>
@@ -88,7 +89,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<div class="container">
+		<div class="container" style="width:100%">
 		    <ul class="goodsTabs">
 		        <li><a href="#goodsTab1">상품정보</a></li>
 		        <li><a href="#goodsTab2">상품문의</a></li>
@@ -107,8 +108,29 @@
 		        </div>
 		        <div id="goodsTab2" class="goodsTab_content">
 		             <h2>상품문의</h2>
-		            <p>상품에 대한 문의가 있음</p>
-		        </div>
+						<div align='center'>
+	                        <!-- 뭐든 넣어도됨(작성자 등등) -->
+			      		</div>
+			      		<!-- 문의 작성 폼 -->
+			      		<form id="frm" name="frm">
+				      		<c:if test="${session_MEM_ID != NULL}">
+					      		<div width="100%">
+				      				<textarea name='COMMENTS_CONTENT' id='COMMENTS_CONTENT' rows='5' cols='80' style='resize: none;'></textarea>
+				      				<input type="hidden" id="COMMENTS_TYPE" name="COMMENTS_TYPE" value="1"/>
+				      				<input type="hidden" id="COMMENTS_PARENT" name="COMMENTS_PARENT" value="${map.GOODS_NUM}"/>
+				      				<input type="hidden" id="MEM_ID" name="MEM_ID" value="${session_MEM_INFO.MEM_ID }"/>
+									<input type="button" id="cWrite" name="cWrite" value="문의하기" onClick="" style="vertical-align : middle;">
+			      				</div>
+			      			</c:if>
+	      				</form>
+	      				
+					<table id="goodsTab2_ct" style="height: 100px;">
+						<tbody>
+						</tbody>
+			       </table>
+	       			<div id="PAGE_NAVI" align="center"></div>
+					<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
+			   </div>
 		        <div id="goodsTab3" class="goodsTab_content">
 		             <h2>판매자정보</h2>
 		             <br>
@@ -122,7 +144,7 @@
 		    </div>
 		    <br>
 		<a href="#this" class="btn" id="list">목록으로</a>
-		<c:if test="${session_MEM_ID eq map.MEM_ID }">
+		<c:if test="${session_MEM_ID eq map.MEM_ID && session_MEM_ID ne null}">
 			<a href="#this" class="btn" id="update">수정하기</a>
 			<a href="#this" class="btn" id="delete">삭제하기</a>
 		</c:if>
@@ -137,6 +159,8 @@
 	<%@ include file="/WEB-INF/include/include-body.jspf" %>
 	<script type="text/javascript">
 		$(document).ready(function(){
+			fn_selectCommentList(1);
+			
 			$("#list").on("click", function(e){ //목록으로 버튼
 				e.preventDefault();
 				fn_openGoodsList();
@@ -152,7 +176,18 @@
 			});
 			$("#buy").on("click", function(e) { // 바로구매 버튼
 				e.preventDefault();
-				fn_orderWriteForm($(this));
+				if("${session_MEM_ID}" == "${memberMap.MEM_ID}"){
+					alert("자신의 상품은 구매할 수 없습니다.");
+					return false;
+				}else if("${map.GOODS_TSTATUS}" != 'N'){
+					alert("이미 거래중인 상품은 구매할 수 없습니다.");
+				}else{
+					fn_orderWriteForm($(this));
+				}
+			});
+			$("#cWrite").on("click", function(e){
+				e.preventDefault();
+				fn_writeComment();
 			});
 		});
 		
@@ -180,9 +215,11 @@
 		/* 좋아요 */
 		function like_func(){
 			if(session_chk()){
+				var IDX="${map.MEM_ID}";
 				var comSubmit = new ComSubmit();
 				comSubmit.setUrl("<c:url value='/shop/goodsDetail/goodsLike'/>");
 				comSubmit.addParam("LIKE_GOODS_NUM", "${map.GOODS_NUM}");
+				comSubmit.addParam("IDX", IDX);
 				comSubmit.addParam("LIKE_MEM_ID", "${session_MEM_ID}");
 				comSubmit.submit();	
 			}
@@ -249,6 +286,110 @@
 			$(activegoodsTab).fadeIn(); //Fade in the active content
 			return false;
 		});
+		
+
+		
+		function fn_detailComment(num){
+			var comSubmit = new ComSubmit();
+			comSubmit.setUrl("<c:url value='/shop/goodsDetail/commentDetail'/>");
+			comSubmit.addParam("COMMENTS_NUM", num);
+			comSubmit.addParam("G_MEM_ID", $("#G_MEM_ID").val());
+			comSubmit.submit();
+		}
+		
+		function fn_writeComment(){
+			var comSubmit = new ComSubmit("frm");
+			comSubmit.setUrl("<c:url value='/shop/goodsDetail/commentWrite'/>");
+			comSubmit.addParam("GOODS_NUM", $("#GOODS_NUM").val());
+			comSubmit.submit();
+		} 
+		
+		function fn_deleteComment(num){
+			var comSubmit = new ComSubmit();
+			comSubmit.setUrl("<c:url value='/shop/goodsDetail/commentDelete'/>");
+			comSubmit.addParam("COMMENTS_NUM", num);
+			comSubmit.addParam("GOODS_NUM", $("#GOODS_NUM").val());
+			comSubmit.submit();
+		}
+		
+		function fn_chkUsr(){
+			alert("문의 작성자만 확인할 수 있습니다.")
+		}
+		
+		
+		// 댓글 페이징
+		function fn_selectCommentList(pageNo) {
+			var comAjax = new ComAjax();
+			comAjax.setUrl("<c:url value='/shop/goodsDetail/commentList' />");
+			comAjax.setCallback("fn_selectCommentListCallback");
+			comAjax.addParam("PAGE_INDEX", pageNo);
+			comAjax.addParam("PAGE_ROW", 15);
+			comAjax.addParam("COMMENTS_TYPE", 1);
+			comAjax.addParam("COMMENTS_PARENT", $("#GOODS_NUM").val());
+			comAjax.ajax();
+		}
+
+		// 댓글 페이징 콜백함수
+		function fn_selectCommentListCallback(data) {
+			var total = data.TOTAL;
+			var body = $("#goodsTab2_ct");
+			body.empty();
+			if (total == 0) {
+				var str = "<tr>" + "<td colspan='4'>등록된 상품 문의가 없습니다.</td>"
+						+ "</tr>";
+				body.append(str);
+			} else {
+				var params = {
+					divId : "PAGE_NAVI",
+					pageIndex : "PAGE_INDEX",
+					totalCount : total,
+					recordCount : 15,
+					eventName : "fn_selectCommentList"
+				};
+				gfn_renderPaging(params);
+
+				var str = "";
+				$.each(
+								data.list,
+								function(key, value) {									
+							str +=				"<tr style='border-top-style: Double; border-color: #000000;'>"
+						           		+	    "<td length='30%' target='_blank' style='width:300px;'>";
+						    if('${session_MEM_INFO.MEM_ID}' == value.MEM_ID || '${session_MEM_INFO.MEM_ID}' == '${memberMap.MEM_ID}'){
+						    	
+						    str +=				"<a href='#this' onClick='fn_detailComment("+value.COMMENTS_NUM+")'>"
+						    			+		"<input type='hidden' id='G_MEM_ID' name='G_MEM_ID' value='${memberMap.MEM_ID}'>"
+						         		+       		value.MEM_ID
+						         		+		" 님의 상품문의입니다.</a>";
+						    } else {
+						    str +=				"<a href='#this' onClick='fn_chkUsr()'>"
+						         		+       		value.MEM_ID
+						         		+		" 님의 상품문의입니다.</a>";
+						    	
+						    }      		
+						    str+=      	    	"</td>"
+							            +   		"<td colspan='2' style='width:170px; align=center;'>"
+							            +     			new Date(value.COMMENTS_DATE).toLocaleString()
+							            +     	"</td>"
+								        +        "<td>";
+							if(value.COMMENTS_REPLY=='N'){
+								str +=			'답변대기';
+							} else if (value.COMMENTS_REPLY=='Y'){
+						 		str +=			'답변완료';
+							} else{
+								str +=			"";
+							}
+							str +=              "</td>"	
+							            +      	"<td style='width: 100px; align=center;'>";
+							if('${session_MEM_INFO.MEM_ID}' == value.MEM_ID){
+									str += "<a href='#this' name='cDelete' onClick='fn_deleteComment("+value.COMMENTS_NUM+")'> 삭제 </a>"
+										+  "<input type='hidden' id='GOODS_NUM' name='GOODS_NUM' value=" + value.COMMENTS_PARENT + ">";					
+								}
+							str +=              "</td>"
+							            +   	"</tr>";
+						});
+				body.append(str);
+			}
+		}
 
 	</script>
 

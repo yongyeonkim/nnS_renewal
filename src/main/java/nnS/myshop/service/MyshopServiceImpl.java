@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
@@ -17,15 +19,35 @@ public class MyshopServiceImpl implements MyshopService{
 	private MyshopDAO myshopDAO;
 	
 	@Override
-	public List<Map<String, Object>> selectMyOrderList(Map<String, Object> map) throws Exception {
+	public List<Map<String, Object>> selectMyOrderList1(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		return myshopDAO.selectMyOrderList(map);
+		return myshopDAO.selectMyOrderList1(map);
+	}
+	@Override
+	public List<Map<String, Object>> selectMyOrderList2(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return myshopDAO.selectMyOrderList2(map);
+	}
+	@Override
+	public List<Map<String, Object>> selectMyOrderList3(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return myshopDAO.selectMyOrderList3(map);
 	}
 	
 	@Override
-	public List<Map<String, Object>> selectMyGoodsList(Map<String, Object> map) throws Exception {
+	public List<Map<String, Object>> selectMySaleList1(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		return myshopDAO.selectMyGoodsList(map);
+		return myshopDAO.selectMySaleList1(map);
+	}
+	@Override
+	public List<Map<String, Object>> selectMySaleList2(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return myshopDAO.selectMySaleList2(map);
+	}
+	@Override
+	public List<Map<String, Object>> selectMySaleList3(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return myshopDAO.selectMySaleList3(map);
 	}
 	
 	@Override
@@ -39,4 +61,20 @@ public class MyshopServiceImpl implements MyshopService{
 		// TODO Auto-generated method stub
 		return myshopDAO.selectRecentGoodsList(map);
 	}
+	
+	@Override
+	public void insertDnum(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		myshopDAO.insertDnum(map);
+	}
+
+	@Override
+	public void buyComplete(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		myshopDAO.buyComplete(map);
+	}
+	
+	@Override
+	public void orderCancel(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		myshopDAO.orderCancel(map);
+	}
+	
 }

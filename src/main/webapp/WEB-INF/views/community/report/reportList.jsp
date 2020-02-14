@@ -29,6 +29,16 @@
 			<col width="10%" />
 		</colgroup>  
 		<caption><h2>신고게시판</h2></caption>
+		<form action="/nnS/community/reportList" method="post">
+	      <select name="search" id="search">
+	                  <option value="0">전체보기</option>
+	               <option value="1" <c:out value="${search eq '1' ? 'selected' :''}"/>>처리대기</option>
+	               <option value="2" <c:out value="${search eq '2' ? 'selected' :''}"/>>신고접수</option>
+	               <option value="3" <c:out value="${search eq '3' ? 'selected' :''}"/>>허위신고</option>
+	               <option value="4" <c:out value="${search eq '4' ? 'selected' :''}"/>>처리완료</option>
+	      </select>
+	      <input type="submit" value="분류" class="search_btn" onClick="onSearch()"/>
+	    </form>
 		<thead>
 			<tr>
 				<th scope="col"><img src="./../resources/images/commu_num.png" height="25"></th>
@@ -36,31 +46,11 @@
 				<th scope="col"><img src="./../resources/images/commu_writer.png" height="25"></th>
 				<th scope="col"><img src="./../resources/images/commu_date.png" height="25"></th>
 				<th scope="col"><img src="./../resources/images/commu_status.png" height="25"></th>
+				<th scope="col">신고 대상</th>
 				<th scope="col"><img src="./../resources/images/commu_hit.png" height="25"></th>
 			</tr>
 		</thead>
 		<tbody>
-			<%--<c:choose>
-				<c:when test="${fn:length(list) > 0}">
-					<c:forEach items="${list }" var="row">
-						<tr>
-							<td>${row.REPORT_NUM }</td>
-							<td class="title"><a href="#this" name="title">${row.REPORT_TITLE }&nbsp;&nbsp;&nbsp;&nbsp;[${row.REPORT_TYPE }]</a>
-								<input type="hidden" id="REPORT_NUM" value="${row.REPORT_NUM }"></td>
-						    <td>${row.MEM_ID }</td>
-							<td>${row.REPORT_DATE }</td>
-							<td>${row.REPORT_STATUS }</td>
-							<td>${row.REPORT_COUNT }</td>
-							
-						</tr>
-					</c:forEach>
-				</c:when>
-				<c:otherwise>
-					<tr>
-						<td colspan="4">조회된 결과가 없습니다.</td>
-					</tr>
-				</c:otherwise>
-			</c:choose>--%>
 		</tbody>
 	</table>
 	
@@ -109,9 +99,9 @@
 			
 			comAjax.setUrl("<c:url value='/community/reportListPaging' />");
 			comAjax.setCallback("fn_selectBoardListCallback");
-			
 			comAjax.addParam("PAGE_INDEX", pageNo);
 			comAjax.addParam("PAGE_ROW", 15);
+			comAjax.addParam("search", $('#search').val());
 			comAjax.ajax();
 		}
 
@@ -120,7 +110,7 @@
 			var body = $("table>tbody");
 			body.empty();
 			if (total == 0) {
-				var str = "<tr>" + "<td colspan='4'>조회된 결과가 없습니다.</td>"
+				var str = "<tr>" + "<td colspan='7'>조회된 결과가 없습니다.</td>"
 						+ "</tr>";
 				body.append(str);
 			} else {
@@ -138,9 +128,15 @@
 				$.each(
 								data.list,
 								function(key, value) {
+									var si = "";
+		                            if(value.REPORT_GOODS_SELLER_ID == null){
+		                               si = " ";
+		                            }else{
+		                               si = value.REPORT_GOODS_SELLER_ID;
+		                            }
 									str     += "<tr style=\"text-align: center\">"
 											+ "<td>"
-											+ value.RNUM
+											+ value.REPORT_NUM
 											+ "</td>"
 											+ "<td class='title'>"
 											+ "<a href='#this' name='title'>"
@@ -150,6 +146,7 @@
 											+"</td>" + "<td>" + value.MEM_ID
 											+ "</td>" + "<td>" + new Date(value.REPORT_DATE).toLocaleString()
 											+ "</td>" + "<td>" + value.REPORT_STATUS
+											+ "</td>" + "<td>" + si
 											+ "</td>" + "<td>" + value.REPORT_COUNT
 											+ "</td>" + "</tr>";
 								});

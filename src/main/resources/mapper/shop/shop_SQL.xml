@@ -37,7 +37,7 @@
 			WHERE   G.GOODS_SELLER = M.MEM_NUM(+)
 			AND     G.GOODS_NUM = GL.GOODS_LIKE_PARENT(+)
 			AND     G.GOODS_DEL_GB = 'N'
-			AND     G.GOODS_TSTATUS = 'N'
+			AND     G.GOODS_TSTATUS IN ('N', 'ING')
 			]]>
 		<include refid="search"></include>	
 		<include refid="common.pagingPost"/>
@@ -78,7 +78,8 @@
 			                GOODS_HASH,
 			                GOODS_DCOST,
 			                GOODS_BRAND,
-			                GOODS_STATUS
+			                GOODS_STATUS,
+			                GOODS_THUMBNAIL
 			                )
 			VALUES          
 			                (
@@ -92,7 +93,8 @@
 			                #{GOODS_HASH},
 			                #{GOODS_DCOST},
 			                #{GOODS_BRAND},
-			                #{GOODS_STATUS}
+			                #{GOODS_STATUS},
+			                #{GOODS_THUMBNAIL}
 			                )
 		]]>
 	</insert>
@@ -110,8 +112,8 @@
 			VALUES
 			                    (
 			                    GOODS_IMAGE_SEQ.NEXTVAL,
-			                    #{BOARD_IDX},
-			                    #{FILES_ORG},
+			                    #{IDX},
+			                    'Empty',
 			                    #{FILES_STD}
 			                    )
 		]]> 
@@ -266,5 +268,15 @@
 			AND     GOODS_LIKE_PARENT = #{LIKE_GOODS_NUM}
 		]]>
 	</delete>
+	
+	<update id="updateGoodsTstatus" parameterType="hashmap">
+		<![CDATA[
+			UPDATE GOODS
+			SET
+				GOODS_TSTATUS = 'ING'
+			WHERE
+				GOODS_NUM = #{GOODS_NUM}
+		]]>
+	</update>
 </mapper>
 

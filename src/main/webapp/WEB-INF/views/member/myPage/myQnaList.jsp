@@ -88,7 +88,7 @@
 			var body = $("table>tbody");
 			body.empty();
 			if (total == 0) {
-				var str = "<tr align=\"center\">" + "<td colspan='5'>조회된 결과가 없습니다.</td>"
+				var str = "<tr align=\"center\">" + "<td colspan='6'>조회된 결과가 없습니다.</td>"
 						+ "</tr>";
 				body.append(str);
 			} else {
@@ -108,7 +108,7 @@
 								function(key, value) {
 									str     += "<tr style=\"text-align: center\">"
 											+ "<td>"
-											+ value.RNUM
+											+ value.QNA_NUM
 											+ "</td>"
 											+ "<td class='title'>"
 											+ "<a href='#this' name='title'>"

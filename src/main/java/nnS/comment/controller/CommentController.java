@@ -20,20 +20,98 @@ public class CommentController {
 	@Resource(name="commentService")
 	private CommentService commentService;
 
-	@RequestMapping(value="/shop/goodsDetail/commentWrite")
-	public ModelAndView shopCommentWrite() throws Exception{
-		ModelAndView mv = new ModelAndView("redirect:/shop/goodsDetail");
-
+	// 문의 리스트
+	@RequestMapping(value="/shop/goodsDetail/commentList")
+	public ModelAndView goodsCommentPaging(CommandMap commandMap) throws Exception{
+		ModelAndView mv = new ModelAndView("jsonView");
+		
+		List<Map<String, Object>> list = commentService.selectGoodsCommentList(commandMap.getMap());
+		mv.addObject("list", list);
+		if(list.size() > 0) {
+			mv.addObject("TOTAL", list.get(0).get("TOTAL_COUNT"));
+		} else {
+			mv.addObject("TOTAL", 0);
+		}
+		
 		return mv;
 	}
 	
-	@RequestMapping(value="/shop/goodsDetail/commentDelete")
-	public ModelAndView shopCommentDelete() throws Exception{
+	// 문의 입력
+	@RequestMapping(value="/shop/goodsDetail/commentWrite")
+	public ModelAndView shopCommentWrite(CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("redirect:/shop/goodsDetail");
-
+		
+		commentService.insertGoodsComment(commandMap.getMap());
+		
+		mv.addObject("GOODS_NUM", commandMap.get("COMMENTS_PARENT"));
+		
+		return mv;
+	}
+	
+	// 문의 삭제
+	@RequestMapping(value="/shop/goodsDetail/commentDelete")
+	public ModelAndView shopCommentDelete(CommandMap commandMap) throws Exception{
+		ModelAndView mv = new ModelAndView("redirect:/shop/goodsDetail");
+		
+		commentService.deleteGoodsComment(commandMap.getMap());
+		
+		mv.addObject("GOODS_NUM", commandMap.get("GOODS_NUM"));
+		
 		return mv;
 	}
 
+	// 문의 상세보기
+	@RequestMapping(value="/shop/goodsDetail/commentDetail")
+	public ModelAndView shopCommentDetail(CommandMap commandMap) throws Exception{
+		ModelAndView mv = new ModelAndView("goodsCommentDetail");
+		System.out.println("commandMap=========================="+commandMap.getMap());
+		
+		Map<String, Object> cMap = commentService.selectGoodsCommentDetail(commandMap.getMap());
+		System.out.println(cMap.get("map"));
+		String a = (String) cMap.get("reply");
+		
+		if(a.contentEquals("Y")) {
+			Map<String, Object> rMap = commentService.selectGoodsCommentReply(commandMap.getMap());
+			mv.addObject("rMap", rMap.get("map"));
+			System.out.println("rMap=========================="+rMap.get("map"));
+		}
+		
+		mv.addObject("cMap", cMap.get("map"));
+		mv.addObject("G_MEM_ID",commandMap.get("G_MEM_ID"));
+		
+		System.out.println("cMap=========================="+cMap.get("map"));
+		
+		return mv;
+	}
+	
+	// 문의 답변 입력
+	@RequestMapping(value="/shop/goodsDetail/commentReplyWrite")
+	public ModelAndView shopCommentDetailWrite(CommandMap commandMap) throws Exception{
+		ModelAndView mv = new ModelAndView("redirect:/shop/goodsDetail/commentDetail");
+		commentService.insertGoodsCommentReply(commandMap.getMap());
+		commentService.insertGoodsCommentStat(commandMap.getMap());
+		System.out.println(commandMap.getMap());
+		mv.addObject("COMMENTS_NUM", commandMap.get("COMMENTS_RNUM"));
+		mv.addObject("G_MEM_ID", commandMap.get("G_MEM_ID"));
+		return mv;
+	}
+	
+	// 문의 답변 삭제
+	@RequestMapping(value="/shop/goodsDetail/commentReplyDelete")
+	public ModelAndView shopCommentDetailDelete(CommandMap commandMap) throws Exception{
+		ModelAndView mv = new ModelAndView("redirect:/shop/goodsDetail/commentDetail");
+		
+		System.out.println(commandMap.getMap());
+		
+		commentService.deleteGoodsCommentReply(commandMap.getMap());
+		commentService.deleteGoodsCommentStat(commandMap.getMap());
+		mv.addObject("COMMENTS_NUM", commandMap.get("COMMENTS_RNUM"));
+		mv.addObject("G_MEM_ID", commandMap.get("G_MEM_ID"));
+		
+		return mv;
+	}
+	
+	
 	@RequestMapping(value="/community/boardDetail/commentList")
 	public ModelAndView boardCommentPaging(CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("jsonView");

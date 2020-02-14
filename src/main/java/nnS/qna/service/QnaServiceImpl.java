@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import nnS.common.dao.InformDAO;
 import nnS.common.util.FileUtils;
 import nnS.qna.dao.QnaDAO;
 
@@ -17,6 +18,9 @@ import nnS.qna.dao.QnaDAO;
 public class QnaServiceImpl implements QnaService{
 	
 	Logger log = Logger.getLogger(this.getClass());
+	
+	@Resource(name="informDAO")
+	private InformDAO informDAO;
 	
 	@Resource(name="qnaDAO")
 	private QnaDAO qnaDAO;
@@ -85,6 +89,7 @@ public class QnaServiceImpl implements QnaService{
 	public void insertQnaAnswer(Map<String, Object> map) throws Exception{//답변달기
 		// TODO Auto-generated method stub
 		qnaDAO.insertQnaAnswer(map);
+		informDAO.informInsert(map, "내 문의글에 답변이 달렸습니다.");
 	}
 	@Override
 	public List<Map<String, Object>> selectQnaAnswer(Map<String, Object> map)throws Exception {

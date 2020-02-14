@@ -13,12 +13,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import nnS.common.dao.InformDAO;
 import nnS.common.util.FileUtils;
 import nnS.notice.dao.NoticeDAO;;
 
 @Service("noticeService")
 public class NoticeServiceImpl implements NoticeService {
 	Logger log = Logger.getLogger(this.getClass());
+	
+	@Resource(name="informDAO")
+	private InformDAO informDAO;
 	
 	@Resource(name="noticeDAO")
 	private NoticeDAO noticeDAO;
@@ -47,6 +51,8 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public void insertNoticeWrite(Map<String, Object> map, HttpServletRequest request) throws Exception {
 		noticeDAO.insertNotice(map);
+		informDAO.informInsert(map, "새로운 공지사항이 게시되었습니다.");
+		
 		map.put("IDX", map.get("NOTICE_NUM"));
 		List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(map, request);
 		for(int i=0, size=list.size(); i<size; i++) {

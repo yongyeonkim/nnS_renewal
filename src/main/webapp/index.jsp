@@ -7,10 +7,12 @@
 <title>URL경로 정리</title>
 </head>
 <body>
-
+<jsp:forward page="/main"/>
 
 <ul>
 
+	<li><a href="/nnS/kakaoPay">카카오페이</a></li>
+	
 	<!-- MainController -->
 	<li><a href="/nnS/main">메인</a></li>
 	

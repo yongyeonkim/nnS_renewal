@@ -28,6 +28,11 @@
       <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
    </definition>
    
+    <!-- admin-->
+   <definition name="default4" template="/WEB-INF/views/admin/layout.jsp">
+      <put-attribute name="body" value="/WEB-INF/views/admin/container.jsp" />
+   </definition>
+   
    <!-- admin -->
 <!--    <definition name="admin" template="/WEB-INF/views/layout/admin/layout.jsp">
       <put-attribute name="body" value="/WEB-INF/views/layout/admin/container.jsp" />
@@ -187,12 +192,17 @@
       <put-attribute name="body" value="/WEB-INF/views/shop/goods/goodsDetail.jsp" />
    </definition>
    
+   <definition name="goodsCommentDetail" extends="default">
+      <put-attribute name="body" value="/WEB-INF/views/shop/goods/commentDetail.jsp" />
+   </definition>
+   
+   
    <!-- order -->
-   <definition name="orderWriteForm" extends="default2">
+   <definition name="orderWriteForm" extends="default">
       <put-attribute name="body" value="/WEB-INF/views/shop/order/orderWriteForm.jsp" />
    </definition>
    
-   <definition name="orderWriteResult" extends="default2">
+   <definition name="orderWriteResult" extends="default">
       <put-attribute name="body" value="/WEB-INF/views/shop/order/orderWriteResult.jsp" />
    </definition>
    
@@ -204,9 +214,21 @@
    <definition name="orderList" extends="default2">
       <put-attribute name="body" value="/WEB-INF/views/myshop/orderList.jsp" />
    </definition>
+   <definition name="orderList2" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/myshop/orderList2.jsp" />
+   </definition>
+   <definition name="orderList3" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/myshop/orderList3.jsp" />
+   </definition>
    
    <definition name="saleList" extends="default2">
       <put-attribute name="body" value="/WEB-INF/views/myshop/saleList.jsp" />
+   </definition>
+   <definition name="saleList2" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/myshop/saleList2.jsp" />
+   </definition>
+   <definition name="saleList3" extends="default2">
+      <put-attribute name="body" value="/WEB-INF/views/myshop/saleList3.jsp" />
    </definition>
    
    <definition name="goodsLikeList" extends="default2">
@@ -215,6 +237,43 @@
    
    <definition name="recentGoodsList" extends="default2">
       <put-attribute name="body" value="/WEB-INF/views/myshop/recentGoodsList.jsp" />
+   </definition>
+   
+   <!-- admin page -->
+   <definition name="admin" extends="default4">
+      <put-attribute name="body" value="/WEB-INF/views/admin/main.jsp" />
+   </definition>
+   
+   <definition name="admemberList" extends="default4">
+      <put-attribute name="body" value="/WEB-INF/views/admin/memberList.jsp" />
+   </definition>
+   
+   <definition name="admemberModify" extends="default4">
+      <put-attribute name="body" value="/WEB-INF/views/admin/memberModifyForm.jsp" />
+   </definition>
+   
+   <definition name="reportPro" extends="default4">
+      <put-attribute name="body" value="/WEB-INF/views/admin/reportPro.jsp" />
+   </definition>
+   
+   <definition name="adreportModify" extends="default4">
+      <put-attribute name="body" value="/WEB-INF/views/admin/reportModifyForm.jsp" />
+   </definition>
+   
+   <definition name="adgoodsList" extends="default4">
+      <put-attribute name="body" value="/WEB-INF/views/admin/goodsList.jsp" />
+   </definition>
+   
+   <definition name="adboardList" extends="default4">
+      <put-attribute name="body" value="/WEB-INF/views/admin/boardList.jsp" />
+   </definition>
+   
+   <definition name="adnoticeList" extends="default4">
+      <put-attribute name="body" value="/WEB-INF/views/admin/noticeList.jsp" />
+   </definition>
+   
+   <definition name="adqnaList" extends="default4">
+      <put-attribute name="body" value="/WEB-INF/views/admin/qnaList.jsp" />
    </definition>
    
 </tiles-definitions>

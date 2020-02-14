@@ -18,7 +18,7 @@
    </ul>
    </div>
    <div id="main-container">
-		<img src="./../resources/images/form_t.png" width="100" height="30">
+		<img src="./../resources/images/form_t3.png" width="100" height="30">
    <table border="1" align="center" class="tbl_type">
       <colgroup>
          <col width="15%"/>
@@ -43,8 +43,31 @@
             <td>${map.REPORT_DATE }</td>
          </tr>
          <tr>
+           <th scope="row">신고 대상</th>
+           <td>${map.REPORT_GOODS_SELLER_ID }
+           <th scope="row">신고 상품번호</th>
+           <td>${map.REPORT_PRONUM }</td>
+         </tr>
+         <tr>
             <th scope="row"><img src="./../resources/images/commu_title.png" height="25"></th>
-            <td colspan="3">${map.REPORT_TITLE }</td>
+            <td>${map.REPORT_TITLE }</td>
+            <th scope="row">신고사유</th>
+            <td>${map.REPORT_TYPE }
+            <c:if test="${session_MEM_INFO.MEM_LEVEL eq '2'}">
+            <form id="frm" name="frm">
+            <input type="hidden" id="IDX" name="IDX" value="${map.MEM_ID}">
+            <input type="hidden" id="IDX2" name="IDX2" value="${map.GOODS_SELLER_ID}">
+            
+	            <select name="REPORT_STATUS" id="REPORT_STATUS">
+	               <option value="처리대기">대기</option>
+	               <option value="신고접수">접수</option>
+	               <option value="허위신고">무죄</option>
+	               <option value="처리완료">완료</option>
+	            </select><a href="#this" class="btn" id="handle">처리 </a>
+	      		</form>
+      		</c:if>
+            
+            
          </tr>
          <tr>
             <td colspan="4" height="600px" style="vertical-align:top;"><pre style="overflow:hidden;  white-space: pre-wrap">${map.REPORT_CONTENT }</pre></td>
@@ -52,7 +75,7 @@
       </tbody>
    </table>
    <a href="#this" class="btn" id="list">목록으로</a>
-   <c:if test="${map.MEM_ID eq session_MEM_ID }">
+   <c:if test="${session_MEM_ID eq map.MEM_ID && session_MEM_ID ne null}">
    	<a href="#this" class="btn" id="delete">삭제하기</a>
    </c:if>
    </div>
@@ -71,6 +94,10 @@
             e.preventDefault();
             fn_deleteBoard();
          });
+         $("#handle").on("click", function(e){ //처리
+             e.preventDefault();
+             fn_report_status();
+          });
       });
       
       function fn_openBoardList(){
@@ -79,15 +106,21 @@
          comSubmit.submit();
       }
       
-   
       function fn_deleteBoard(){
     	 var idx="${map.REPORT_NUM}";
          var comSubmit = new ComSubmit();
          comSubmit.setUrl("<c:url value='/community/reportDelete' />");
          comSubmit.addParam("REPORT_NUM",idx);
          comSubmit.submit();
-         
       }
+      
+      function fn_report_status(){
+          var comSubmit = new ComSubmit("frm");
+          var idx="${map.REPORT_NUM}";
+          comSubmit.setUrl("<c:url value='/community/reportDetail/reportHandle'/>");
+          comSubmit.addParam("REPORT_NUM",idx);
+          comSubmit.submit();         
+       }
    </script>
 </body>
 </html>

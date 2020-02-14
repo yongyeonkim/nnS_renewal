@@ -39,7 +39,7 @@ public class EditorContorller {
 					try{
 						String fileName = file.getName();
 						byte[] bytes = file.getBytes();
-						String uploadPath = req.getSession().getServletContext().getRealPath("/img");
+						String uploadPath = req.getSession().getServletContext().getRealPath("/file");
 						File uploadFile = new File(uploadPath);
 						if(!uploadFile.exists()){
 							uploadFile.mkdirs();
@@ -51,7 +51,7 @@ public class EditorContorller {
                         
                         printWriter = resp.getWriter();
                         resp.setContentType("text/html");
-                        String fileUrl = req.getContextPath() + "/img/" + fileName;
+                        String fileUrl = req.getContextPath() + "/file/" + fileName;
                         
                         // json 데이터로 등록
                         // {"uploaded" : 1, "fileName" : "test.jpg", "url" : "/img/test.jpg"}

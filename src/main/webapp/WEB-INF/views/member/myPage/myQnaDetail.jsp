@@ -19,7 +19,7 @@
         </ul>
    </div>
    <div id="main-container">
-	<img src="./../resources/images/board_writeForm.png" width="100" height="30">
+	<img src="./../resources/images/form_t3.png" width="100" height="30">
     <form id="frm" name="frm">
 	<table class="tbl_type" align="center">
 		<colgroup>
@@ -106,7 +106,7 @@
 				
 		</div>
 	<a href="#this" class="btn" id="list">목록으로</a>
-	<c:if test="${map.MEM_ID eq session_MEM_ID }">
+	<c:if test="${session_MEM_ID eq map.MEM_ID && session_MEM_ID ne null}">
 	<a href="#this" class="btn" id="update">수정하기</a>
 	<a href="#this" class="btn" id="delete">삭제하기</a>
 	</c:if>

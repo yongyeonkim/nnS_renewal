@@ -17,7 +17,7 @@
 	</ul>
 	</div>
 		<div id="main-container">
-		<img src="./../resources/images/form_t.png" width="100" height="30">
+		<img src="./../resources/images/form_t3.png" width="100" height="30">
 			<table border="1" align="center" class="tbl_type">
 				<colgroup>
 					<col width="15%" />
@@ -50,6 +50,7 @@
 			
 			<br />
 			<div align="center"></div>
+			<img src="./../resources/images/form_co.png">
 			<div align="center">
 			<br/>
 			<form id="frm" name="frm" enctype="multipart/form-data">
@@ -79,7 +80,7 @@
 		
 		<div align="center">
 				<br /> <a href="#this" class="btn" id="list">목록으로</a>
-				<c:if test="${session_MEM_INFO.MEM_ID == map.MEM_ID }">
+				<c:if test="${session_MEM_INFO.MEM_ID == map.MEM_ID && session_MEM_INFO.MEM_ID ne null}">
 					<a href="#this" class="btn" id="modify">수정하기</a>
 				</c:if>
 				<c:if
@@ -183,7 +184,7 @@
 				gfn_renderPaging(params);
 				
 				var str = ""
-				str += "<tr style='text-align: center'><td width='10%'><img src='./../resources/images/commu_writer.png' height='25'></td><td width='*'><img src='./../resources/images/commu_hit.png' height='25'></td><td width='30%'><img src='./../resources/images/commu_date.png' height='25'></td><td width='5%'></td></tr>";
+				str += "<tr style='text-align: center'><td width='10%'><img src='./../resources/images/commu_writer.png' height='25'></td><td width='*'><img src='./../resources/images/commu_content.png' height='25'></td><td width='30%'><img src='./../resources/images/commu_date.png' height='25'></td><td width='5%'></td></tr>";
 				
 				$.each(data.list,
 				function(key, value) {

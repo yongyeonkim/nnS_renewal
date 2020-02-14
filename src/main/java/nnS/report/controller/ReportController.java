@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import nnS.common.common.CommandMap;
@@ -41,38 +42,40 @@ public class ReportController {
 		
 		return mv;		
 	}
-
-	@RequestMapping(value = {"/myPage/reportListPaging","/community/reportListPaging"})
-	public ModelAndView reportListPaging(CommandMap commandMap,HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("jsonView");
-		if(request.getServletPath().equals("/myPage/reportListPaging")) {
-			HttpSession session = request.getSession();
-			commandMap.put("session_MEM_ID", session.getAttribute("session_MEM_ID"));
-		}
-		List<Map<String,Object>> list = reportService.selectReportList(commandMap.getMap());
-		mv.addObject("list", list);
-		
-		if(list.size() > 0){
-    		mv.addObject("TOTAL", list.get(0).get("TOTAL_COUNT"));
-    	}
-    	else{
-    		mv.addObject("TOTAL", 0);
-    	}
-		return mv;
-	}
 	
-	@RequestMapping(value ="/community/reportList")
-	public ModelAndView reportList() throws Exception {
-		ModelAndView mv = new ModelAndView("reportList");
-		return mv;
-	}
-	
-	@RequestMapping(value = "/myPage/reportList")
-	public ModelAndView reportMyList(HttpServletRequest request,CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("myreportList");
-		
-		return mv;
-	}
+    @RequestMapping(value = {"/myPage/reportListPaging","/community/reportListPaging"})
+    public ModelAndView reportListPaging(CommandMap commandMap,@RequestParam(value = "search", defaultValue="") String search, HttpServletRequest request) throws Exception {
+       ModelAndView mv = new ModelAndView("jsonView");
+       
+       if(request.getServletPath().equals("/myPage/reportListPaging")) {
+          HttpSession session = request.getSession();
+          commandMap.put("session_MEM_ID", session.getAttribute("session_MEM_ID"));
+       }
+       List<Map<String,Object>> list = reportService.selectReportList(commandMap.getMap(),search);
+       mv.addObject("list", list);
+       
+       if(list.size() > 0){
+           mv.addObject("TOTAL", list.get(0).get("TOTAL_COUNT"));
+        }
+        else{
+           mv.addObject("TOTAL", 0);
+        }
+       return mv;
+    } 
+   
+    @RequestMapping(value ="/community/reportList")
+    public ModelAndView reportList(@RequestParam(value = "search", defaultValue="") String search, HttpServletRequest request) throws Exception {
+       ModelAndView mv = new ModelAndView("reportList");
+       request.setAttribute("search", search);
+       return mv;
+    }
+   
+    @RequestMapping(value = "/myPage/reportList")
+    public ModelAndView reportMyList(@RequestParam(value = "search", defaultValue="") String search, HttpServletRequest request,CommandMap commandMap) throws Exception {
+       ModelAndView mv = new ModelAndView("myreportList");
+       request.setAttribute("search", search);
+       return mv;
+    }
 
 	@RequestMapping(value = "/community/reportDetail")
 	public ModelAndView reportDetail(CommandMap commandMap) throws Exception {
@@ -106,11 +109,10 @@ public class ReportController {
 	}
 	
 	@RequestMapping(value = "/community/reportDetail/reportHandle")
-	public ModelAndView reportHandle() throws Exception {
-		ModelAndView mv = new ModelAndView("redirect:/community/reportDetail");
-		
-		return mv;		
+	public ModelAndView reportHandle(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/community/reportList");
+	  	reportService.updateStatus(commandMap.getMap());
+		return mv;      
 	}
-	
 	
 }

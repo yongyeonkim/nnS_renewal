@@ -12,8 +12,6 @@
 <div id="content">
    <div id="vertical_tab-container">
       <ul>
-      
-         
          <li><a href="noticeList"><img src="./../resources/images/tab_notice.png" width="100" height="30"></a></li>
          <li><a href="boardList"><img src="./../resources/images/tab_board.png" width="100" height="30"></a></li>
          <li><a href="reportList"><img src="./../resources/images/tab_report.png" width="100" height="30"></a></li>
@@ -41,26 +39,6 @@
 			</tr>
 		</thead>
 		<tbody>
-			<%-- <c:choose>
-				<c:when test="${fn:length(list) > 0}">
-					<c:forEach items="${list }" var="row" varStatus="var">
-						<tr>
-							<td>${var.index + 1}</td>
-							<td class="title"><a href="#this" name="title">${row.QNA_TITLE }&nbsp;&nbsp;&nbsp;&nbsp;[${row.QNA_TYPE }]</a>
-								<input type="hidden" id="QNA_NUM" value="${row.QNA_NUM }"></td>
-						    <td>${row.MEM_ID }</td>
-							<td>${row.QNA_DATE }</td>
-							<td>${row.QNA_COUNT }</td>
-							<td>${row.QNA_YORN }</td>
-						</tr>
-					</c:forEach>
-				</c:when>
-				<c:otherwise>
-					<tr>
-						<td colspan="4">조회된 결과가 없습니다.</td>
-					</tr>
-				</c:otherwise>
-			</c:choose> --%>
 		</tbody>
 	</table>
 	
@@ -120,7 +98,7 @@
 			var body = $("table>tbody");
 			body.empty();
 			if (total == 0) {
-				var str = "<tr align=\"center\">" + "<td colspan='5'>조회된 결과가 없습니다.</td>"
+				var str = "<tr align=\"center\">" + "<td colspan='6'>조회된 결과가 없습니다.</td>"
 						+ "</tr>";
 				body.append(str);
 			} else {
@@ -140,7 +118,7 @@
 								function(key, value) {
 									str     += "<tr style=\"text-align: center\">"
 											+ "<td>"
-											+ value.RNUM
+											+ value.QNA_NUM
 											+ "</td>"
 											+ "<td class='title'>"
 											+ "<a href='#this' name='title'>"

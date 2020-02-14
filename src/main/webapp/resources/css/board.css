@@ -6,7 +6,7 @@
 .tbl_type td{padding:6px 0 4px;border-top:1px dashed #cecece;color:#595959}
 /* //UI Object */
 h1 {font-size: 3em; margin: 20px 0; color: #FFF;}
-.container {width: 700px; margin: 10px auto;}
+.container {width: 100%; margin: 10px auto;}
 ul.goodsTabs {
 	margin: 0;
 	padding: 0;
@@ -43,14 +43,16 @@ ul.goodsTabs li a {
 ul.goodsTabs li a:hover {
 	background: #ccc;
 }	
-html ul.goodsTabs li.active, html ul.goodsTabs li.active a:hover  {
+html ul.goodsTabs li.selected, html ul.goodsTabs li.active a:hover  {
 	background: #fff;
 	border-bottom: 1px solid #fff;
 }
 .goodsTab_container {
 	border: 1px solid #999;
 	border-top: none;
+	/*
 	clear: both;
+	*/
 	float: left; 
 	width: 100%;
 	background: #fff;

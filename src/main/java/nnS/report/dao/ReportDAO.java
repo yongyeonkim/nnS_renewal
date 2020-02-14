@@ -46,5 +46,11 @@ public class ReportDAO extends AbstractDAO {
 		return (List<Map<String, Object>>)selectList("report.selectFileList", map);
 	}
 	
+	public void updateStatus(Map<String, Object> map) throws Exception{
+        // TODO Auto-generated method stub
+        update("report.updateStatus",map);
+      
+    }
+	
 
 }

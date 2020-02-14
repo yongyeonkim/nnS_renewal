@@ -87,6 +87,18 @@ table {
     padding: 10px 10px;
     line-height: 20px;
 }
+.card-header-is_closed2{
+    background-color: #3fb50e ;
+    color: #FFF ;
+    font-weight: bold ;
+    text-align: center ;
+    float: right;
+    margin: 15px 15px 0 0;
+    border-radius: 50%;
+    font-weight: bold;
+    padding: 10px 10px;
+    line-height: 20px;
+}
 h1 {
     font-size: 22px;
     font-weight: bold;
@@ -271,6 +283,7 @@ h1 {
 								data.list,
 								function(key, value) {
 									var imgpath = "";
+									var tstatus = "";
 									
 									if(value.GOODS_THUMBNAIL == null){
 										imgpath = 	"<div class='card-header'>"
@@ -278,16 +291,23 @@ h1 {
 										imgpath = "<div class='card-header' style='background-image:url(\"" + $('#path').val() + value.GOODS_THUMBNAIL + "\");'>"
 										//alert(imgpath);
 									}
+									if(value.GOODS_TSTATUS == 'N'){
+										tstatus += "<div class = 'card-header-is_closed2' >" 
+										 	     + "<div class = 'card-header-text' >" 
+												 + "거래가능";
+									}else if (value.GOODS_TSTATUS == 'ING'){
+										tstatus += "<div class = 'card-header-is_closed' >" 
+										 	     + "<div class = 'card-header-text' >" 
+										 	     + "거래중";
+									}
 									
 									str +=  "<div class='card'>"
 										+		"<a href='#this' name='title'>"
 										+	      imgpath
-										+	         "<div class = 'card-header-is_closed' >" 
-										+	                "<div class = 'card-header-text' >"
-										+ 					"(거래중)"
+										+ 					tstatus
 										+ 					"</div >"
 										+	                "<div class = 'card-header-number' >"
-										+					value.GOODS_TSTATUS
+										+					value.GOODS_NUM + "번"
 										+					"</div >" 
 										+	            "</div >"
 										+	      "</div>"

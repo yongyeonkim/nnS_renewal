@@ -10,12 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import nnS.common.dao.InformDAO;
 import nnS.common.util.FileUtils;
 import nnS.report.dao.ReportDAO;
 
 @Service("reportService")
 public class ReportServiceImpl implements ReportService {
 Logger log = Logger.getLogger(this.getClass());
+	
+	@Resource(name="informDAO")
+	private InformDAO informDAO;
 	
 	@Resource(name="reportDAO")
 	private ReportDAO reportDAO;
@@ -24,8 +28,9 @@ Logger log = Logger.getLogger(this.getClass());
 	private FileUtils fileUtils;
 
 	@Override
-	public List<Map<String, Object>> selectReportList(Map<String, Object> map) throws Exception {
+	public List<Map<String, Object>> selectReportList(Map<String, Object> map, String search) throws Exception {
 		// TODO Auto-generated method stub
+		map.put("search", search);
 		return reportDAO.selectReportList(map);
 	}
 	@Override
@@ -58,7 +63,14 @@ Logger log = Logger.getLogger(this.getClass());
 	public void deleteReport(Map<String, Object> map) throws Exception{
 		// TODO Auto-generated method stub
 		reportDAO.deleteReport(map);
-		
 	}
+	
+	public void updateStatus(Map<String, Object> map) throws Exception {
+	      // TODO Auto-generated method stub
+	      reportDAO.updateStatus(map);
+	      informDAO.informInsert(map, "내 신고글에 처리상태가 변경되었습니다.");
+	      informDAO.informInsert2(map, "회원님에 신고가 처리되었습니다.");
+	      
+	   }
 	
 }

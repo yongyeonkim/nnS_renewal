@@ -19,7 +19,7 @@
       </ul>
    </div>
    <div id="main-container">
-	<img src="./../resources/images/form_t.png" width="100" height="30">
+	<img src="./../resources/images/form_t2.png" width="100" height="30">
    <form id="frm" name="frm" enctype="multipart/form-data">
       <table class="tbl_type">
          <colgroup>

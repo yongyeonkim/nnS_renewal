@@ -8,8 +8,9 @@
 
 <meta charset="UTF-8">
 <link href="<c:url value="/resources/css/board.css"/>" rel="stylesheet">
+<!--  
 <link href="<c:url value="/resources/css/btn.css"/>" rel="stylesheet">
-
+ -->
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -77,6 +78,18 @@ table {
 }
 .card-header-is_closed{
     background-color: #EF5A31 ;
+    color: #FFF ;
+    font-weight: bold ;
+    text-align: center ;
+    float: right;
+    margin: 15px 15px 0 0;
+    border-radius: 50%;
+    font-weight: bold;
+    padding: 10px 10px;
+    line-height: 20px;
+}
+.card-header-is_closed2{
+    background-color: #3fb50e ;
     color: #FFF ;
     font-weight: bold ;
     text-align: center ;
@@ -275,6 +288,7 @@ h1 {
 								data.list,
 								function(key, value) {
 									var imgpath = "";
+									var tstatus = "";
 									
 									if(value.GOODS_THUMBNAIL == null){
 										imgpath = 	"<div class='card-header'>"
@@ -282,16 +296,23 @@ h1 {
 										imgpath = "<div class='card-header' style='background-image:url(\"" + $('#path').val() + value.GOODS_THUMBNAIL + "\");'>"
 										//alert(imgpath);
 									}
+									if(value.GOODS_TSTATUS == 'N'){
+										tstatus += "<div class = 'card-header-is_closed2' >" 
+										 	     + "<div class = 'card-header-text' >" 
+												 + "거래가능";
+									}else if (value.GOODS_TSTATUS == 'ING'){
+										tstatus += "<div class = 'card-header-is_closed' >" 
+										 	     + "<div class = 'card-header-text' >" 
+										 	     + "거래중";
+									}
 									
 									str +=  "<div class='card'>"
 										+		"<a href='#this' name='title'>"
 										+	      imgpath
-										+	         "<div class = 'card-header-is_closed' >" 
-										+	                "<div class = 'card-header-text' >"
-										+ 					"(거래중)"
+										+ 					tstatus
 										+ 					"</div >"
 										+	                "<div class = 'card-header-number' >"
-										+					value.GOODS_TSTATUS
+										+					value.GOODS_NUM + "번"
 										+					"</div >" 
 										+	            "</div >"
 										+	      "</div>"
