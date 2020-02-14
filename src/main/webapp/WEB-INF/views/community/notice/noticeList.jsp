@@ -45,7 +45,7 @@
 	<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
 		<div align="right">
 		  	<c:if test="${session_MEM_INFO.MEM_LEVEL == '2' }">
-				<a href="#write" class="btn" id="write">글쓰기</a>
+				<a href="#write" class="btn" id="write"><button class="bttn-bordered bttn-xs bttn-primary">글쓰기</button></a>
 	  	 	</c:if>  
 		</div>
 	</div>

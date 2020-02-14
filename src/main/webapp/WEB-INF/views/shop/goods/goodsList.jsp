@@ -8,9 +8,9 @@
 
 <meta charset="UTF-8">
 <link href="<c:url value="/resources/css/board.css"/>" rel="stylesheet">
-<!--  
+ 
 <link href="<c:url value="/resources/css/btn.css"/>" rel="stylesheet">
- -->
+
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -191,9 +191,10 @@ h1 {
 		<tbody>
 		</tbody>
 		</table>
+		<div align="center">
 		<form action="/nnS/shop" method="post">
 			<fieldset>
-				<legend>검색</legend>
+				
 				<select name="searchType" id="searchType">
 					<option value="nothing">-----</option>
 					<option value="title" <c:out value="${searchType eq 'title'?'selected':''}"/>>상품명</option>
@@ -206,13 +207,15 @@ h1 {
 				<input type="hidden" id="sortType" value="${sortType}" />
 			</fieldset>
 		</form>
+		</div>
 		<div id="PAGE_NAVI" align="center"></div>
 		<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
    
-	
+	<div align="right">
 	<c:if test="${session_MEM_ID ne null }">
-		<a href="#this" class="btn" id="write">글쓰기</a>
+		<a href="#this" class="btn" id="write"><button class="bttn-bordered bttn-xs bttn-primary">글쓰기</button></a>
 	</c:if>
+	</div>
 
    </div>
 </div>
