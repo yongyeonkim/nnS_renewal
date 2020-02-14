@@ -100,7 +100,7 @@
 		       
 					  <ul class="bxslider"> 
 					  	<c:forEach var="row" items="${list}" varStatus="var"> 
-					  		<li><img alt="" style="width:100%; height:450px;" src="${path}${row.GOODS_IMAGE_STD}"/></li>
+					  		<li><img alt="" style="width:auto; height:450px;" src="${path}${row.GOODS_IMAGE_STD}"/></li>
 						</c:forEach>
 					  </ul>
 					  

@@ -256,10 +256,10 @@ function fn_selectMySaleListCallback1(data) {
 		      	      		+	"<img alt='' width='50' height='50' src=/nnS/file/"+value.GOODS_THUMBNAIL+">"
 		      	      		+	"</td>"
 		      	      	    +   "<td width='100px' align='center'>"
-		      	      		+	new Date(value.GOODS_DATE).toLocaleString()
+		      	      		+	new Date(value.ORDERS_DATE).toLocaleString()
 		      	      		+	"</td>"
 		      	      		+	"<td width='100px' align='center'>"
-		      	      		+	value.GOODS_STATUS	
+		      	      		+	value.ORDERS_STATUS	
 		      	      		+	"</td>";
 		      	      	if(value.ORDERS_STATUS == "배송중") {
 							str1 += "<td width='200px' align='center'>"+value.ORDERS_DNUM+"</td>"+"<td></td>";

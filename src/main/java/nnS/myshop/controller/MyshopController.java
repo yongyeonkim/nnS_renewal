@@ -106,7 +106,7 @@ public class MyshopController {
 	
 	@RequestMapping(value="/myshop/inputDnum")
 	public ModelAndView inputDnum(CommandMap commandMap, HttpServletRequest request) throws Exception{
-		ModelAndView mv = new ModelAndView("saleList2");
+		ModelAndView mv = new ModelAndView("saleList");
 
 		myshopService.insertDnum(commandMap.getMap(), request);
 		
