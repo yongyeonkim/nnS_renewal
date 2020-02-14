@@ -8,9 +8,33 @@
 
 <meta charset="UTF-8">
 <link href="<c:url value="/resources/css/board.css"/>" rel="stylesheet">
-<!--  
-<link href="<c:url value="/resources/css/btn.css"/>" rel="stylesheet">
- -->
+<style type="text/css">
+td{
+	margin:0 0 0 10px
+}
+td img
+{
+	width:250px; 
+	height:250px;
+	margin:10px 10px 10px 0px; 
+	border:3px solid #000; 
+
+}
+
+   @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
+   
+   html {
+      height: 100%;
+   }
+   
+   body {
+        background:linear-gradient(to bottom right, #f0e199, #f0e199);
+   }
+   body,table,input,select,textarea,button,h1,h2,h3,h4,h5,h6,a{font-family:'맑은 고딕',Malgun Gothic,sans-serif;font-size:12px;color:#666;font-weight:400;}
+   
+   }
+</style>
+
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -30,9 +54,6 @@ html, body, div, span, applet, object, iframes, h1, h2, h3, h4, h5, h6,
    do: inherit;
    vertical-align: baseline;
 }
-body {
-        background:linear-gradient(to bottom right, #f0e199, #f0e199);
-   }
 article, aside, details, figcaption, figure, footer, header, hgroup,
    menu, nav, section {
    display: block;
@@ -81,18 +102,6 @@ table {
 }
 .card-header-is_closed{
     background-color: #EF5A31 ;
-    color: #FFF ;
-    font-weight: bold ;
-    text-align: center ;
-    float: right;
-    margin: 15px 15px 0 0;
-    border-radius: 50%;
-    font-weight: bold;
-    padding: 10px 10px;
-    line-height: 20px;
-}
-.card-header-is_closed2{
-    background-color: #3fb50e ;
     color: #FFF ;
     font-weight: bold ;
     text-align: center ;
@@ -197,10 +206,10 @@ h1 {
 		</table>
 		<div id="PAGE_NAVI" align="center"></div>
 		<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
-
    </div>
 </div>
 </div>
+    
     <%@ include file="/WEB-INF/include/include-body.jspf" %>
 	
 
@@ -209,11 +218,6 @@ h1 {
 		$(document).ready(function() {
 			
 			fn_selectGoodsList(1);
-			
-			$("#write").on("click", function(e) { //상품등록 버튼
-				e.preventDefault();
-				fn_goodsWrite();
-			});
 
 			$("a[name='title']").on("click", function(e) { //제목 
 				e.preventDefault();
@@ -221,12 +225,6 @@ h1 {
 			});
 			
 		});
-		
-		function fn_goodsWrite() {
-			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/shop/goodsWriteForm' />");
-			comSubmit.submit();
-		}
 	
 		function fn_goodsDetail(obj) {
 			var comSubmit = new ComSubmit();
@@ -272,7 +270,6 @@ h1 {
 								data.list,
 								function(key, value) {
 									var imgpath = "";
-									var tstatus = "";
 									
 									if(value.GOODS_THUMBNAIL == null){
 										imgpath = 	"<div class='card-header'>"
@@ -280,23 +277,16 @@ h1 {
 										imgpath = "<div class='card-header' style='background-image:url(\"" + $('#path').val() + value.GOODS_THUMBNAIL + "\");'>"
 										//alert(imgpath);
 									}
-									if(value.GOODS_TSTATUS == 'N'){
-										tstatus += "<div class = 'card-header-is_closed2' >" 
-										 	     + "<div class = 'card-header-text' >" 
-												 + "거래가능";
-									}else if (value.GOODS_TSTATUS == 'ING'){
-										tstatus += "<div class = 'card-header-is_closed' >" 
-										 	     + "<div class = 'card-header-text' >" 
-										 	     + "거래중";
-									}
 									
 									str +=  "<div class='card'>"
 										+		"<a href='#this' name='title'>"
 										+	      imgpath
-										+ 					tstatus
+										+	         "<div class = 'card-header-is_closed' >" 
+										+	                "<div class = 'card-header-text' >"
+										+ 					"(거래중)"
 										+ 					"</div >"
 										+	                "<div class = 'card-header-number' >"
-										+					value.GOODS_NUM + "번"
+										+					value.GOODS_TSTATUS
 										+					"</div >" 
 										+	            "</div >"
 										+	      "</div>"
