@@ -161,7 +161,7 @@
    </form>
    
    <div align="center">
-      <input type="button" value="회원가입" onclick="location.href='/nnS/joinForm'"/><input type="button" value="ID/PW 찾기" onclick="location.href='/nnS/findId'"/>
+      <input type="button" value="회원가입" onclick="location.href='/nnS/joinForm'" class="bttn-bordered bttn-xs bttn-primary"/>&nbsp;<input type="button" value="ID/PW 찾기" onclick="location.href='/nnS/findId'" class="bttn-bordered bttn-xs bttn-primary"/>
     </div>
 
 </body>
