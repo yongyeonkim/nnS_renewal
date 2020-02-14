@@ -60,7 +60,7 @@
 	<br />
 	<div align="right">
 	<c:if test="${session_MEM_INFO.MEM_ID != NULL }">
-		<a href="#this"  class="btn" id="write"><img src="./../resources/images/commu_wbtn.png"></a>
+		<a href="#this"  class="btn" id="write"><button class="bttn-bordered bttn-xs bttn-primary"><img src="./../resources/images/commu_wbtn.png"></button></a>
 	</c:if>
 	</div>
 	</div>

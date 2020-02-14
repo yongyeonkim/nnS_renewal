@@ -5,6 +5,7 @@
 <head>
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 <link href="<c:url value="/resources/css/board.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/btn.css"/>" rel="stylesheet">
 <meta charset="UTF-8">
 <style type="text/css">
 #main-container
@@ -105,7 +106,7 @@
 						 if(document.getElementById("check").value == "true"){
 							 $("#test").append("결제가 완료되었습니다.");
 						 }else{
-							 $("#test").append("결제를 먼저 진행해주세요. <input type='button' id='pay_btn' name='pay_btn' value='결제하기' align='right'>"); 
+							 $("#test").append("결제를 먼저 진행해주세요.<a href='#this' class='btn' id='pay_btn'><button class='bttn-bordered bttn-xs bttn-primary'>결제하기</button></a>"); 
 						 }
 						 </script>
 					</td>
@@ -140,7 +141,7 @@
 				</tr>	
 		</table>
 		<p align="right">
-			<input type="button" id="submitPay" name="submitPay" value="주문하기" align="right">
+			<a href="#this" class="btn" id="submitPay"><button class="bttn-bordered bttn-xs bttn-primary">주문하기</button></a>
 		</p>
 	</div>
 	</form>
