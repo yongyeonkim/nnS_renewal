@@ -43,15 +43,15 @@
             <td>${map.REPORT_DATE }</td>
          </tr>
          <tr>
-           <th scope="row">신고 대상</th>
+           <th scope="row"><img src="./../resources/images/report_pid.png" height="25"></th>
            <td>${map.REPORT_GOODS_SELLER_ID }
-           <th scope="row">신고 상품번호</th>
+           <th scope="row"><img src="./../resources/images/report_p.png" height="25"></th>
            <td>${map.REPORT_PRONUM }</td>
          </tr>
          <tr>
             <th scope="row"><img src="./../resources/images/commu_title.png" height="25"></th>
             <td>${map.REPORT_TITLE }</td>
-            <th scope="row">신고사유</th>
+            <th scope="row"><img src="./../resources/images/report_reason.png" height="25"></th>
             <td>${map.REPORT_TYPE }
             <c:if test="${session_MEM_INFO.MEM_LEVEL eq '2'}">
             <form id="frm" name="frm">

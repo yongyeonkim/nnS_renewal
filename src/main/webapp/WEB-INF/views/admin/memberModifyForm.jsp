@@ -1,13 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="/WEB-INF/include/include-header.jspf" %>  
 <head>
 <script type="text/javascript">
-function fn_check(memberModifyForm) { //변경 버튼 클릭시(유효성검증, 데이터입력)
+$(document).ready(function() { //회원가입 버튼 클릭시
+    $("#modify").on("click", function(e) {
+       e.preventDefault();
+       fn_check();
+    });
+ });
+function fn_check() { //변경 버튼 클릭시(유효성검증, 데이터입력)
     var chk = $("input[name=agree_required]");
-
+    if(!$("#MEM_PW").val()){
+        alert("비밀번호를 입력해주세요.");
+        $("#MEM_PW").focus();
+        return false;
+     }
+    if(!$("#MEM_NAME").val()){
+        alert("이름을 입력해주세요.");
+        $("#MEM_NAME").focus();
+        return false;
+     }
+    if(!$("#MEM_BIRTH").val()){
+        alert("생일을 입력해주세요.");
+        $("#MEM_BIRTH").focus();
+        return false;
+     }
+    if(!$("#MEM_GEN").val()){
+        alert("성별을 입력해주세요.");
+        $("#MEM_GEN").focus();
+        return false;
+     }
     if(!$("#MEM_EMAIL").val()){
        alert("이메일을 입력해주세요.");
        $("#MEM_EMAIL").focus();
@@ -35,6 +60,11 @@ function fn_check(memberModifyForm) { //변경 버튼 클릭시(유효성검증,
         $("#MEM_ADD2").focus();
         return false;
      }
+    if(!$("#MEM_LEVEL").val()){
+        alert("회원레벨을 입력해주세요.");
+        $("#MEM_LEVEL").focus();
+        return false;
+     }
 
     var comSubmit = new ComSubmit("memberModifyForm");
     comSubmit.setUrl("<c:url value='/admin/memberModifyPro'/>");
@@ -46,7 +76,7 @@ function fn_check(memberModifyForm) { //변경 버튼 클릭시(유효성검증,
 
 
 function back(){
-	history.go(-1);
+   history.go(-1);
 }
 
 </script>
@@ -55,14 +85,14 @@ function back(){
 <!-- 메뉴 시작 -->
 
 <div class="row" style="padding-left:15px;width:700px;">    
-	<h1 class="page-header">회원수정</h1>
+   <h1 class="page-header">회원수정</h1>
 </div>
 
 <div class="row" style="padding-left:15px;width:700px;">
-	<div class="panel panel-default">
-		<div class="panel-heading" >회원수정 페이지입니다.</div>
-			<div class="panel-body">
-				<form id="memberModifyForm" method="post"> 	
+   <div class="panel panel-default">
+      <div class="panel-heading" >회원수정 페이지입니다.</div>
+         <div class="panel-body">
+            <form id="memberModifyForm" method="post">    
                         <div class="form-group">
                             <label>아이디</label>                            
                             <input type="text" class="form-control" name="MEM_ID" id="MEM_ID" value="${map.MEM_ID}" style="width:initial;" readonly/>                            
@@ -115,11 +145,11 @@ function back(){
                             <label>레벨</label>
                             <input type="text" class="form-control" value="${map.MEM_LEVEL}" name="MEM_LEVEL" id="MEM_LEVEL" style="width:250px;"/>
                         </div>
-						<button type="submit" class="btn btn-success" onclick="fn_check();">회원수정</button>
-						<button type="reset" class="btn btn-default" onclick="back();">작성취소</button>					
-				</form>
-			</div>
-	</div>
+                  <button type="button" class="btn btn-success" id="modify">회원수정</button>
+                  <button type="reset" class="btn btn-default" onclick="back();">작성취소</button>               
+            </form>
+         </div>
+   </div>
 </div>
 
 

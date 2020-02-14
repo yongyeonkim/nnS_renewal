@@ -46,7 +46,7 @@
 				<th scope="col"><img src="./../resources/images/commu_writer.png" height="25"></th>
 				<th scope="col"><img src="./../resources/images/commu_date.png" height="25"></th>
 				<th scope="col"><img src="./../resources/images/commu_status.png" height="25"></th>
-				<th scope="col">신고 대상</th>
+				<th scope="col"><img src="./../resources/images/commu_rid.png" height="25"></th>
 				<th scope="col"><img src="./../resources/images/commu_hit.png" height="25"></th>
 			</tr>
 		</thead>

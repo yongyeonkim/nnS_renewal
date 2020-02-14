@@ -69,19 +69,18 @@
 				</tr>
 				<tr align="center">
 				<td>
-					<input type="button" id="buy" name="buy" value="바로구매" />
+					<a href='#this' id="buy"><img src=<c:url value="/resources/images/baro.png"/> id='baro_img' style="width:60px; height:30px"></a>
 				</td>
 				<td> 
-					<a href='javascript: report_func();'><img src=<c:url value="/resources/images/report_btn.png"/> id='report_img' style="width:30px; height:30px"></a>
-					신고하기
+					<a href='javascript: report_func();'><img src=<c:url value="/resources/images/siren2.png"/> id='report_img' style="width:60px; height:30px"></a>
 				</td>
 				<td>	
 					<c:choose>
 						<c:when test="${goodsLikeMap.GOODS_LIKE_YN eq 0}">
-					    	<a href='javascript: like_func();'><img src=<c:url value="/resources/images/unlike_btn.png"/> id='unlike_img' style="width:30px; height:30px"></a>
+					    	<a href='javascript: like_func();'><img src=<c:url value="/resources/images/like_black.png"/> id='unlike_img' style="width:30px; height:30px"></a>
 					  	</c:when>
 					  	<c:otherwise>
-					    	<a href='javascript: unlike_func();'><img src=<c:url value="/resources/images/like_btn.png"/> id='like_img' style="width:30px; height:30px"></a>
+					    	<a href='javascript: unlike_func();'><img src=<c:url value="/resources/images/like_red.png"/> id='like_img' style="width:30px; height:30px"></a>
 					  	</c:otherwise>
 					</c:choose>
 				
@@ -91,23 +90,23 @@
 		</table>
 		<div class="container" style="width:100%">
 		    <ul class="goodsTabs">
-		        <li><a href="#goodsTab1">상품정보</a></li>
-		        <li><a href="#goodsTab2">상품문의</a></li>
-		        <li><a href="#goodsTab3">판매자정보</a></li>
+		        <li class="selected"><a href="#goodsTab1"><img src="./../resources/images/goods_tab_1.png" height="25"></a></li>
+		        <li><a href="#goodsTab2"><img src="./../resources/images/goods_tab_2.png" height="25"></a></li>
+		        <li><a href="#goodsTab3"><img src="./../resources/images/goods_tab_3.png" height="25"></a></li>
 		    </ul>
 		    <div class="goodsTab_container">
 		        <div id="goodsTab1" class="goodsTab_content">
-		            <h2>상품정보</h2>
+		       
 					  <ul class="bxslider"> 
 					  	<c:forEach var="row" items="${list}" varStatus="var"> 
-					  		<li><img alt="" style="width:100%; height:150px;" src="${path}${row.GOODS_IMAGE_STD}"/></li>
+					  		<li><img alt="" style="width:100%; height:450px;" src="${path}${row.GOODS_IMAGE_STD}"/></li>
 						</c:forEach>
 					  </ul>
 					  
 		            <p>${map.GOODS_CONTENT}</p>
 		        </div>
 		        <div id="goodsTab2" class="goodsTab_content">
-		             <h2>상품문의</h2>
+		             
 						<div align='center'>
 	                        <!-- 뭐든 넣어도됨(작성자 등등) -->
 			      		</div>
@@ -115,7 +114,7 @@
 			      		<form id="frm" name="frm">
 				      		<c:if test="${session_MEM_ID != NULL}">
 					      		<div width="100%">
-				      				<textarea name='COMMENTS_CONTENT' id='COMMENTS_CONTENT' rows='5' cols='80' style='resize: none;'></textarea>
+				      				<textarea name='COMMENTS_CONTENT' id='COMMENTS_CONTENT' rows='5' cols='150' style='resize: none;'></textarea>
 				      				<input type="hidden" id="COMMENTS_TYPE" name="COMMENTS_TYPE" value="1"/>
 				      				<input type="hidden" id="COMMENTS_PARENT" name="COMMENTS_PARENT" value="${map.GOODS_NUM}"/>
 				      				<input type="hidden" id="MEM_ID" name="MEM_ID" value="${session_MEM_INFO.MEM_ID }"/>
@@ -123,8 +122,8 @@
 			      				</div>
 			      			</c:if>
 	      				</form>
-	      				
-					<table id="goodsTab2_ct" style="height: 100px;">
+	      				<br>
+					<table id="goodsTab2_ct" class="tbl_type" style="width:100%; height: 100px;">
 						<tbody>
 						</tbody>
 			       </table>
@@ -132,7 +131,7 @@
 					<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
 			   </div>
 		        <div id="goodsTab3" class="goodsTab_content">
-		             <h2>판매자정보</h2>
+		             
 		             <br>
 						판매자 ID : ${memberMap.MEM_ID}<br />
 						판매자 이름 : ${memberMap.MEM_NAME} <br /> 
@@ -193,7 +192,7 @@
 		
 		function fn_openGoodsList(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/shop' />");
+			comSubmit.setUrl("<c:url value='/shop/allGoodsList' />");
 			comSubmit.submit();
 		}
 		
@@ -279,8 +278,8 @@
 		
 		//On Click Event
 		$("ul.goodsTabs li").click(function() {
-			$("ul.goodsTabs li").removeClass("active"); //Remove any "active" class
-			$(this).addClass("active"); //Add "active" class to selected goodsTab
+			$("ul.goodsTabs li").removeClass("selected active"); //Remove any "active" class
+			$(this).addClass("selected active"); //Add "active" class to selected goodsTab
 			$(".goodsTab_content").hide(); //Hide all goodsTab content
 			var activegoodsTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active goodsTab + content
 			$(activegoodsTab).fadeIn(); //Fade in the active content

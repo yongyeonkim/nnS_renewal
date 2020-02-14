@@ -40,7 +40,7 @@
 			<tr>
 				<th scope="row"><img src="./../resources/images/commu_writer.png" height="25"></th>
 				<td>${map.MEM_ID }</td>
-				<th scope="row">문의유형</th>
+				<th scope="row"><img src="./../resources/images/form_type.png" height="25"></th>
 				<td>${map.QNA_TYPE }</td>
 			</tr>
 			<tr>

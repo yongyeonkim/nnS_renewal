@@ -39,7 +39,7 @@
 			<tr>
 				<th scope="row"><img src="./../resources/images/commu_writer.png" height="25"></th>
 				<td>${map.MEM_ID }</td>
-				<th scope="row">문의유형</th>
+				<th scope="row"><img src="./../resources/images/form_type.png" height="25"></th>
 				<td>${map.QNA_TYPE }</td>
 			</tr>
 			<tr>
@@ -50,18 +50,6 @@
 			</tr>
 			<tr>
 				<td colspan="4" height="600px" style="vertical-align:top;"><pre style="overflow:hidden;  white-space: pre-wrap">${map.QNA_CONTENT }</pre></td>
-			</tr>
-			<tr>
-				<th scope="row">첨부파일</th>
-				<td colspan="3">
-					<c:forEach var="row" items="${list }">
-						<div>
-							<input type="hidden" id="FILES_NUM" value="${row.FILES_NUM }">
-							<a href="#this" name="file">${row.FILES_ORGNAME }</a>
-							(${row.FILES_SIZE}kb)
-						</div>
-					</c:forEach>
-				</td>
 			</tr>
 		</tbody>
 	</table>
