@@ -89,7 +89,8 @@
 		</c:when>
 		</c:choose>
 			
-		<div class="answer">
+		<!-- 답글달기 삭제
+		 <div class="answer">
 				<p>답변쓰기</p>
 				<table class="hide">
 					<tr>
@@ -105,7 +106,7 @@
 					</tr> 
 				</table>
 				
-		</div>
+		</div> -->
 	
 	<a href="#this" class="btn" id="list">목록으로</a>
 	<c:if test="${session_MEM_ID eq map.MEM_ID && session_MEM_ID ne null}">
@@ -184,6 +185,7 @@
 			
 		}
 		
+
 		//답변글 보기에 쓰는 거 
 		//html dom 이 다 로딩된 후 실행된다.
 		$(document).ready(function(){
@@ -199,6 +201,7 @@
 				}
 			});
 		});
+		
 	</script>
 </body>
 </html>

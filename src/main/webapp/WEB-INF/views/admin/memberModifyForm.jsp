@@ -70,6 +70,7 @@ function fn_check() { //변경 버튼 클릭시(유효성검증, 데이터입력
     comSubmit.setUrl("<c:url value='/admin/memberModifyPro'/>");
     comSubmit.submit();
  }
+ 
  $("#memberModifyForm").on("submit",function(e){
  });
 

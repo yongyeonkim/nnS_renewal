@@ -75,7 +75,7 @@
 		</c:forEach>
 		</c:when>
 		</c:choose>
-			
+		<!-- 	
 		<div class="answer">
 				<p>답변쓰기</p>
 				<table class="hide">
@@ -93,6 +93,7 @@
 				</table>
 				
 		</div>
+		 -->
 	<a href="#this" class="btn" id="list">목록으로</a>
 	<c:if test="${session_MEM_ID eq map.MEM_ID && session_MEM_ID ne null}">
 	<a href="#this" class="btn" id="update">수정하기</a>

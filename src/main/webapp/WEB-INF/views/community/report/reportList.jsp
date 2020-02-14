@@ -59,9 +59,10 @@
 
 	<br />
 	<div align="right">
+<!-- 글쓰기 부분 삭제 	
 	<c:if test="${session_MEM_INFO.MEM_ID != NULL }">
 		<a href="#this"  class="btn" id="write"><img src="./../resources/images/commu_wbtn.png"></a>
-	</c:if>
+	</c:if> -->
 	</div>
 	</div>
 	</div>
