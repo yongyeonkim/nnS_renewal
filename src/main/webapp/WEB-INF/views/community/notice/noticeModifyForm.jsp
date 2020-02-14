@@ -44,8 +44,8 @@
       </table>
       <br/><br/>
       <center>
-	      <a href="#write" class="btn" id="write">작성하기</a>
-	      <a href="#list" class="btn" id="list">목록으로</a>
+	      <a href="#write" class="btn" id="write"><button class="bttn-bordered bttn-xs bttn-primary">작성하기</button></a>
+	      <a href="#list" class="btn" id="list"><button class="bttn-bordered bttn-xs bttn-primary">목록으로</button></a>
       </center>
    </form>
    

@@ -50,10 +50,10 @@
 		</tbody>
 	</table>
 	<div align="center">
-		<a href="#this" class="btn" id="list">목록으로</a>
+		<a href="#this" class="btn" id="list"><button class="bttn-bordered bttn-xs bttn-primary">목록으로</button></a>
 		<c:if test="${session_MEM_INFO.MEM_LEVEL == '2' }">
-		<a href="#this" class="btn" id="modify">수정하기</a>
-		<a href="#this" class="btn" id="delete">삭제하기</a>
+		<a href="#this" class="btn" id="modify"><button class="bttn-bordered bttn-xs bttn-primary">수정하기</button></a>
+		<a href="#this" class="btn" id="delete"><button class="bttn-bordered bttn-xs bttn-primary">삭제하기</button></a>
 		</c:if>
 	</div>
 	</div>

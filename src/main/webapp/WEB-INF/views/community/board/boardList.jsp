@@ -41,11 +41,12 @@
 			<!-- 스크립트를 통해 게시글에 대한 정보가 담김 -->
 		</tbody>
 	</table>
+	<br/>
 	<div id="PAGE_NAVI" align="center"></div>
 	<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
 	<div align="right">
 	<c:if test="${session_MEM_INFO.MEM_ID != NULL }">
-		<a href="#this"  class="btn" id="write"><img src="./../resources/images/commu_wbtn.png"></a>
+		<a href="#this"  class="btn" id="write"><button class="bttn-bordered bttn-xs bttn-primary"><img src="./../resources/images/commu_wbtn.png"></button></a>
 	</c:if>
 	</div>
 	</div>
